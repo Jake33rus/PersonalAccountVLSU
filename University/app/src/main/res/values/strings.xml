@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Личный кабинет ВлГУ</string>
+    <string name="news_title">Новости</string>
+    <string name="profile_title">Анкета</string>
+    <string name="arrears_title">Задолженности</string>
+    <string name="upcoming_exams_title">Предстоящие экзамены</string>
+    <string name="passed_exams_title">Сданные экзамены</string>
+    <string name="learning_activities_title">Учебная деятельность</string>
+    <string name="personal_achievements_title">Личные достижения</string>
+    <string name="payments_title">Платежи и договоры</string>
+    <string name="scholarships_title">Стипендии и выплаты</string>
+    <string name="recommended_literature_title">Рекомендуемая литература</string>
 </resources>

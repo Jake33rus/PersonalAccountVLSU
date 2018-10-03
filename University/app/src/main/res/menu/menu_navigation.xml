@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/news_title"
+        android:icon="@mipmap/ic_newspaper"/>
+    <item
+        android:orderInCategory="2"
+        android:title="@string/profile_title"
+        android:icon="@mipmap/ic_account_circle"/>
+    <item
+        android:orderInCategory="3"
+        android:title="@string/arrears_title"
+        android:icon="@mipmap/ic_clipboard_alert"/>
+    <item
+        android:orderInCategory="4"
+        android:title="@string/upcoming_exams_title"
+        android:icon="@mipmap/ic_clipboard_text"/>
+    <item
+        android:orderInCategory="5"
+        android:title="@string/passed_exams_title"
+        android:icon="@mipmap/ic_clipboard_check"/>
+    <item
+        android:orderInCategory="6"
+        android:title="@string/learning_activities_title"
+        android:icon="@mipmap/ic_school"/>
+    <item
+        android:orderInCategory="7"
+        android:title="@string/personal_achievements_title"
+        android:icon="@mipmap/ic_trophy"/>
+    <item
+        android:orderInCategory="8"
+        android:title="@string/payments_title"
+        android:icon="@mipmap/ic_wallet"/>
+    <item
+        android:orderInCategory="9"
+        android:title="@string/scholarships_title"
+        android:icon="@mipmap/ic_cash_100"/>
+    <item
+        android:orderInCategory="10"
+        android:title="@string/recommended_literature_title"
+        android:icon="@mipmap/ic_library"/>
+
+</menu>

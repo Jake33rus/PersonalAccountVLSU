@@ -1,22 +1,29 @@
 package com.example.jake.university;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int LAYOUT = R.layout.activity_main;
+
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AddDefault);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(LAYOUT);
 
-        initStudentInfo();
+        initToolBar();
+        initNavigationView();
     }
-    private void initStudentInfo(){
+
+    private void initToolBar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
@@ -28,4 +35,11 @@ public class MainActivity extends AppCompatActivity {
         });
         toolbar.inflateMenu(R.menu.menu);
     }
+
+
+
+    private void initNavigationView() {
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    }
+
 }

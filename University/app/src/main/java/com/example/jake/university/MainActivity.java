@@ -1,45 +1,65 @@
 package com.example.jake.university;
 
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
 
-    private static final int LAYOUT = R.layout.activity_main;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-    private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
-
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private DrawerLayout mDrawerlayout;
+    private ActionBarDrawerToggle mToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AddDefault);
         super.onCreate(savedInstanceState);
-        setContentView(LAYOUT);
-
-        initToolBar();
-        initNavigationView();
+        setContentView(R.layout.activity_main);
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
+        mDrawerlayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void initToolBar(){
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.app_name);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
-
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                return false;
-            }
-        });
-        toolbar.inflateMenu(R.menu.menu);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mToggle.onOptionsItemSelected(item)) {
+            return true ;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-
-
-    private void initNavigationView() {
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.nav_news:
+                break;
+            case R.id.nav_profile:
+                break;
+            case R.id.nav_arrears:
+                break;
+            case R.id.nav_upcoming_exam:
+                break;
+            case R.id.nav_passed_exams:
+                break;
+            case R.id.nav_learn_action:
+                break;
+            case R.id.nav_achievements:
+                break;
+            case R.id.nav_payment:
+                break;
+            case R.id.nav_scholarships:
+                break;
+            case R.id.nav_literature:
+                break;
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
-
 }

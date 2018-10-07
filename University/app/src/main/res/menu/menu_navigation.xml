@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
-        android:orderInCategory="1"
+        android:id="@+id/nav_news"
         android:title="@string/news_title"
-        android:icon="@mipmap/ic_newspaper"/>
+        android:icon="@drawable/ic_newspaper"/>
     <item
-        android:orderInCategory="2"
+        android:id="@+id/nav_profile"
         android:title="@string/profile_title"
-        android:icon="@mipmap/ic_account_circle"/>
+        android:icon="@drawable/ic_account_circle"/>
     <item
-        android:orderInCategory="3"
+        android:id="@+id/nav_arrears"
         android:title="@string/arrears_title"
-        android:icon="@mipmap/ic_clipboard_alert"/>
+        android:icon="@drawable/ic_clipboard_alert"/>
     <item
-        android:orderInCategory="4"
+        android:id="@+id/nav_upcoming_exam"
         android:title="@string/upcoming_exams_title"
-        android:icon="@mipmap/ic_clipboard_text"/>
+        android:icon="@drawable/ic_clipboard_text"/>
     <item
-        android:orderInCategory="5"
+        android:id="@+id/nav_passed_exams"
         android:title="@string/passed_exams_title"
-        android:icon="@mipmap/ic_clipboard_check"/>
+        android:icon="@drawable/ic_clipboard_check"/>
     <item
-        android:orderInCategory="6"
+        android:id="@+id/nav_learn_action"
         android:title="@string/learning_activities_title"
-        android:icon="@mipmap/ic_school"/>
+        android:icon="@drawable/ic_school"/>
     <item
-        android:orderInCategory="7"
+        android:id="@+id/nav_achievements"
         android:title="@string/personal_achievements_title"
-        android:icon="@mipmap/ic_trophy"/>
+        android:icon="@drawable/ic_trophy_variant"/>
     <item
-        android:orderInCategory="8"
+        android:id="@+id/nav_payment"
         android:title="@string/payments_title"
-        android:icon="@mipmap/ic_wallet"/>
+        android:icon="@drawable/ic_wallet"/>
     <item
-        android:orderInCategory="9"
+        android:id="@+id/nav_scholarships"
         android:title="@string/scholarships_title"
-        android:icon="@mipmap/ic_cash_100"/>
+        android:icon="@drawable/ic_cash_100"/>
     <item
-        android:orderInCategory="10"
+        android:id="@+id/nav_literature"
         android:title="@string/recommended_literature_title"
-        android:icon="@mipmap/ic_library"/>
-
+        android:icon="@drawable/ic_book_open_page_variant"/>
 </menu>

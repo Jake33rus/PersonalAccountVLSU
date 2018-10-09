@@ -3,6 +3,7 @@ package com.example.jake.university;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.jake.university.fragments.FragmentProfile;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer);
+        mDrawerlayout = findViewById(R.id.drawer);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();
@@ -28,9 +31,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mToggle.onOptionsItemSelected(item)) {
-            return true ;
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mDrawerlayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerlayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -40,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_news:
                 break;
             case R.id.nav_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new FragmentProfile()).commit();
                 break;
             case R.id.nav_arrears:
                 break;

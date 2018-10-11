@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.jake.university.fragments.FragmentExamsAndArrears;
+import com.example.jake.university.fragments.FragmentPayment;
 import com.example.jake.university.fragments.FragmentProfile;
 import com.google.android.material.navigation.NavigationView;
 
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_achievements:
                 break;
             case R.id.nav_payment:
+                ftrans.replace(R.id.fragment_container, new FragmentPayment()).commit();
                 break;
             case R.id.nav_scholarships:
                 break;

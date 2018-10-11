@@ -3,6 +3,7 @@ package com.example.jake.university;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.jake.university.fragments.FragmentExamsAndArrears;
 import com.example.jake.university.fragments.FragmentProfile;
 import com.google.android.material.navigation.NavigationView;
 
@@ -11,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerlayout;
@@ -48,18 +50,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
         switch (id) {
             case R.id.nav_news:
                 break;
             case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FragmentProfile()).commit();
+                ftrans.replace(R.id.fragment_container, new FragmentProfile()).commit();
                 break;
             case R.id.nav_arrears:
-                break;
-            case R.id.nav_upcoming_exam:
-                break;
-            case R.id.nav_passed_exams:
+                ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).commit();
                 break;
             case R.id.nav_learn_action:
                 break;

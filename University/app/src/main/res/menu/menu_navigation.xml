@@ -13,8 +13,16 @@
         android:icon="@drawable/ic_account_circle"/>
     <item
         android:id="@+id/nav_arrears"
-        android:title="@string/exams_arrears_title"
+        android:title="@string/arrears_title"
+        android:icon="@drawable/ic_clipboard_alert"/>
+    <item
+        android:id="@+id/nav_upcoming_exam"
+        android:title="@string/upcoming_exams_title"
         android:icon="@drawable/ic_clipboard_text"/>
+    <item
+        android:id="@+id/nav_passed_exams"
+        android:title="@string/passed_exams_title"
+        android:icon="@drawable/ic_clipboard_check"/>
     <item
         android:id="@+id/nav_learn_action"
         android:title="@string/learning_activities_title"

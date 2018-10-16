@@ -40,7 +40,7 @@ public class FragmentExamsAndArrears extends Fragment {
 
     private void initTabs() {
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-        FragmentManager fragmentManager = myContext.getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(fragmentManager);
         viewPager.setAdapter(adapter);
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);

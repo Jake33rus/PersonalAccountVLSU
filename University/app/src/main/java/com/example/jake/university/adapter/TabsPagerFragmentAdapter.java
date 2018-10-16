@@ -1,11 +1,11 @@
 package com.example.jake.university.adapter;
 
+
 import com.example.jake.university.fragments.FragmentArrears;
 import com.example.jake.university.fragments.FragmentPassedExams;
 import com.example.jake.university.fragments.FragmentUpcomingExams;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
@@ -29,7 +29,7 @@ public class TabsPagerFragmentAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public androidx.fragment.app.Fragment getItem(int position) {
         switch (position) {
             case 0:
                 return FragmentArrears.getInstance();
@@ -40,7 +40,6 @@ public class TabsPagerFragmentAdapter extends FragmentPagerAdapter {
         }
         return null;
     }
-
     @Override
     public int getCount() {
         return tabs.length;

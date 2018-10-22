@@ -1,5 +1,6 @@
 package com.example.jake.university.adapter;
 
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +15,7 @@ import com.example.jake.university.R;
 import com.example.jake.university.fragments.FragmentNews;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -21,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    private List<NewsItem> newsItems;
+    private List<NewsItem> newsItems = new ArrayList<>();
     private FragmentNews.NewThread context;
 
     public NewsAdapter(FragmentNews.NewThread cn, List<NewsItem> ni)
@@ -37,6 +39,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 .inflate(R.layout.news_item, parent, false);
 
         return new ViewHolder(v);
+    }
+
+    public void dataSetChanged(List<NewsItem> newsItems){
+        this.newsItems = newsItems;
+        notifyDataSetChanged();
     }
 
     @Override

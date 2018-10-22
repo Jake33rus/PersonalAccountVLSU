@@ -6,14 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.example.jake.university.News;
 import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.NewsAdapter;
+import com.example.jake.university.adapter.SimpleDividerItemDecoration;
 import com.google.android.material.tabs.TabLayout;
 
 import org.jsoup.Jsoup;
@@ -42,7 +39,6 @@ public class FragmentNews extends Fragment {
 
     public Elements contentL, contentR, contentImg;
     public ArrayList<String> titleList = new ArrayList<String>();
-    private ArrayAdapter<String> adapteer;
 
     private RecyclerView rv;
     private RecyclerView.Adapter adapter;
@@ -59,15 +55,12 @@ public class FragmentNews extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-
         rv = (RecyclerView) view.findViewById(R.id.NewsView);
-
-
+        rv.setHasFixedSize(true);
         new NewThread().execute();
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(layoutManager);
-
+        rv.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         return view;
     }
     public class NewThread extends AsyncTask<String, Void, String> {

@@ -3,7 +3,6 @@ package com.example.jake.university.fragments;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import android.view.ViewGroup;
 import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.NewsAdapter;
+import com.example.jake.university.adapter.SimpleDividerItemDecoration;
 import com.google.android.material.tabs.TabLayout;
 
 import org.jsoup.Jsoup;
@@ -26,11 +26,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 public class FragmentNews extends Fragment {
-    Preference data;
     private static final int LAYOUT = R.layout.fragment_news;
     private View view;
     private ViewPager viewPager;
@@ -58,6 +58,9 @@ public class FragmentNews extends Fragment {
         rv = (RecyclerView) view.findViewById(R.id.NewsView);
         rv.setHasFixedSize(true);
         new NewThread().execute();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(layoutManager);
+        rv.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         return view;
     }
     public class NewThread extends AsyncTask<String, Void, String> {

@@ -1,5 +1,9 @@
 package com.example.jake.university.adapter;
 
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +13,7 @@ import android.widget.TextView;
 import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
 import com.example.jake.university.fragments.FragmentNews;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +52,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         holder.nwDate.setText(ni.getDate());
         holder.nwTitle.setText(ni.getTitle());
+        Picasso.get().load(ni.getImgUrl()).into(holder.nwPic);
+
         /*holder.nwPic*/
     }
 

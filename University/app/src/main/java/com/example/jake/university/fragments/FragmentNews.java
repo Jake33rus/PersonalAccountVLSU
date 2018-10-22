@@ -3,6 +3,7 @@ package com.example.jake.university.fragments;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 public class FragmentNews extends Fragment {
+    Preference data;
     private static final int LAYOUT = R.layout.fragment_news;
     private View view;
     private ViewPager viewPager;

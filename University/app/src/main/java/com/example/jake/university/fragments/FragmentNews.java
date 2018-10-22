@@ -1,3 +1,4 @@
+
 package com.example.jake.university.fragments;
 
 import android.content.Context;
@@ -68,14 +69,13 @@ public class FragmentNews extends Fragment {
         @Override
         protected  String doInBackground(String... arg)
         {
-
             Document doc;
             try
             {
                 doc = Jsoup.connect("http://www.vlsu.ru/index.php?id=1412").get();
                 contentL = doc.select(".hdr-left");
                 contentR = doc.select(".hdr-right");
-                contentImg = doc.select("img[src~=(?i)\\.(jpe?g)]");
+                contentImg = doc.getElementsByTag("img");
 
                 newsItems = new ArrayList<>();
 
@@ -84,9 +84,7 @@ public class FragmentNews extends Fragment {
                 for(int i = 0; i < contentL.size(); i++)
                 {
                     ContextContainer temp;
-
-                        temp = new ContextContainer(contentL.get(i), contentR.get(i), contentImg.get(i*2), contentImg.get(i*2 + 1));
-
+                    temp = new ContextContainer(contentL.get(i), contentR.get(i), contentImg.get(i+6), contentImg.get(i+7));
 
                     cc.add(temp);
                 }
@@ -100,22 +98,15 @@ public class FragmentNews extends Fragment {
                     String textL = contents.get_lSide().child(3).text();
                     textL.replace("[подробнее]","");
                     String imgSrcL = contents.get_lImg().absUrl("src");
-                    String dateL = contents.get_lSide().child(0).text();
 
                     String urlR = contents.get_rSide().child(2).attr("href");
                     String titleR = contents.get_rSide().child(1).text();
                     String textR = contents.get_rSide().child(3).text();
                     textR.replace("[подробнее]","");
                     String imgSrcR = contents.get_rImg().absUrl("src");
-                    String dateR = contents.get_rSide().child(0).text();
 
-
-
-                    NewsItem ni = new NewsItem(titleL, imgSrcL, imgSrcL);
+                    NewsItem ni = new NewsItem(titleL, urlL, imgSrcL);
                     newsItems.add(ni);
-                    ni = new NewsItem(titleR, imgSrcR, imgSrcR);
-                    newsItems.add(ni);
-
 
                 }
                 adapter = new NewsAdapter(this, newsItems);

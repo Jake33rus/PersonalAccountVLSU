@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    android:padding="4dp"
+    app:cardCornerRadius="4dp">
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="231dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@+id/newsImageIcon"
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:id="@+id/newsHeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxHeight="48dp"
+                android:minHeight="48dp"
+                android:text="Заголовок"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                app:autoSizeMaxTextSize="18sp" />
+
+            <TextView
+                android:id="@+id/newsData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Black"
+                android:layout_marginTop="4dp"
+                android:textStyle="italic"
+                android:text="00.00.0000"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/newsImageIcon"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:maxWidth="80dp"
+            android:maxHeight="50dp" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

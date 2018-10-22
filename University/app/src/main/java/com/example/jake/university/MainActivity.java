@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.jake.university.fragments.FragmentExamsAndArrears;
+import com.example.jake.university.fragments.FragmentNews;
 import com.example.jake.university.fragments.FragmentPayment;
 import com.example.jake.university.fragments.FragmentProfile;
 import com.google.android.material.navigation.NavigationView;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
         switch (id) {
             case R.id.nav_news:
+                ftrans.replace(R.id.fragment_container, new FragmentNews()).commit();
                 break;
             case R.id.nav_profile:
                 ftrans.replace(R.id.fragment_container, new FragmentProfile()).commit();

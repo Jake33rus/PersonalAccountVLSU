@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mDrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView.setCheckedItem(R.id.nav_news);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new FragmentNews()).commit();
     }
 
     @Override

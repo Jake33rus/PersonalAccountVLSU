@@ -68,7 +68,6 @@ public class FragmentNews extends Fragment {
         @Override
         protected  String doInBackground(String... arg)
         {
-
             Document doc;
             try
             {

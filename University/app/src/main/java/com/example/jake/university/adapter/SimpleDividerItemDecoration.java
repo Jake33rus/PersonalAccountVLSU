@@ -1,3 +1,4 @@
+
 package com.example.jake.university.adapter;
 
 import android.content.Context;
@@ -35,3 +36,4 @@ public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 }
+

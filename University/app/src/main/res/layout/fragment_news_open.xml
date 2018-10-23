@@ -7,9 +7,10 @@
     android:padding="8dp"
     android:layout_margin="12dp"
     app:cardElevation="8dp"
-    app:cardCornerRadius="8dp">
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
+    app:cardCornerRadius="8dp">>
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -59,7 +60,12 @@
             android:textColor="@color/Black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newsTitle" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-</com.google.android.material.card.MaterialCardView>
+</ScrollView>
+</androidx.cardview.widget.CardView>

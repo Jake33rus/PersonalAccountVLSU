@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
 import com.squareup.picasso.Picasso;
 
@@ -54,10 +55,9 @@ public class FragmentNewsOpen extends Fragment {
         IV = (ImageView) view.findViewById(R.id.newsImage);
 
         TITV.setText(newsTitle);
+       new NewThread().execute();
 
-        new NewThread().execute();
-
-        return view;
+       return view;
     }
 
     public class NewThread extends AsyncTask<String, Void, String> {

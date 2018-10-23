@@ -2,29 +2,36 @@ package com.example.jake.university;
 
 public class NewsItem
 {
-    private String Title;
-    private String Date;
+    private String title;
+    private String date;
     private String imgUrl;
+    private String URL;
 
-    public NewsItem(String a, String b, String c)
+    public NewsItem(String title, String date, String imgUrl, String URL)
     {
-        Title = a;
-        Date = b;
-        imgUrl = c;
+        this.title = title;
+        this.date = date;
+        this.imgUrl = imgUrl;
+        this.URL = URL;
     }
 
     public String getTitle()
     {
-        return  Title;
+        return  title;
     }
 
     public String getDate()
     {
-        return  Date;
+        return  date;
     }
 
     public String getImgUrl()
     {
         return  imgUrl;
+    }
+
+    public String getURL()
+    {
+        return  URL;
     }
 }

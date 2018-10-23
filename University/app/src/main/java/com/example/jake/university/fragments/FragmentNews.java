@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.NewsAdapter;
+import com.example.jake.university.adapter.RecyclerItemClickListener;
 import com.example.jake.university.adapter.SimpleDividerItemDecoration;
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,11 +28,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 public class FragmentNews extends Fragment {
+
     private static final int LAYOUT = R.layout.fragment_news;
     private View view;
     private ViewPager viewPager;
@@ -62,9 +65,30 @@ public class FragmentNews extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(layoutManager);
         rv.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
+
+        rv.addOnItemTouchListener(new RecyclerItemClickListener(myContext, rv ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position)
+                    {
+                        FragmentNewsOpen fno = new FragmentNewsOpen();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("URL", newsItems.get(position).getURL());
+                        bundle.putString("Title", newsItems.get(position).getTitle());
+                        fno.setArguments(bundle);
+                        FragmentTransaction ftrans = getFragmentManager().beginTransaction();
+                        ftrans.replace(R.id.fragment_container, fno).commit();
+
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
         return view;
     }
     public class NewThread extends AsyncTask<String, Void, String> {
+
 
         @Override
         protected  String doInBackground(String... arg)
@@ -96,14 +120,14 @@ public class FragmentNews extends Fragment {
 
                 for (ContextContainer contents: cc )
                 {
-                    String urlL = contents.get_lSide().child(2).attr("href");
+                    String urlL = contents.get_lSide().child(2).attr("abs:href");
                     String titleL = contents.get_lSide().child(1).text();
                     String textL = contents.get_lSide().child(3).text();
                     textL.replace("[подробнее]","");
                     String imgSrcL = contents.get_lImg().absUrl("src");
                     String dateL = contents.get_lSide().child(0).text();
 
-                    String urlR = contents.get_rSide().child(2).attr("href");
+                    String urlR = contents.get_rSide().child(2).attr("abs:href");
                     String titleR = contents.get_rSide().child(1).text();
                     String textR = contents.get_rSide().child(3).text();
                     textR.replace("[подробнее]","");
@@ -111,11 +135,12 @@ public class FragmentNews extends Fragment {
                     String dateR = contents.get_rSide().child(0).text();
 
 
+                    NewsItem ni = new NewsItem(titleL, dateL, imgSrcL, urlL);
+                    newsItems.add(ni);
+                    ni = new NewsItem(titleR, dateR, imgSrcR, urlR);
+                    newsItems.add(ni);
 
-                    NewsItem ni = new NewsItem(titleL, dateL, imgSrcL);
-                    newsItems.add(ni);
-                    ni = new NewsItem(titleR, dateR, imgSrcR);
-                    newsItems.add(ni);
+
                 }
                 adapter = new NewsAdapter(this, newsItems);
 
@@ -128,6 +153,7 @@ public class FragmentNews extends Fragment {
         {
             rv.setAdapter(adapter);
         }
+
     }
 
     public class ContextContainer

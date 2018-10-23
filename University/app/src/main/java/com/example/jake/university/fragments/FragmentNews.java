@@ -1,6 +1,8 @@
 package com.example.jake.university.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -68,13 +70,21 @@ public class FragmentNews extends Fragment {
         rv.addOnItemTouchListener(new RecyclerItemClickListener(myContext, rv ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position)
                     {
-                        FragmentNewsOpen fno = new FragmentNewsOpen();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("URL", newsItems.get(position).getURL());
-                        bundle.putString("Title", newsItems.get(position).getTitle());
-                        fno.setArguments(bundle);
-                        FragmentTransaction ftrans = getFragmentManager().beginTransaction();
-                        ftrans.replace(R.id.fragment_container, fno).commit();
+                        if(newsItems.get(position).getURL().contains("http://www.vlsu.ru")==true)
+                        {
+                            FragmentNewsOpen fno = new FragmentNewsOpen();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("URL", newsItems.get(position).getURL());
+                            bundle.putString("Title", newsItems.get(position).getTitle());
+                            fno.setArguments(bundle);
+                            FragmentTransaction ftrans = getFragmentManager().beginTransaction();
+                            ftrans.replace(R.id.fragment_container, fno).commit();
+                        }
+                        else
+                            {
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsItems.get(position).getURL()));
+                                startActivity(browserIntent);
+                            }
 
                     }
 

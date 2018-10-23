@@ -72,18 +72,18 @@ public class FragmentNewsOpen extends Fragment {
                 Text="";
                 doc = Jsoup.connect(newsURL).get();
                 Elements News = doc.select(".news-single-item p");
-                Elements contentImg = doc.select("img[src~=(?i)\\.(jpe?g)]");
+                Elements contentImg = News.select("img[src~=(?i)\\.(jpe?g)]");
 
                 for (Element el : News)
                 {
                     Text += el.text();
                 }
 
-                for(Element el:contentImg)
+                if(contentImg.size()>0)
                 {
-                    imgURL = el.absUrl("src");
-                    break;
+                    imgURL = contentImg.first().absUrl("src");
                 }
+                else{imgURL = "https://i.ytimg.com/vi/iEjtJROdPVI/hqdefault.jpg";}
 
 
 

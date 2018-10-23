@@ -78,7 +78,7 @@ public class FragmentNews extends Fragment {
                             bundle.putString("Title", newsItems.get(position).getTitle());
                             fno.setArguments(bundle);
                             FragmentTransaction ftrans = getFragmentManager().beginTransaction();
-                            ftrans.replace(R.id.fragment_container, fno).commit();
+                            ftrans.replace(R.id.fragment_container, fno).addToBackStack(null).commit();
                         }
                         else
                             {

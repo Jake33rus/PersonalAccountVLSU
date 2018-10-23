@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
-import com.example.jake.university.RecyclerItemClickListener;
+import com.example.jake.university.adapter.RecyclerItemClickListener;
 import com.example.jake.university.adapter.NewsAdapter;
 import com.example.jake.university.adapter.SimpleDividerItemDecoration;
 import com.google.android.material.tabs.TabLayout;

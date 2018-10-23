@@ -1,4 +1,4 @@
-package com.example.jake.university;
+package com.example.jake.university.adapter;
 
 import android.content.Context;
 import android.view.GestureDetector;

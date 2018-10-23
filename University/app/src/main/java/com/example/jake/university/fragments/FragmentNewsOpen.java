@@ -103,3 +103,4 @@ public class FragmentNewsOpen extends Fragment {
     }
 }
 
+

@@ -186,5 +186,6 @@ public class Login extends AppCompatActivity {
     {
         Intent toMain = new Intent(this, MainActivity.class);
         startActivity(toMain);
+        finish();
     }
 }

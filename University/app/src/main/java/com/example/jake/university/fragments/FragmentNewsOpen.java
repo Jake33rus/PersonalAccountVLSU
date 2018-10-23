@@ -76,6 +76,7 @@ public class FragmentNewsOpen extends Fragment {
 
                 for (Element el : News)
                 {
+                    Text += "\n     ";
                     Text += el.text();
                 }
 

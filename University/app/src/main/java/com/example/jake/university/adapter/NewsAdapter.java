@@ -1,9 +1,9 @@
 package com.example.jake.university.adapter;
 
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +38,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.news_card_item, parent, false);
 
-        
-
         return new ViewHolder(v);
     }
 
@@ -56,7 +54,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.nwTitle.setText(ni.getTitle());
         Picasso.get().load(ni.getImgUrl()).into(holder.nwPic);
 
-        /*holder.nwPic*/
     }
 
     @Override

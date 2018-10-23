@@ -15,4 +15,8 @@
     <style name="LinkText">
         <item name="android:textColor">@color/colorSecondaryLight</item>
     </style>
+    <style name="ThemeOverlay.AppCompat.navTheme">
+        <item name="android:colorPrimary">@color/Black</item>
+        <item name="android:colorControlHighlight">@color/blue300</item>
+    </style>
 </resources>

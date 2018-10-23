@@ -55,7 +55,6 @@ public class FragmentNewsOpen extends Fragment {
         IV = (ImageView) view.findViewById(R.id.newsImage);
 
         TITV.setText(newsTitle);
-
        new NewThread().execute();
 
        return view;
@@ -103,3 +102,4 @@ public class FragmentNewsOpen extends Fragment {
 
     }
 }
+

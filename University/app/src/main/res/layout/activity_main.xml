@@ -17,11 +17,13 @@
         app:headerLayout="@layout/header"
         android:id="@+id/nav_view"
         android:layout_height="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.navTheme"
         android:layout_width="wrap_content"
-        android:background="@color/colorWhite"
         app:itemTextColor="@color/Black"
         app:itemIconTint="@color/Black"
+        app:itemBackground="@drawable/nav_item_back"
         app:menu="@menu/menu_navigation"
+        android:background="@color/colorBackground"
         android:layout_gravity="start"
         />
 </androidx.drawerlayout.widget.DrawerLayout>

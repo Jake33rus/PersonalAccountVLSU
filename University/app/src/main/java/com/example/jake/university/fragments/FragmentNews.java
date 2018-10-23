@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import android.widget.Toast;
 import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
-import com.example.jake.university.RecyclerItemClickListener;
 import com.example.jake.university.adapter.NewsAdapter;
+import com.example.jake.university.adapter.RecyclerItemClickListener;
 import com.example.jake.university.adapter.SimpleDividerItemDecoration;
 import com.google.android.material.tabs.TabLayout;
 
@@ -29,6 +29,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -112,10 +113,7 @@ public class FragmentNews extends Fragment {
                 for(int i = 0; i < contentL.size(); i++)
                 {
                     ContextContainer temp;
-
                     temp = new ContextContainer(contentL.get(i), contentR.get(i));
-
-
                     cc.add(temp);
                 }
 
@@ -127,21 +125,18 @@ public class FragmentNews extends Fragment {
                     String titleL = contents.get_lSide().child(1).text();
                     String textL = contents.get_lSide().child(3).text();
                     textL.replace("[подробнее]","");
-
                     String imgSrcL = "https://i.ytimg.com/vi/iEjtJROdPVI/hqdefault.jpg";
                     Elements eh = contents.get_lSide().select("img[src~=(?i)\\.(jpe?g)]");
                     if(eh.size()>0)
                     {
                         imgSrcL = eh.first().absUrl("src");
                     }
-
                     String dateL = contents.get_lSide().child(0).text();
 
                     String urlR = contents.get_rSide().child(2).attr("abs:href");
                     String titleR = contents.get_rSide().child(1).text();
                     String textR = contents.get_rSide().child(3).text();
                     textR.replace("[подробнее]","");
-
                     String imgSrcR = "https://i.ytimg.com/vi/iEjtJROdPVI/hqdefault.jpg";
                     eh = contents.get_rSide().select("img[src~=(?i)\\.(jpe?g)]");
                     if(eh.size()>0)
@@ -176,8 +171,6 @@ public class FragmentNews extends Fragment {
     {
         private Element lSide;
         private Element rSide;
-
-
         ContextContainer(Element l, Element r)
         {
             lSide =l;

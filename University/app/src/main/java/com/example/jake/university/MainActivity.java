@@ -1,5 +1,6 @@
 package com.example.jake.university;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -11,6 +12,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,9 +49,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if(mDrawerlayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerlayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        } else
+            {
+            new AlertDialog.Builder(this)
+                    .setTitle("Выйти из приложения?")
+                    .setMessage("Вы действительно хотите выйти?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            //SomeActivity - имя класса Activity для которой переопределяем onBackPressed();
+                            MainActivity.super.onBackPressed();
+                        }
+                    }).create().show();
+            }
     }
 
     @Override
@@ -82,4 +94,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

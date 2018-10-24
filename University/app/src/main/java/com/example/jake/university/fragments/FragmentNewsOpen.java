@@ -27,7 +27,7 @@ public class FragmentNewsOpen extends Fragment {
     private static final int LAYOUT = R.layout.fragment_news_open;
     private View view;
     private String newsURL, newsTitle, newsImg;
-    private String Text, imgURL;
+    private String Text, imgURL, heh;
     private TextView TV, TITV;
     private ImageView IV;
 
@@ -71,14 +71,19 @@ public class FragmentNewsOpen extends Fragment {
 
                 Text="";
                 doc = Jsoup.connect(newsURL).get();
-                Elements News = doc.select(".news-single-item p");
+                Elements News = doc.select(".news-single-item");
                 Elements contentImg = News.select("img[src~=(?i)\\.(jpe?g)]");
+                Elements contentText = News.select("p");
 
-                for (Element el : News)
+
+
+                for (Element el : contentText)
                 {
-                    Text += "\n     ";
+                    Text += "\n\t";
                     Text += el.text();
+                    Text = Text.replaceFirst("^\n\t*","");
                 }
+                Text="\t".concat(Text);
 
                 if(contentImg.size()>0)
                 {

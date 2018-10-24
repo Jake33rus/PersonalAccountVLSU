@@ -71,10 +71,11 @@ public class FragmentNewsOpen extends Fragment {
 
                 Text="";
                 doc = Jsoup.connect(newsURL).get();
-                Elements News = doc.select(".news-single-item p");
+                Elements News = doc.select(".news-single-item");
                 Elements contentImg = News.select("img[src~=(?i)\\.(jpe?g)]");
+                Elements contentText = News.select("p");
 
-                for (Element el : News)
+                for (Element el : contentText)
                 {
                     Text += "\n     ";
                     Text += el.text();

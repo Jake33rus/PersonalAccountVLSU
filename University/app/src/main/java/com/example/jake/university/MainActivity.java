@@ -1,6 +1,5 @@
 package com.example.jake.university;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -12,7 +11,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -51,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mDrawerlayout.closeDrawer(GravityCompat.START);
         } else
             {
-            new AlertDialog.Builder(this)
+            /*new AlertDialog.Builder(this)
                     .setTitle("Выйти из приложения?")
                     .setMessage("Вы действительно хотите выйти?")
                     .setNegativeButton(android.R.string.no, null)
@@ -60,7 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             //SomeActivity - имя класса Activity для которой переопределяем onBackPressed();
                             MainActivity.super.onBackPressed();
                         }
-                    }).create().show();
+                    }).create().show();*/
+            super.onBackPressed();
             }
     }
     
@@ -70,20 +69,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
         switch (id) {
             case R.id.nav_news:
-                ftrans.replace(R.id.fragment_container, new FragmentNews()).commit();
+                ftrans.replace(R.id.fragment_container, new FragmentNews()).addToBackStack(null).commit();
                 break;
             case R.id.nav_profile:
-                ftrans.replace(R.id.fragment_container, new FragmentProfile()).commit();
+                ftrans.replace(R.id.fragment_container, new FragmentProfile()).addToBackStack(null).commit();
                 break;
             case R.id.nav_arrears:
-                ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).commit();
+                ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).addToBackStack(null).commit();
                 break;
             case R.id.nav_learn_action:
                 break;
             case R.id.nav_achievements:
                 break;
             case R.id.nav_payment:
-                ftrans.replace(R.id.fragment_container, new FragmentPayment()).commit();
+                ftrans.replace(R.id.fragment_container, new FragmentPayment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_scholarships:
                 break;

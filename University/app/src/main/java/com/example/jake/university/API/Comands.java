@@ -1,6 +1,6 @@
 package com.example.jake.university.API;
 
-public class Comands {
+/*public class Comands {
     public static void RegisterMail(String login, String password, String email, String type)
     {
         //JObject - в шарпе - библиотека для работы с JSON надо найти аналог на java и прикрутить
@@ -92,4 +92,4 @@ public class Comands {
         }
         return jObject;
     }
-}
+}*/

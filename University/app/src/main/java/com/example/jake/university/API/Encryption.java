@@ -1,11 +1,6 @@
 package com.example.jake.university.API;
 
-import android.util.Xml;
-
-import java.io.UnsupportedEncodingException;
-import java.util.Random;
-
-public class Encryption {
+/*public class Encryption {
 
     public static String Decr(String word) throws UnsupportedEncodingException {
         String skey = "";
@@ -98,10 +93,11 @@ public class Encryption {
         byte[] bkey = skey.getBytes("ISO-8859-1");
         String siv = ""; // Надо обязательно 8 символа
         byte[] biv = siv.getBytes("ISO-8859-1");
-        byte[] enc = Encryption.Encrypt(query, bkey, biv /*triple.Key, triple.IV*/);
+        byte[] enc = Encryption.Encrypt(query, bkey, biv /*triple.Key, triple.IV*//*);
         //Что за класс Encoding я хз!
         Encoding win1251 = Encoding.GetEncoding("windows-1251");
         String encrypted = win1251.GetString(enc);
         return encrypted;
     }
 }
+*/

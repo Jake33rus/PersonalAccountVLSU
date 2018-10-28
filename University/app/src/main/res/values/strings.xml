@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Личный кабинет ВлГУ</string>
+    <string name="app_name">ВлГУ</string>
     <string name="news_title">Новости</string>
     <string name="profile_title">Анкета</string>
     <string name="exams_arrears_title">Экзамены и задолженности</string>

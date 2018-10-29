@@ -1,7 +1,9 @@
 package com.example.jake.university;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.jake.university.fragments.FragmentExamsAndArrears;
 import com.example.jake.university.fragments.FragmentNews;
@@ -11,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
+    private FragmentTransaction ftrans;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,26 +51,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if(mDrawerlayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerlayout.closeDrawer(GravityCompat.START);
-        } else
-            {
-            /*new AlertDialog.Builder(this)
-                    .setTitle("Выйти из приложения?")
-                    .setMessage("Вы действительно хотите выйти?")
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            //SomeActivity - имя класса Activity для которой переопределяем onBackPressed();
-                            MainActivity.super.onBackPressed();
-                        }
-                    }).create().show();*/
-            super.onBackPressed();
+        }
+        else {
+            if(getSupportFragmentManager().getBackStackEntryCount()==0) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Выйти из приложения?")
+                        .setMessage("Вы действительно хотите выйти?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                //SomeActivity - имя класса Activity для которой переопределяем onBackPressed();
+                                MainActivity.super.onBackPressed();
+                            }
+                        }).create().show();
             }
+            else {
+                super.onBackPressed();
+            }
+        }
     }
     
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
+        ftrans = getSupportFragmentManager().beginTransaction();
         switch (id) {
             case R.id.nav_news:
                 ftrans.replace(R.id.fragment_container, new FragmentNews()).addToBackStack(null).commit();

@@ -38,8 +38,8 @@ class Comands {
         HttpClient myWebClient;
 
         HttpPost post = new HttpPost(urlApi() + "GetTable");
-        List<NameValuePair> info;
 
+        List<NameValuePair> info;
 
             info = new ArrayList<NameValuePair>();
             info.add(new BasicNameValuePair("idDb", idDb));
@@ -69,15 +69,9 @@ class Comands {
                     jObject = (JSONObject) helper.parse(result);
                     }catch (ParseException parse) {}
                     // Invalid syntax
-
-
-
             } catch (IOException enc) {
                 enc.printStackTrace();
-
-
             }
-
         return jObject;
     }
 }

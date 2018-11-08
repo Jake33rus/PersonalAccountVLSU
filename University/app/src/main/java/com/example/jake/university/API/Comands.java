@@ -36,11 +36,8 @@ class Comands {
 
         /*WebClient myWebClient = new WebClient();*/
         HttpClient myWebClient;
-<<<<<<< Updated upstream
-        HttpPost post = new HttpPost("http://hqvla7327aw01:8000//api/" + "GetTable");
-=======
+
         HttpPost post = new HttpPost(urlApi() + "GetTable");
->>>>>>> Stashed changes
         List<NameValuePair> info;
 
 

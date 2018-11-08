@@ -36,13 +36,10 @@ class Comands {
 
         /*WebClient myWebClient = new WebClient();*/
         HttpClient myWebClient;
-<<<<<<< Updated upstream
-        HttpPost post = new HttpPost("http://hqvla7327aw01:8000//api/" + "GetTable");
-=======
-        HttpPost post = new HttpPost(urlApi() + "GetTable");
->>>>>>> Stashed changes
-        List<NameValuePair> info;
 
+        HttpPost post = new HttpPost(urlApi() + "GetTable");
+
+        List<NameValuePair> info;
 
             info = new ArrayList<NameValuePair>();
             info.add(new BasicNameValuePair("idDb", idDb));
@@ -72,15 +69,9 @@ class Comands {
                     jObject = (JSONObject) helper.parse(result);
                     }catch (ParseException parse) {}
                     // Invalid syntax
-
-
-
             } catch (IOException enc) {
                 enc.printStackTrace();
-
-
             }
-
         return jObject;
     }
 }

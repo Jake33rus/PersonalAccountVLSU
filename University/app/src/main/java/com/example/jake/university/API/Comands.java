@@ -49,7 +49,7 @@ class Comands {
 
         /*WebClient myWebClient = new WebClient();*/
         HttpClient myWebClient;
-        HttpPost post = new HttpPost(MvcApplication.urlApi + "GetTable");
+        HttpPost post = new HttpPost("http://hqvla7327aw01:8000//api/" + "GetTable");
         List<NameValuePair> info;
 
 

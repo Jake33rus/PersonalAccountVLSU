@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-class Comands {
+public class Comands {
 
     public static String urlApi()
     {   return "http://hqvla7327aw01:8000//api/";   }

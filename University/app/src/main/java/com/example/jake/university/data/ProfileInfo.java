@@ -2,6 +2,21 @@ package com.example.jake.university.data;
 
 public class ProfileInfo
 {
+    public ProfileInfo(String FIO, String faculty, String finType, String educForm, String group, String speciality, String photo, String startDate, String phoneNum) {
+        this.FIO = FIO;
+        Faculty = faculty;
+        FinType = finType;
+        EducForm = educForm;
+        Group = group;
+        Speciality = speciality;
+        Photo = photo;
+        StartDate = startDate;
+        PhoneNum = phoneNum;
+    }
+
+    public ProfileInfo() {
+    }
+
     public String getFIO() {
         return FIO;
     }

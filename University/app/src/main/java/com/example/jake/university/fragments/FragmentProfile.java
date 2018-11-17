@@ -1,5 +1,6 @@
 package com.example.jake.university.fragments;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +11,22 @@ import com.example.jake.university.API.Comands;
 import com.example.jake.university.R;
 import com.example.jake.university.data.ProfileInfo;
 
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
+
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-public class FragmentProfile extends Fragment {
+public class FragmentProfile extends androidx.fragment.app.Fragment {
     View view;
     TextView tvFIO, tvGroup, tvInstitut, tvKafedra, tvStartStudy, tvStudyForm, tvFinans, tvMobile, tvEmail;
     @Nullable
@@ -25,8 +34,34 @@ public class FragmentProfile extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         JSONObject obj = new JSONObject();
         Comands comand = new Comands();
-        obj = comand.GetTableArray("10","A_LKS_GetStudentInfo –gal", "0x8001000000027C02");
-        ProfileInfo info = new ProfileInfo(obj.getString(), obj.getString(), obj.getString(), obj.getString(), obj.getString(), obj.getString(), obj.getString(), obj.getString(), obj.getString());
+        try {
+            obj = comand.GetTableArray("10","A_LKS_GetStudentInfo –gal", "0x8001000000027C02");
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }
+        ProfileInfo info = null;
+        try {
+            info = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
+                    obj.getString("Источник финансирования обучения"),
+                    obj.getString("Форма обучения"), obj.getString("Группа"),
+                    obj.getString("Специальность"), obj.getString("Фото"),
+                    obj.getString("Дата поступления"),
+                    obj.getString("Номер контактного телефона"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         initViews();
         tvFIO.setText(info.getFIO());

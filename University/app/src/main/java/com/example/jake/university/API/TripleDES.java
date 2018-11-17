@@ -1,80 +1,48 @@
 package com.example.jake.university.API;
 
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 public class TripleDES {
 
     //Метод для шифрования
-    public String Encrypter(String skey,String sdata, String siv) {
-        /*
-        * date - Данные, которые необходимо зашифровать;
-        * key - ключ шифрования;
-        * iv - вектор инициализации для симетричного алгоритма;
-        */
-        byte[] key = skey.getBytes();
-        byte[] data = sdata.getBytes();
-        byte[] iv = siv.getBytes();
-        IvParameterSpec ivParam = new IvParameterSpec(iv);
-        Key deskey = null;
-        StringBuffer hexCiphertext = null;
-        DESedeKeySpec spec;
-        try {
-            spec = new DESedeKeySpec(key);
-            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("desede");
-            deskey = keyFactory.generateSecret(spec);
+    public String Encrypter(String skey,String sdata, String siv) throws UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
 
-            Cipher cipher = Cipher.getInstance("desede"+"/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, deskey, ivParam);
+        //MessageDigest md = MessageDigest.getInstance("md5");
+        byte[] keyBytes= skey.getBytes("utf-8");
+        //byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
 
-            byte[] CipherText = cipher.doFinal(data);
-            hexCiphertext = new StringBuffer();
-            for (int i=0;i<CipherText.length; i++)
-                hexCiphertext.append(Integer.toString((CipherText[i]&0xff)+0x100,16).substring(1));
+        SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+        IvParameterSpec iv = new IvParameterSpec(siv.getBytes("utf-8"));
+        Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, key, iv);
 
-        }
-        catch(InvalidKeyException ex) {
-            Logger.getLogger(TripleDES.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch(NoSuchAlgorithmException ex) {
-            Logger.getLogger(TripleDES.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (InvalidKeySpecException ex){
-            Logger.getLogger(TripleDES.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (NoSuchPaddingException ex){
-            Logger.getLogger(TripleDES.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (IllegalBlockSizeException ex){
-            Logger.getLogger(TripleDES.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (BadPaddingException ex){
-            Logger.getLogger(TripleDES.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidAlgorithmParameterException ex) {
-            Logger.getLogger(TripleDES.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return new String(hexCiphertext);
+        byte[] dataBytes = sdata.getBytes("utf-8");
+        byte[] cipherText = cipher.doFinal(dataBytes);
+        String result = new String(cipherText, "windows-1251");
+        return result;
     }
 
     //метод для дешифровки
     public String Dencrypt(String sdata)
     {
-        byte[] key = "".getBytes();
+        byte[] key = "11YDon1l{Yvz4#Qu|981nzb8".getBytes();
         byte[] data = sdata.getBytes();
-        byte[] iv = "".getBytes();
+        byte[] iv = "rV1Gb?yk".getBytes();
         IvParameterSpec ivParam = new IvParameterSpec(iv);
         Key deskey = null;
         StringBuffer hexCiphertext = null;
@@ -85,32 +53,19 @@ public class TripleDES {
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("desede");
             deskey = keyFactory.generateSecret(spec);
 
-            Cipher cipher = Cipher.getInstance("desede"+"/ECB/PKCS5Padding");
+            Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, deskey, ivParam);
 
             res = cipher.doFinal(data);
 
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeyException | InvalidAlgorithmParameterException | NoSuchPaddingException | BadPaddingException | InvalidKeySpecException | IllegalBlockSizeException e) {
             e.printStackTrace();
         }
         return new String(res);
     }
-    public String Encr(String data)
-    {
-        String skey = "";
-        String siv = "";
+    public String Encr(String data) throws UnsupportedEncodingException, NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+        String skey = "11YDon1l{Yvz4#Qu|981nzb8";
+        String siv = "rV1Gb?yk";
         return Encrypter(skey,data,siv);
     }
 }

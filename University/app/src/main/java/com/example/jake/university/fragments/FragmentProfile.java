@@ -1,27 +1,18 @@
 package com.example.jake.university.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.jake.university.API.Comands;
+import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
 import com.example.jake.university.data.ProfileInfo;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,23 +23,14 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        JSONArray arr = new JSONArray();
         JSONObject obj = new JSONObject();
-        Comands comand = new Comands();
+        postReq comand = new postReq();
+        comand.execute("","","");
+        arr = comand.getjARRAY();
         try {
-            obj = comand.GetTableArray("10","A_LKS_GetStudentInfo –gal", "0x8001000000027C02");
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
+            obj = arr.getJSONObject(0);
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         ProfileInfo info = null;

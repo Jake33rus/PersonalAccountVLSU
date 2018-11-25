@@ -3,7 +3,6 @@ package com.example.jake.university;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.jake.university.fragments.FragmentExamsAndArrears;
 import com.example.jake.university.fragments.FragmentNews;

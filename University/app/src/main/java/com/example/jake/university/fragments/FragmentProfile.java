@@ -11,8 +11,9 @@ import com.example.jake.university.R;
 import com.example.jake.university.data.ProfileInfo;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,28 +21,32 @@ import androidx.annotation.Nullable;
 public class FragmentProfile extends androidx.fragment.app.Fragment {
     View view;
     TextView tvFIO, tvGroup, tvInstitut, tvKafedra, tvStartStudy, tvStudyForm, tvFinans, tvMobile, tvEmail;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         JSONArray arr = new JSONArray();
         JSONObject obj = new JSONObject();
         postReq comand = new postReq();
-        comand.execute("","","");
+        try {
+            comand.execute("","","").get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
         arr = comand.getjARRAY();
         try {
             obj = arr.getJSONObject(0);
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         ProfileInfo info = null;
         try {
-            info = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
-                    obj.getString("Источник финансирования обучения"),
-                    obj.getString("Форма обучения"), obj.getString("Группа"),
-                    obj.getString("Специальность"), obj.getString("Фото"),
-                    obj.getString("Дата поступления"),
-                    obj.getString("Номер контактного телефона"));
-        } catch (JSONException e) {
+            info = new ProfileInfo(obj.getString("fio"), obj.getString("fakultet"),
+                    obj.getString("finans"),
+                    obj.getString("formObuch"), obj.getString("grupp"),
+                    obj.getString("spec"), "fdsf", "01.01.2018", "88005553535");
+        } catch (Exception e) {
             e.printStackTrace();
         }
         view = inflater.inflate(R.layout.fragment_profile, container, false);

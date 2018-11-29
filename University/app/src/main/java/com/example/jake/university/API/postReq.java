@@ -1,8 +1,10 @@
 package com.example.jake.university.API;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -10,19 +12,20 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
 
 public class postReq extends AsyncTask<String, Void, Void>
 {
     private JSONArray jARRAY = null;
-
+    ProgressDialog progressDialog;
+    int progressIncr = 1;
     public JSONArray getjARRAY() {
         return jARRAY;
     }
@@ -32,21 +35,13 @@ public class postReq extends AsyncTask<String, Void, Void>
         super.onPreExecute();
     }
 
-    @Override
     protected Void doInBackground(String... params)
     {
         try {
             jARRAY = createReq(params[0], params[1], params[2]);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch ( Exception e){
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -56,45 +51,46 @@ public class postReq extends AsyncTask<String, Void, Void>
         super.onPostExecute(result);
     }
 
-    protected JSONArray createReq(String idDb, String nameExec, String paramsList) throws IOException, ParseException {
-        JSONArray jObj = new JSONArray();
+    protected JSONArray createReq(String idDb, String nameExec, String paramsList) throws IOException, ParseException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+        JSONObject jObj;
+        JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
         TripleDES coder = new TripleDES();
-        String myURL = "http://localhost:3001/api";
+        String myURL = "http://192.168.1.42:3000/get";
         byte[] data = null;
         InputStream is = null;
 
         try {
 
-           /* idDb = coder.Encr(idDb);
+           /*idDb = coder.Encr(idDb);
             nameExec = coder.Encr(nameExec);
-            paramsList = coder.Encr(paramsList);*/
+            paramsList = coder.Encr(paramsList);
 
             Map<String,String> info = new LinkedHashMap<>();
 
             info.put("idDb", idDb);
             info.put("nameExec", nameExec);
-            info.put("paramsList", paramsList);
+            info.put("paramsList", paramsList);*/
 
             StringBuilder postData = new StringBuilder();
 
-            for (Map.Entry<String,String> inf : info.entrySet()) {
+           /*for (Map.Entry<String,String> inf : info.entrySet()) {
                 if (postData.length() != 0) postData.append('&');
                 postData.append(URLEncoder.encode(inf.getKey(), "UTF-8"));
                 postData.append('=');
                 postData.append(URLEncoder.encode(String.valueOf(inf.getValue()), "UTF-8"));
-            }
+            }*/
 
-            URL url = new URL(myURL);
+             URL url = new URL(myURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
             conn.setDoInput(true);
 
-            conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.toString().getBytes().length));
+            /*conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.toString().getBytes().length));*/
             OutputStream os = null;
             try {
-                os = conn.getOutputStream();
+                  os = conn.getOutputStream();
                 data = postData.toString().getBytes("UTF-8");
             }
             catch (Exception e){
@@ -117,14 +113,15 @@ public class postReq extends AsyncTask<String, Void, Void>
             data = baos.toByteArray();
 
             String finalRes =  new String(data, StandardCharsets.UTF_8);
-            jObj = (JSONArray)jsonParser.parse(finalRes);
+            jObj = new JSONObject(finalRes);
+            jArr.put(jObj);
 
-            jARRAY = jObj;
 
-            }
-        catch (UnsupportedEncodingException e) {
+        }catch(Exception e)
+        {e.printStackTrace();}
+       /*catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        } /*catch (NoSuchPaddingException e) {
+        } catch (NoSuchPaddingException e) {
             e.printStackTrace();
         } catch (InvalidKeyException e) {
             e.printStackTrace();
@@ -138,8 +135,6 @@ public class postReq extends AsyncTask<String, Void, Void>
             e.printStackTrace();
         }*/
 
-        return jObj;
+        return jArr;
     }
-
-
 }

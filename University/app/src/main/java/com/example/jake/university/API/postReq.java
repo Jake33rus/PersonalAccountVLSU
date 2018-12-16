@@ -14,9 +14,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -56,13 +59,13 @@ public class postReq extends AsyncTask<String, Void, Void>
         JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
         TripleDES coder = new TripleDES();
-        String myURL = "http://192.168.1.42:3000/get";
+        String myURL = "http://172.18.14.135:3000/getData";
         byte[] data = null;
         InputStream is = null;
 
         try {
 
-           /*idDb = coder.Encr(idDb);
+           idDb = coder.Encr(idDb);
             nameExec = coder.Encr(nameExec);
             paramsList = coder.Encr(paramsList);
 
@@ -70,16 +73,16 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             info.put("idDb", idDb);
             info.put("nameExec", nameExec);
-            info.put("paramsList", paramsList);*/
+            info.put("paramsList", paramsList);
 
             StringBuilder postData = new StringBuilder();
 
-           /*for (Map.Entry<String,String> inf : info.entrySet()) {
+           for (Map.Entry<String,String> inf : info.entrySet()) {
                 if (postData.length() != 0) postData.append('&');
                 postData.append(URLEncoder.encode(inf.getKey(), "UTF-8"));
                 postData.append('=');
                 postData.append(URLEncoder.encode(String.valueOf(inf.getValue()), "UTF-8"));
-            }*/
+            }
 
              URL url = new URL(myURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -87,7 +90,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             conn.setDoOutput(true);
             conn.setDoInput(true);
 
-            /*conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.toString().getBytes().length));*/
+            conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.toString().getBytes().length));
             OutputStream os = null;
             try {
                   os = conn.getOutputStream();
@@ -113,8 +116,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             data = baos.toByteArray();
 
             String finalRes =  new String(data, StandardCharsets.UTF_8);
-            jObj = new JSONObject(finalRes);
-            jArr.put(jObj);
+            jArr = new JSONArray(finalRes);
 
 
         }catch(Exception e)

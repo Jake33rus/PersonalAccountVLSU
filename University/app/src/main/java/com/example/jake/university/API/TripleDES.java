@@ -40,9 +40,9 @@ public class TripleDES {
     //метод для дешифровки
     public String Dencrypt(String sdata)
     {
-        byte[] key = "".getBytes();
+        byte[] key = "11YDon1l{Yvz4#Qu|981nzb8".getBytes();
         byte[] data = sdata.getBytes();
-        byte[] iv = "".getBytes();
+        byte[] iv = "rV1Gb?yk".getBytes();
         IvParameterSpec ivParam = new IvParameterSpec(iv);
         Key deskey = null;
         StringBuffer hexCiphertext = null;
@@ -64,8 +64,8 @@ public class TripleDES {
         return new String(res);
     }
     public String Encr(String data) throws UnsupportedEncodingException, NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
-        String skey = "";
-        String siv = "";
+        String skey = "11YDon1l{Yvz4#Qu|981nzb8";
+        String siv = "rV1Gb?yk";
         return Encrypter(skey,data,siv);
     }
 }

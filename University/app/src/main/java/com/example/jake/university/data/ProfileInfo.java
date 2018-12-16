@@ -98,6 +98,4 @@ public class ProfileInfo
     private String Photo;
     private String StartDate;
     private String PhoneNum;
-
-
 }

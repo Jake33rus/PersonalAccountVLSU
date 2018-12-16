@@ -15,4 +15,8 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="login">Войти</string>
     <string name="problem">Не можете войти?</string>
+    <string name="nameDiscipline">Дисциплина</string>
+    <string name="Semestr">Семестр</string>
+    <string name="TypeExams">Тип</string>
+    <string name="grade">Оценка</string>
 </resources>

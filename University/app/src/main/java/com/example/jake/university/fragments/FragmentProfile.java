@@ -26,26 +26,26 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        JSONArray arr = new JSONArray();
+        JSONArray arr;
         JSONObject obj = new JSONObject();
         postReq comand = new postReq();
         try {
-            comand.execute("","","").get();
-        } catch (ExecutionException | InterruptedException e) {
+            comand.execute("10","A_LKS_GetStudentInfo","0x8001000000027C02").get();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         arr = comand.getjARRAY();
-        try {
+       try {
             obj = arr.getJSONObject(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
         ProfileInfo info = null;
         try {
-            info = new ProfileInfo(obj.getString("fio"), obj.getString("fakultet"),
-                    obj.getString("finans"),
-                    obj.getString("formObuch"), obj.getString("grupp"),
-                    obj.getString("spec"), "fdsf", "01.01.2018", "88005553535");
+            info = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
+                    obj.getString("Источник финансирования обучения"),
+                    obj.getString("Форма обучения"), obj.getString("Группа"),
+                    obj.getString("Специальность"), "fdsf", "01.01.2018", obj.getString("Номер контактного телефона"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,6 +71,5 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
         tvFinans = (TextView) view.findViewById(R.id.text_view_finansValue);
         tvMobile = (TextView) view.findViewById(R.id.text_view_mobile2);
         tvEmail = (TextView) view.findViewById(R.id.text_view_email2);
-
     }
 }

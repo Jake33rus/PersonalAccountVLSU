@@ -62,10 +62,9 @@ public class FragmentUpcomingExams extends Fragment {
         ArrayList<ExamItem> list = new ArrayList();
         for (int i=0; i<arr.length(); i++) {
             jobj = arr.getJSONObject(i);
-            if (jobj.getString("Оценка") == "нет оценки") {
+            if (jobj.getString("Оценка") == "нет оценки" || jobj.getString("Оценка") == "") {
                 list.add(new ExamItem(jobj.getString("Наименование дисциплины"),
-                        jobj.getString("Семестр"),
-                        jobj.getString("Тип")));
+                        jobj.getString("Тип"),  jobj.getString("Семестр")));
             }
         }
         return list;

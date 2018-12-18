@@ -63,11 +63,9 @@ public class FragmentArrears extends Fragment {
         ArrayList<ExamItem> list = new ArrayList();
         for (int i=0; i<arr.length(); i++) {
             jobj = arr.getJSONObject(i);
-            String result = jobj.getString("Оценка");
-            if (result == result || result == "не явка") {
+            if (jobj.getString("Оценка") == "не зачет" || jobj.getString("Оценка") == "не явка") {
                 list.add(new ExamItem(jobj.getString("Наименование дисциплины"),
-                        jobj.getString("Семестр"),
-                        jobj.getString("Тип")));
+                        jobj.getString("Тип"), jobj.getString("Семестр")));
             }
         }
         return list;

@@ -63,10 +63,10 @@ public class FragmentPassedExams extends Fragment {
         ArrayList<ExamItem> list = new ArrayList();
         for (int i=0; i<arr.length(); i++) {
             jobj = arr.getJSONObject(i);
-            if (jobj.getString("Оценка") != "") {
+            if (jobj.getString("Оценка") != "" && jobj.getString("Оценка") != "нет оценки") {
                 list.add(new ExamItem(jobj.getString("Наименование дисциплины"),
-                        jobj.getString("Семестр"),
-                        jobj.getString("Тип"), jobj.getString("Оценка")));
+                        jobj.getString("Тип"),  jobj.getString("Семестр"),
+                        jobj.getString("Оценка")));
             }
         }
         return list;

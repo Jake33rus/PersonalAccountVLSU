@@ -44,13 +44,13 @@ public class FragmentArrears extends Fragment {
         try {
             ArrayList<ExamItem> list = ReadInDB();
             adapter = new ArrearsAdapter(view.getContext(), R.layout.item_arrears, list);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         ListView lv = (ListView) view.findViewById(R.id.lv_arrears);
         lv.setAdapter(adapter);
         return view;
@@ -63,7 +63,7 @@ public class FragmentArrears extends Fragment {
         ArrayList<ExamItem> list = new ArrayList();
         for (int i=0; i<arr.length(); i++) {
             jobj = arr.getJSONObject(i);
-            if (jobj.getString("Оценка") == "не зачет" || jobj.getString("Оценка") == "не явка") {
+            if (jobj.getString("Положит").equals("0")) {
                 list.add(new ExamItem(jobj.getString("Наименование дисциплины"),
                         jobj.getString("Тип"), jobj.getString("Семестр")));
             }

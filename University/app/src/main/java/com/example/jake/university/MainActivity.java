@@ -8,6 +8,7 @@ import com.example.jake.university.fragments.FragmentExamsAndArrears;
 import com.example.jake.university.fragments.FragmentNews;
 import com.example.jake.university.fragments.FragmentPayment;
 import com.example.jake.university.fragments.FragmentProfile;
+import com.example.jake.university.fragments.FragmentScholarships;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -84,16 +85,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_arrears:
                 ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).addToBackStack(null).commit();
                 break;
-            case R.id.nav_learn_action:
-                break;
-            case R.id.nav_achievements:
-                break;
             case R.id.nav_payment:
                 ftrans.replace(R.id.fragment_container, new FragmentPayment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_scholarships:
-                break;
-            case R.id.nav_literature:
+                ftrans.replace(R.id.fragment_container, new FragmentScholarships()).addToBackStack(null).commit();
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);

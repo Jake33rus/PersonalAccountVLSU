@@ -20,11 +20,10 @@
         android:id="@+id/imageView18"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
+        app:layout_constraintTop_toBottomOf="parent"
         app:srcCompat="@color/blue400" />
 
     <TextView
@@ -33,11 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autoText="true"
+        android:maxWidth="154dp"
+        android:minWidth="156dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintEnd_toStartOf="@+id/imageView16"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,43 +50,30 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autoText="true"
+        android:maxWidth="78dp"
+        android:minWidth="78dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/TypeArrears"
+        app:layout_constraintStart_toEndOf="@+id/disciplineArrears"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TypeArrears"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autoText="true"
+        android:maxWidth="104dp"
+        android:minWidth="104dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView17"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="2dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="170dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/blue400" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="2dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/blue400" />
 </androidx.constraintlayout.widget.ConstraintLayout>

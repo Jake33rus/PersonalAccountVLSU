@@ -55,18 +55,22 @@ public class FragmentUpcomingExams extends Fragment {
         return view;
     }
     protected ArrayList<ExamItem> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
-        jobj = new JSONObject();
+       /* jobj = new JSONObject();
         comand = new postReq();
         comand.execute("10","A_LKS_GetMarks","0x8001000000027C02").get();
         arr = comand.getjARRAY();
         ArrayList<ExamItem> list = new ArrayList();
         for (int i=0; i<arr.length(); i++) {
             jobj = arr.getJSONObject(i);
-            if (jobj.getString("Оценка") == "нет оценки" || jobj.getString("Оценка") == "") {
+            if (jobj.getString("Оценка").equals("нет оценки") || jobj.getString("Оценка").equals("")) {
                 list.add(new ExamItem(jobj.getString("Наименование дисциплины"),
                         jobj.getString("Тип"),  jobj.getString("Семестр")));
             }
-        }
+        }*/
+        ArrayList<ExamItem> list = new ArrayList();
+        list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
+        list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
+        list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
         return list;
     }
 }

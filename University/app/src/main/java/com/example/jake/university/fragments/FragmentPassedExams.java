@@ -56,7 +56,7 @@ public class FragmentPassedExams extends Fragment {
         return view;
     }
     protected ArrayList<ExamItem> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
-        jobj = new JSONObject();
+       /* jobj = new JSONObject();
         comand = new postReq();
         comand.execute("10","A_LKS_GetMarks","0x8001000000027C02").get();
         arr = comand.getjARRAY();
@@ -68,7 +68,11 @@ public class FragmentPassedExams extends Fragment {
                         jobj.getString("Тип"),  jobj.getString("Семестр"),
                         jobj.getString("Оценка")));
             }
-        }
+        }*/
+        ArrayList<ExamItem> list = new ArrayList();
+        list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
+        list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
+        list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
         return list;
     }
 }

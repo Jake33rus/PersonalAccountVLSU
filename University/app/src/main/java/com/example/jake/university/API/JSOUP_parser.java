@@ -1,6 +1,7 @@
 package com.example.jake.university.API;
 
 import com.example.jake.university.NewsItem;
+import com.example.jake.university.fragments.FragmentNews;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

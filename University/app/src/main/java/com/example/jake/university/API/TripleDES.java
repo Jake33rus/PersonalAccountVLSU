@@ -38,7 +38,7 @@ public class TripleDES {
     }
 
     //метод для дешифровки
-    public String Dencrypt(String sdata)
+   public String Dencrypt(String sdata)
     {
         byte[] key = "11YDon1l{Yvz4#Qu|981nzb8".getBytes();
         byte[] data = sdata.getBytes();

@@ -197,19 +197,19 @@ public class Login extends AppCompatActivity {
     }
 
     public void onButtonClick (View v) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-        TextView login = (TextView) findViewById(R.id.loginField);
+          TextView login = (TextView) findViewById(R.id.loginField);
         TextView password = (TextView) findViewById(R.id.passField);
 
         String logStr, passStr;
         TripleDES tde = new TripleDES();
 
-        logStr = login.getText().toString();
+       logStr = login.getText().toString();
         passStr = password.getText().toString();
 
         JSONArray arr;
         JSONObject obj = new JSONObject();
         postReq comand = new postReq();
-/*
+
         try {
             comand.execute("20","AuthData_GetData",
                     "0, 0,"+logStr+","+MD5.hash(tde.Encr(passStr))+",'','', 0,'','', 0").get();
@@ -217,17 +217,6 @@ public class Login extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-        String sss = "rau5@xQw4";
-        sss = tde.Encr(sss);
-        sss = MD5.hash(sss);
-*/
-       /*try {
-            comand.execute("20","AuthData_GetData",
-                    "0, 0,'GlushnevaMagistr','0B8192E03725641EA0E4726697510E39','','', 0,'','', 0").get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         arr = comand.getjARRAY();
         if (arr.length()!=0)
         {
@@ -244,12 +233,12 @@ public class Login extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Hash.SetID(Integer.parseInt(UserID));*/
+            Hash.SetID(Integer.parseInt(UserID));
 
             Intent toMain = new Intent(this, MainActivity.class);
             startActivity(toMain);
             finish();
-        /*}
+        }
         else
             {
                 Toast toast = Toast.makeText(getApplicationContext(),
@@ -257,6 +246,6 @@ public class Login extends AppCompatActivity {
                 toast.show();
                 password.setText("");
 
-            }*/
+            }
     }
 }

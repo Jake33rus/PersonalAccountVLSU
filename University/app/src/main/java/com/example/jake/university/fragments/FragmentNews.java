@@ -49,6 +49,10 @@ public class FragmentNews extends Fragment {
     private RecyclerView rv;
     private RecyclerView.Adapter adapter;
     private List<NewsItem> newsItems;
+    private boolean isLoading = false;
+
+    private RecyclerView.LayoutManager layoutManager;
+    private int currentNews;
 
     @Override
     public void onAttach(Context context) {
@@ -65,14 +69,14 @@ public class FragmentNews extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
+        currentNews = -1;
         rv = (RecyclerView) view.findViewById(R.id.NewsView);
         rv.setHasFixedSize(true);
         newsItems = new ArrayList<>();
         nextPageLink = "http://www.vlsu.ru/index.php?id=1412";
         new NewThread().execute();
-        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(layoutManager);
-        layoutManager.scrollToPosition(3);
         rv.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         rv.addOnScrollListener(new RecyclerView.OnScrollListener()
         {
@@ -83,15 +87,16 @@ public class FragmentNews extends Fragment {
                 {
                     visibleItemCount = layoutManager.getChildCount();
                     totalItemCount = layoutManager.getItemCount();
-                    pastVisiblesItems = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
+                    pastVisiblesItems = ((LinearLayoutManager)rv.getLayoutManager()).findFirstVisibleItemPosition();
 
-                    if (loading)
-                    {
-                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount)
-                        {
-                            new NewThread().execute();
-                        }
-                    }
+if(!isLoading)
+{
+    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount)
+    {
+        isLoading = true;
+        new NewThread().execute();
+    }
+}
                 }
             }
         });
@@ -110,10 +115,10 @@ public class FragmentNews extends Fragment {
                             ftrans.replace(R.id.fragment_container, fno).addToBackStack(null).commit();
                         }
                         else
-                        {
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsItems.get(position).getURL()));
-                            startActivity(browserIntent);
-                        }
+                            {
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(newsItems.get(position).getURL()));
+                                startActivity(browserIntent);
+                            }
 
                     }
 
@@ -131,16 +136,25 @@ public class FragmentNews extends Fragment {
         @Override
         protected  String doInBackground(String... arg)
         {
-            nextPageLink = JSOUP_parser.parseNewsBunch(nextPageLink, newsItems);
-            adapter = new NewsAdapter(this, newsItems);
+                nextPageLink = JSOUP_parser.parseNewsBunch(nextPageLink, newsItems);
+                adapter = new NewsAdapter(this, newsItems);
 
-            return null;
+                return null;
         }
         @Override
-        protected void onPostExecute(String result)
+        protected void onPostExecute(String result )
         {
             rv.setAdapter(adapter);
+            isLoading=false;
+            if(currentNews==-1)currentNews=0;
+            else
+                {
+                    layoutManager.scrollToPosition(pastVisiblesItems);
+                }
+
         }
+
+
     }
 
 }

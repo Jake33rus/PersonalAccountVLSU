@@ -15,7 +15,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/design_default_color_primary_dark" />
+        app:srcCompat="@color/design_default_color_primary_dark"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
@@ -25,14 +26,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:maxWidth="154dp"
-        android:text="@string/nameDiscipline"
+        android:maxWidth="116dp"
+        android:text="Тип выплаты"
         android:textColor="@color/Black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
@@ -42,23 +42,42 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/Semestr"
+        android:text="По дату"
         android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/imageView19"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/TypeExams"
+        android:text="С даты"
+        android:textColor="@color/Black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView19"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="95dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:maxWidth="102dp"
+        android:minWidth="102dp"
+        android:text="Сумма(руб./месяц)"
+        android:textAlignment="center"
         android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,29 +89,46 @@
         android:id="@+id/imageView9"
         android:layout_width="2dp"
         android:layout_height="0dp"
-        android:layout_marginStart="170dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        android:layout_marginStart="130dp"
+        app:layout_constraintBottom_toTopOf="@+id/lv_scholarship"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/design_default_color_primary_dark" />
 
     <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/lv_scholarship"
+        app:layout_constraintEnd_toStartOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/design_default_color_primary_dark"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
         android:id="@+id/imageView10"
         android:layout_width="2dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="120dp"
-        app:layout_constraintBottom_toTopOf="@+id/lv_upcom_exams"
+        android:layout_marginEnd="118dp"
+        app:layout_constraintBottom_toTopOf="@+id/lv_scholarship"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@color/design_default_color_primary_dark" />
 
     <ListView
-        android:id="@+id/lv_upcom_exams"
+        android:id="@+id/lv_scholarship"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.571" >
+
+    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

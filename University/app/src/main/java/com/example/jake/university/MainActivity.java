@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_scholarships:
                 ftrans.replace(R.id.fragment_container, new FragmentScholarships()).addToBackStack(null).commit();
                 break;
+
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

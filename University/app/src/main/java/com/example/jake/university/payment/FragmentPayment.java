@@ -1,4 +1,4 @@
-package com.example.jake.university.fragments;
+package com.example.jake.university.payment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.jake.university.data;
+package com.example.jake.university.scholarships;
 
 public class Scholarships {
     private String type, summ, preDate, postDate;

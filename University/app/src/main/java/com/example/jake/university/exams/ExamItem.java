@@ -1,4 +1,4 @@
-package com.example.jake.university.adapter;
+package com.example.jake.university.exams;
 
 public class ExamItem {
     String discipline, grade, type, semestr;

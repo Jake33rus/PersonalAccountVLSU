@@ -37,32 +37,6 @@ public class TripleDES {
         return result;
     }
 
-    //метод для дешифровки
-   public String Dencrypt(String sdata)
-    {
-        byte[] key = "11YDon1l{Yvz4#Qu|981nzb8".getBytes();
-        byte[] data = sdata.getBytes();
-        byte[] iv = "rV1Gb?yk".getBytes();
-        IvParameterSpec ivParam = new IvParameterSpec(iv);
-        Key deskey = null;
-        StringBuffer hexCiphertext = null;
-        DESedeKeySpec spec;
-        byte[] res = null;
-        try {
-            spec = new DESedeKeySpec(key);
-            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("desede");
-            deskey = keyFactory.generateSecret(spec);
-
-            Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, deskey, ivParam);
-
-            res = cipher.doFinal(data);
-
-        } catch (NoSuchAlgorithmException | InvalidKeyException | InvalidAlgorithmParameterException | NoSuchPaddingException | BadPaddingException | InvalidKeySpecException | IllegalBlockSizeException e) {
-            e.printStackTrace();
-        }
-        return new String(res);
-    }
     public String Encr(String data) throws UnsupportedEncodingException, NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
         String skey = "11YDon1l{Yvz4#Qu|981nzb8";
         String siv = "rV1Gb?yk";

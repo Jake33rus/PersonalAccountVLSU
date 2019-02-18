@@ -1,4 +1,4 @@
-package com.example.jake.university.fragments;
+package com.example.jake.university.exams;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,8 +8,6 @@ import android.widget.ListView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
-import com.example.jake.university.adapter.ArrearsAdapter;
-import com.example.jake.university.adapter.ExamItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;

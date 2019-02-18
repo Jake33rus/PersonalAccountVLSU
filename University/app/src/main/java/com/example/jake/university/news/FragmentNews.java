@@ -1,30 +1,20 @@
-package com.example.jake.university.fragments;
+package com.example.jake.university.news;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.jake.university.API.JSOUP_parser;
-import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.RecyclerItemClickListener;
-import com.example.jake.university.adapter.NewsAdapter;
 import com.example.jake.university.adapter.SimpleDividerItemDecoration;
 import com.google.android.material.tabs.TabLayout;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

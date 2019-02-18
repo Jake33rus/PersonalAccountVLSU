@@ -1,4 +1,4 @@
-package com.example.jake.university.adapter;
+package com.example.jake.university.exams;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,18 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.jake.university.R;
-import com.example.jake.university.data.Scholarships;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 
-public class ScholarshipsAdapter extends ArrayAdapter<Scholarships> {
+public class ArrearsAdapter extends ArrayAdapter<ExamItem> {
     private LayoutInflater inflater;
     private int layout;
-    private ArrayList<Scholarships> itemList;
+    private ArrayList<ExamItem> itemList;
 
-    public ScholarshipsAdapter(@NonNull Context context, int resource, ArrayList<Scholarships> items) {
+    public ArrearsAdapter(@NonNull Context context, int resource, ArrayList<ExamItem> items) {
         super(context, resource, items);
         this.itemList = items;
         this.layout = resource;
@@ -36,22 +35,20 @@ public class ScholarshipsAdapter extends ArrayAdapter<Scholarships> {
         else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        final Scholarships item = itemList.get(position);
+        final ExamItem item = itemList.get(position);
 
+        viewHolder.disciplineTV.setText(item.getDiscipline());
+        viewHolder.semestrTV.setText(item.getSemestr());
         viewHolder.typeTV.setText(item.getType());
-        viewHolder.preDateTV.setText(item.getPreDate());
-        viewHolder.postDateTV.setText(item.getPostDate());
-        viewHolder.summTV.setText(item.getSumm());
         return convertView;
     }
 
     private class ViewHolder {
-        final TextView typeTV, preDateTV, postDateTV, summTV;
+        final TextView disciplineTV, semestrTV, typeTV;
         ViewHolder(View view){
-            preDateTV = (TextView) view.findViewById(R.id.PreDateShips);
-            postDateTV = (TextView) view.findViewById(R.id.PostDateShips);
-            typeTV = (TextView) view.findViewById(R.id.TypeShips);
-            summTV = (TextView) view.findViewById(R.id.SummShips);
+            disciplineTV = (TextView) view.findViewById(R.id.disciplineArrears);
+            semestrTV = (TextView) view.findViewById(R.id.semestrArrears);
+            typeTV = (TextView) view.findViewById(R.id.TypeArrears);
         }
     }
 }

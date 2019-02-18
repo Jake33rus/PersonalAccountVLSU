@@ -1,7 +1,9 @@
-package com.example.jake.university.data;
+package com.example.jake.university.profile;
 
 import com.example.jake.university.API.postReq;
-import com.example.jake.university.adapter.ExamItem;
+import com.example.jake.university.scholarships.Scholarships;
+import com.example.jake.university.timetable.Timetable;
+import com.example.jake.university.exams.ExamItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;

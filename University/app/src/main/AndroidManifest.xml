@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".Login"
+        <activity android:name=".API.Login"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

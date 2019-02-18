@@ -1,4 +1,4 @@
-package com.example.jake.university.fragments;
+package com.example.jake.university.exams;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.jake.university.R;
-import com.example.jake.university.adapter.TabsPagerFragmentAdapter;
+import com.example.jake.university.exams.TabsPagerFragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
@@ -17,8 +17,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-public class FragmentTimetable extends Fragment {
-    private static final int LAYOUT = R.layout.fragment_time_table;
+public class FragmentExamsAndArrears extends Fragment {
+    private static final int LAYOUT = R.layout.fragment_exams_arrears;
     private View view;
     private ViewPager viewPager;
     private TabLayout tabLayout;

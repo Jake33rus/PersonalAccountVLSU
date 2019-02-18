@@ -1,4 +1,4 @@
-package com.example.jake.university.adapter;
+package com.example.jake.university.news;
 
 
 import android.view.LayoutInflater;
@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.jake.university.NewsItem;
 import com.example.jake.university.R;
-import com.example.jake.university.fragments.FragmentNews;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

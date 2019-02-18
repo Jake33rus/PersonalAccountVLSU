@@ -4,11 +4,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.jake.university.fragments.FragmentExamsAndArrears;
-import com.example.jake.university.fragments.FragmentNews;
-import com.example.jake.university.fragments.FragmentPayment;
-import com.example.jake.university.fragments.FragmentProfile;
-import com.example.jake.university.fragments.FragmentScholarships;
+import com.example.jake.university.exams.FragmentExamsAndArrears;
+import com.example.jake.university.news.FragmentNews;
+import com.example.jake.university.payment.FragmentPayment;
+import com.example.jake.university.profile.FragmentProfile;
+import com.example.jake.university.scholarships.FragmentScholarships;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;

@@ -1,4 +1,4 @@
-package com.example.jake.university;
+package com.example.jake.university.adapter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.Manifest;
 import android.os.Build;
 import android.os.CancellationSignal;
 import android.widget.Toast;
+
+import com.example.jake.university.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;

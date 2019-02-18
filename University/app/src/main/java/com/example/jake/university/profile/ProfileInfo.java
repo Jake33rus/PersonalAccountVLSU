@@ -1,4 +1,4 @@
-package com.example.jake.university.data;
+package com.example.jake.university.profile;
 
 public class ProfileInfo
 {

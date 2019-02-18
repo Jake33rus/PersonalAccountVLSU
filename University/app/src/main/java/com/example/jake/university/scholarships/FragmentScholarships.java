@@ -1,7 +1,5 @@
-package com.example.jake.university.fragments;
+package com.example.jake.university.scholarships;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,9 +13,6 @@ import android.widget.ListView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
-import com.example.jake.university.adapter.ExamItem;
-import com.example.jake.university.adapter.ScholarshipsAdapter;
-import com.example.jake.university.data.Scholarships;
 
 import org.json.JSONArray;
 import org.json.JSONException;

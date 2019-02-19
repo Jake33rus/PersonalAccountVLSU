@@ -22,8 +22,10 @@ import com.example.jake.university.API.postReq;
 import com.example.jake.university.MainActivity;
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.FingerprintHandler;
+import com.example.jake.university.profile.Singleton;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -36,6 +38,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.util.concurrent.ExecutionException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -202,66 +205,26 @@ public class Login extends AppCompatActivity {
         TextView password = (TextView) findViewById(R.id.passField);
 
         String logStr, passStr;
-        TripleDES tde = new TripleDES();
 
         logStr = login.getText().toString();
         passStr = password.getText().toString();
 
-        JSONArray arr;
-        JSONObject obj = new JSONObject();
-        postReq comand = new postReq();
 
-        //Первый этап инициализации(Получаем CPerson)
-        try {
-            comand.execute("20","AuthData_GetData",
-                    "0, 0,'"+logStr+"', '"+MD5.hash(tde.Encr(passStr))+"','','', 0,'','', 0").get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String[] result = postReq.getLogin(logStr, passStr);
 
-        arr = comand.getjARRAY();
-        if (arr.length()!=0)
-        {
-            try {
-                obj = arr.getJSONObject(0);
-            } catch (Exception e) {
-               e.printStackTrace();
-            }
+if(result[0]!="0")
+{
+    try {
+        Singleton.getInstance(result[0]);
+    } catch (ExecutionException e) {
+        e.printStackTrace();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
 
-            String CPerson = new String();
-            try {
-                CPerson =  obj.getString("CPerson");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-//Этап 2. Получаем PerID
-
-            postReq comm2 =new postReq();
-
-            try {
-                comm2.execute("20","dbo.UserProfiles_GetData","0,'',0,"+CPerson+",0,0,0,0").get();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            JSONArray arr2 = comm2.getjARRAY();
-            JSONObject obj2 = new JSONObject();
-
-            try {
-                obj2 = arr2.getJSONObject(0);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            String PerID = new String();
-            try {
-                PerID =  obj2.getString("PerID");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-
-            Intent toMain = new Intent(this, MainActivity.class);
+    Intent toMain = new Intent(this, MainActivity.class);
             startActivity(toMain);
             finish();
         }

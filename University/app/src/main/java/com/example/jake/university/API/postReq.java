@@ -54,7 +54,8 @@ public class postReq extends AsyncTask<String, Void, Void>
         super.onPostExecute(result);
     }
 
-    protected JSONArray createReq(String idDb, String nameExec, String paramsList) throws IOException, ParseException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+    protected JSONArray createReq(String idDb, String nameExec, String paramsList) throws IOException, ParseException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException
+    {
         JSONObject jObj;
         JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
@@ -138,5 +139,87 @@ public class postReq extends AsyncTask<String, Void, Void>
         }*/
 
         return jArr;
+    }
+
+    static public String[] getLogin(String login, String password)
+    {
+        TripleDES tde = new TripleDES();
+        JSONArray arr;
+        JSONObject obj = new JSONObject();
+        postReq comand = new postReq();
+        String[] arrg = {"0"};
+
+        try {
+            comand.execute("20","AuthData_GetData",
+                    "0, 0,'"+login+"', '"+MD5.hash(tde.Encr(password))+"','','', 0,'','', 0").get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        arr = comand.getjARRAY();
+        if (arr.length()!=0)
+        {
+            try {
+                obj = arr.getJSONObject(0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            String CPerson = new String();
+            try {
+                CPerson =  obj.getString("CPerson");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//Этап 2. Получаем PerID
+
+            try {
+                comand.execute("20","dbo.UserProfiles_GetData","0,'',0,"+CPerson+",0,0,0,0").get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            arr = comand.getjARRAY();
+
+            try {
+                obj = arr.getJSONObject(0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            String PerID = new String();
+
+            try {
+                PerID =  obj.getString("PerID");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //Этап 3. Получаем nrec
+
+            try {
+                comand.execute("10","dbo.A_LKS_GetStudentId_last","'',"+PerID).get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            arr = comand.getjARRAY();
+
+            try {
+                obj = arr.getJSONObject(0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            String nrec = new String();
+
+            try {
+                nrec =  obj.getString("PerID");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            arrg[0] = nrec;
+            return arrg;
+
+    }
+    else return arrg;
+
     }
 }

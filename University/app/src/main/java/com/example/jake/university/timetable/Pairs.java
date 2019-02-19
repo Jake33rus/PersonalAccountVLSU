@@ -1,5 +1,4 @@
 package com.example.jake.university.timetable;
 
-public class Timetable {
-
+public class Pairs {
 }

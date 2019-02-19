@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+import com.example.jake.university.Singleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,10 +25,15 @@ public class FragmentArrears extends Fragment {
 
     private static final int LAYOUT = R.layout.fragment_arrears;
     private View view;
-    JSONArray arr;
-    JSONObject jobj;
-    postReq comand;
-    public static FragmentArrears getInstance() {
+    Singleton singleton = Singleton.getInstance("0");
+
+    public FragmentArrears() throws InterruptedException, ExecutionException, JSONException {
+    }
+
+    /* JSONArray arr;
+     JSONObject jobj;
+     postReq comand;*/
+    public static FragmentArrears getInstance() throws InterruptedException, ExecutionException, JSONException {
         Bundle args = new Bundle();
         FragmentArrears fragment = new FragmentArrears();
         fragment.setArguments(args);
@@ -38,22 +44,13 @@ public class FragmentArrears extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-        ArrearsAdapter adapter = null;
-        try {
-            ArrayList<ExamItem> list = ReadInDB();
-            adapter = new ArrearsAdapter(view.getContext(), R.layout.item_arrears, list);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        ArrayList<ExamItem> list = singleton.getArrears();
+        ArrearsAdapter adapter = new ArrearsAdapter(view.getContext(), R.layout.item_arrears, list);
         ListView lv = (ListView) view.findViewById(R.id.lv_arrears);
         lv.setAdapter(adapter);
         return view;
     }
-    protected ArrayList<ExamItem> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
+    /*protected ArrayList<ExamItem> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
         jobj = new JSONObject();
         comand = new postReq();
         comand.execute("10","A_LKS_GetMarks","0x8001000000027C02").get();
@@ -67,5 +64,5 @@ public class FragmentArrears extends Fragment {
             }
         }
         return list;
-    }
+    }*/
 }

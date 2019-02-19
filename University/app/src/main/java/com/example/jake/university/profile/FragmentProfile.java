@@ -8,10 +8,14 @@ import android.widget.TextView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+import com.example.jake.university.Singleton;
 import com.example.jake.university.profile.ProfileInfo;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +23,16 @@ import androidx.annotation.Nullable;
 public class FragmentProfile extends androidx.fragment.app.Fragment {
     View view;
     TextView tvFIO, tvGroup, tvInstitut, tvKafedra, tvStartStudy, tvStudyForm, tvFinans, tvMobile, tvEmail;
+    Singleton singleton = Singleton.getInstance("0");
+
+    public FragmentProfile() throws InterruptedException, ExecutionException, JSONException {
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        JSONArray arr;
+       /* JSONArray arr;
         JSONObject obj = new JSONObject();
         postReq comand = new postReq();
         try {
@@ -37,16 +45,16 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
             obj = arr.getJSONObject(0);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        ProfileInfo info = null;
-        try {
+        }*/
+        ProfileInfo info = singleton.getProfileInfo();
+       /* try {
             info = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
                     obj.getString("Источник финансирования обучения"),
                     obj.getString("Форма обучения"), obj.getString("Группа"),
                     obj.getString("Специальность"), "fdsf", "01.01.2018", obj.getString("Номер контактного телефона"));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         initViews();
         tvFIO.setText(info.getFIO());

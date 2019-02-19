@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+import com.example.jake.university.Singleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,28 +28,26 @@ public class FragmentScholarships extends Fragment {
     JSONArray arr;
     JSONObject jobj;
     postReq comand;
+    Singleton singleton = Singleton.getInstance("0");
+
+    public FragmentScholarships() throws InterruptedException, ExecutionException, JSONException {
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        view = inflater.inflate(LAYOUT, container, false);
         ScholarshipsAdapter adapter = null;
-        try {
-            ArrayList<Scholarships> list = ReadInDB();
-            adapter = new ScholarshipsAdapter(view.getContext(), R.layout.item_sholarships, list);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        ArrayList<Scholarships> list = singleton.getScholarships();
+        adapter = new ScholarshipsAdapter(view.getContext(), R.layout.item_sholarships, list);
         ListView lv = (ListView) view.findViewById(R.id.lv_scholarship);
         lv.setAdapter(adapter);
         return view;
     }
 
 
-    protected ArrayList<Scholarships> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
+   /* protected ArrayList<Scholarships> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
+
        /* jobj = new JSONObject();
         comand = new postReq();
         comand.execute("10","A_LKS_GetBonuses","0x8001000000027C02").get();
@@ -60,10 +59,10 @@ public class FragmentScholarships extends Fragment {
             list.add(new Scholarships(jobj.getString("Тип"), jobj.getString("Дата начала"),
                     jobj.getString("Дата окончания"), jobj.getString("Сумма")));
         }*/
-       ArrayList<Scholarships> list = new ArrayList<>();
+       /*ArrayList<Scholarships> list = new ArrayList<>();
        list.add(new Scholarships("Академическая стипендия","01.09.2017","31.01.2018","1653"));
        list.add(new Scholarships("Академическая стипендия","01.02.2018","31.07.2018","2066"));
        list.add(new Scholarships("Академическая стипендия","01.08.2018","31.01.2019","2066"));
         return list;
-    }
+    }*/
 }

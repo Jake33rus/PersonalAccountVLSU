@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+import com.example.jake.university.Singleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,10 +25,15 @@ public class FragmentPassedExams extends Fragment {
     private static final int LAYOUT = R.layout.fragment_passed_exams;
     private View view;
     private ListView lv;
-    JSONArray arr;
+    Singleton singleton = Singleton.getInstance("0");
+
+    public FragmentPassedExams() throws InterruptedException, ExecutionException, JSONException {
+    }
+
+    /*JSONArray arr;
     JSONObject jobj;
-    postReq comand;
-    public static FragmentPassedExams getInstance() {
+    postReq comand;*/
+    public static FragmentPassedExams getInstance() throws InterruptedException, ExecutionException, JSONException {
         Bundle args = new Bundle();
         FragmentPassedExams fragment = new FragmentPassedExams();
         fragment.setArguments(args);
@@ -39,20 +45,11 @@ public class FragmentPassedExams extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
         lv = (ListView) view.findViewById(R.id.lv_passed_exams);
-        ExamsAdapter adapter = null;
-        try {
-            adapter = new ExamsAdapter(view.getContext(), R.layout.item_exams, ReadInDB());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        ExamsAdapter adapter = new ExamsAdapter(view.getContext(), R.layout.item_exams, singleton.getPassedExams());
         lv.setAdapter(adapter);
         return view;
     }
-    protected ArrayList<ExamItem> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
+    /*protected ArrayList<ExamItem> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
        /* jobj = new JSONObject();
         comand = new postReq();
         comand.execute("10","A_LKS_GetMarks","0x8001000000027C02").get();
@@ -66,10 +63,10 @@ public class FragmentPassedExams extends Fragment {
                         jobj.getString("Оценка")));
             }
         }*/
-        ArrayList<ExamItem> list = new ArrayList();
+        /*ArrayList<ExamItem> list = new ArrayList();
         list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
         list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
         list.add(new ExamItem("Ядерная физика, теория квантования квантовых квантов", "Лиффириентированный зачет", "2", "Неудволитворительно"));
         return list;
-    }
+    }*/
 }

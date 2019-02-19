@@ -1,6 +1,10 @@
 package com.example.jake.university.exams;
 
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -28,11 +32,35 @@ public class TabsPagerFragmentAdapter extends FragmentPagerAdapter {
     public androidx.fragment.app.Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return FragmentArrears.getInstance();
+                try {
+                    return FragmentArrears.getInstance();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 1:
-                return FragmentPassedExams.getInstance();
+                try {
+                    return FragmentPassedExams.getInstance();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 2:
-                return FragmentUpcomingExams.getInstance();
+                try {
+                    return FragmentUpcomingExams.getInstance();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
         }
         return null;
     }

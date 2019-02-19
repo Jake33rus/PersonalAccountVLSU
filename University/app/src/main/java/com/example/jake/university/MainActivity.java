@@ -11,6 +11,10 @@ import com.example.jake.university.profile.FragmentProfile;
 import com.example.jake.university.scholarships.FragmentScholarships;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -80,7 +84,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ftrans.replace(R.id.fragment_container, new FragmentNews()).addToBackStack(null).commit();
                 break;
             case R.id.nav_profile:
-                ftrans.replace(R.id.fragment_container, new FragmentProfile()).addToBackStack(null).commit();
+                try {
+                    ftrans.replace(R.id.fragment_container, new FragmentProfile()).addToBackStack(null).commit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.nav_arrears:
                 ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).addToBackStack(null).commit();
@@ -89,9 +101,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ftrans.replace(R.id.fragment_container, new FragmentPayment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_scholarships:
-                ftrans.replace(R.id.fragment_container, new FragmentScholarships()).addToBackStack(null).commit();
+                try {
+                    ftrans.replace(R.id.fragment_container, new FragmentScholarships()).addToBackStack(null).commit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
-
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

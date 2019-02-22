@@ -111,12 +111,17 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             byte[] buffer = new byte[8192];
             int bytesRead;
-            while ((bytesRead = is.read(buffer)) != -1) {
-                baos.write(buffer, 0, bytesRead);
-            }
+            try {
+                while ((bytesRead = is.read(buffer)) != -1) {
+                    baos.write(buffer, 0, bytesRead);
+                }
+            }catch(Exception e)
+            {e.printStackTrace();}
+
             data = baos.toByteArray();
 
             String finalRes =  new String(data, StandardCharsets.UTF_8);
+            //String[] parts = finalRes.split();
             jArr = new JSONArray(finalRes);
 
 
@@ -173,13 +178,15 @@ public class postReq extends AsyncTask<String, Void, Void>
             }
 //Этап 2. Получаем PerID
 
+            postReq comand2 = new postReq();
+
             try {
-                comand.execute("20","dbo.UserProfiles_GetData","0,'',0,"+CPerson+",0,0,0,0").get();
+                comand2.execute("20","dbo.UserProfiles_GetData","0,'',0,"+CPerson+",0,0,0,0").get();
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            arr = comand.getjARRAY();
+            arr = comand2.getjARRAY();
 
             try {
                 obj = arr.getJSONObject(0);
@@ -195,12 +202,13 @@ public class postReq extends AsyncTask<String, Void, Void>
             }
             //Этап 3. Получаем nrec
 
+            postReq comand3 = new postReq();
             try {
-                comand.execute("10","dbo.A_LKS_GetStudentId_last","'',"+PerID).get();
+                comand3.execute("10","dbo.A_LKS_GetStudentId_last","'',"+PerID).get();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            arr = comand.getjARRAY();
+            arr = comand3.getjARRAY();
 
             try {
                 obj = arr.getJSONObject(0);
@@ -210,7 +218,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             String nrec = new String();
 
             try {
-                nrec =  obj.getString("PerID");
+                nrec =  obj.getString("ID");
             } catch (Exception e) {
                 e.printStackTrace();
             }

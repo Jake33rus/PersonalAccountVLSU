@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
-import com.example.jake.university.Singleton;
+import com.example.jake.university.profile.Singleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;

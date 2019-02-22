@@ -9,6 +9,7 @@ import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.payment.FragmentPayment;
 import com.example.jake.university.profile.FragmentProfile;
 import com.example.jake.university.scholarships.FragmentScholarships;
+import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
@@ -111,6 +112,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     e.printStackTrace();
                 }
                 break;
+            case R.id.nav_timetable:
+                ftrans.replace(R.id.fragment_container, new FragmentTimetable()).addToBackStack(null).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

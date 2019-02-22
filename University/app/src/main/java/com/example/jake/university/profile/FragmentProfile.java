@@ -6,14 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
-import com.example.jake.university.Singleton;
-import com.example.jake.university.profile.ProfileInfo;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
@@ -22,16 +17,15 @@ import androidx.annotation.Nullable;
 
 public class FragmentProfile extends androidx.fragment.app.Fragment {
     View view;
-    TextView tvFIO, tvGroup, tvInstitut, tvKafedra, tvStartStudy, tvStudyForm, tvFinans, tvMobile, tvEmail;
-    Singleton singleton = Singleton.getInstance("0");
-
+    TextView tvFIO, tvGroup, tvInstitut, tvKafedra, tvStartStudy, tvStudyForm, tvFinans, tvMobile, tvEmail;;
+    Singleton singleton;
     public FragmentProfile() throws InterruptedException, ExecutionException, JSONException {
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        singleton = Singleton.getter();
        /* JSONArray arr;
         JSONObject obj = new JSONObject();
         postReq comand = new postReq();

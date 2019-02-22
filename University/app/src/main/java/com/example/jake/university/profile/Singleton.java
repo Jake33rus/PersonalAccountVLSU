@@ -26,11 +26,12 @@ public class Singleton {
     ProfileInfo profileInfo;
     Timetable timetable;
 
-    private  static Singleton instance;
+    private static Singleton instance;
 
     /* Конструктор */
     private Singleton(String nrec) throws ExecutionException, InterruptedException, JSONException {
         this.nrec = nrec;
+        setTimetable();
         setExamsList();
         setArrears();
         setPassedExams();
@@ -97,7 +98,7 @@ public class Singleton {
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
         JSONObject obj = new JSONObject();
         postReq comand = new postReq();
-        comand.execute("10","A_LKS_GetStudentInfo",nrec).get();
+        comand.execute("10","A_LKS_GetStudentInfo_Mobile",nrec).get();
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
         profileInfo = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
@@ -105,7 +106,13 @@ public class Singleton {
                 obj.getString("Форма обучения"), obj.getString("Группа"),
                 obj.getString("Специальность"), "fdsf", "01.01.2018", obj.getString("Номер контактного телефона"));
     }
-
+    private void setTimetable() throws JSONException, ExecutionException, InterruptedException {
+        JSONObject obj = new JSONObject();
+        postReq comand = new postReq();
+        comand.execute("10","[dbo].[_A_SCD_StudSchedule]","0,"+nrec+",0,0,-1,2018,0,-1").get();
+        JSONArray arr = comand.getjARRAY();
+        obj = arr.getJSONObject(0);
+    }
     public ArrayList<ExamItem> getArrears(){return arrears;}
 
     public ArrayList<ExamItem> getUpcomingExams(){return upcomingExams;}
@@ -125,4 +132,5 @@ public class Singleton {
         }
         return instance;
     }
+    public static Singleton getter() {return instance;}
 }

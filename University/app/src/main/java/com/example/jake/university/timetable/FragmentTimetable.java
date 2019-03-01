@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.jake.university.R;
 import com.example.jake.university.exams.TabsPagerFragmentAdapter;
@@ -14,6 +15,7 @@ import com.example.jake.university.timetable.scheduleServClasses.Day;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -30,6 +32,7 @@ public class FragmentTimetable extends Fragment {
     private View view;
     private ViewPager viewPager;
     private FragmentActivity myContext;
+    private boolean parity;
     Singleton singleton = Singleton.getInstance("0");
 
     public FragmentTimetable() throws InterruptedException, ExecutionException, JSONException {
@@ -49,6 +52,13 @@ public class FragmentTimetable extends Fragment {
         ArrayList<Day> daysArr = singleton.getTimetable().getSchedule();
         adapter = new TimetableAdapter(view.getContext(), R.layout.item_timetable_day, daysArr);
         ListView lv = (ListView) view.findViewById(R.id.daysLV);
+        TextView numberOfPairs = (TextView) view.findViewById(R.id.numberOfPairs);
+        TextView numbersOfWeek = (TextView) view.findViewById(R.id.numbersOfWeekTV);
+        TextView parityOfWeek = (TextView) view.findViewById(R.id.parityOfWeekTV);
+        if(parity)
+            parityOfWeek.setText("Эта неделя - числитель");
+        else
+            parityOfWeek.setText("Эта неделя - знаменатель");
         lv.setAdapter(adapter);
         return view;
     }

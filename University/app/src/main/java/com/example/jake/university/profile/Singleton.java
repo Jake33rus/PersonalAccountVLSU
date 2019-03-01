@@ -25,8 +25,7 @@ public class Singleton {
     ArrayList<Scholarships> scholarships;
     ProfileInfo profileInfo;
     WeekSchedule schedule;
-
-    private static Singleton instance;
+    boolean parity;
 
     /* Конструктор */
     private Singleton(String nrec) throws ExecutionException, InterruptedException, JSONException {
@@ -123,6 +122,17 @@ public class Singleton {
     public ProfileInfo getProfileInfo() {return profileInfo;}
 
     public WeekSchedule getTimetable() {return schedule;}
+
+    public boolean isParity() {
+        return parity;
+    }
+
+    public void setParity() {
+
+    }
+
+
+    private static Singleton instance;
 
     /*Реализация Singleton*/
     public static Singleton getInstance(String nrec) throws ExecutionException, InterruptedException, JSONException {

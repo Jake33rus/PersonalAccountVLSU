@@ -22,6 +22,7 @@ public class TimetableAdapter extends ArrayAdapter<Day> {
     private LayoutInflater inflater;
     private int layout;
     private ArrayList<Day> itemList;
+    private boolean parity;
 
     public TimetableAdapter (@NonNull Context context, int resource, ArrayList<Day> items) {
         super(context, resource, items);
@@ -44,7 +45,10 @@ public class TimetableAdapter extends ArrayAdapter<Day> {
         TimetableDayAdapter adapter = null;
         ArrayList<Lesson> even = item.getEven();
         ArrayList<Lesson> odd = item.getOdd();
-        adapter = new TimetableDayAdapter(convertView.getContext(), R.layout.item_pair, even);
+        if(parity)
+            adapter = new TimetableDayAdapter(convertView.getContext(), R.layout.item_pair, even);
+        else
+            adapter = new TimetableDayAdapter(convertView.getContext(), R.layout.item_pair, odd);
         ListView lv = (ListView) convertView.findViewById(R.id.pairLV);
         lv.setAdapter(adapter);
         return convertView;

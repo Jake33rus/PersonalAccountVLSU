@@ -26,29 +26,7 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         singleton = Singleton.getter();
-       /* JSONArray arr;
-        JSONObject obj = new JSONObject();
-        postReq comand = new postReq();
-        try {
-            comand.execute("10","A_LKS_GetStudentInfo","0x8001000000027C02").get();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        arr = comand.getjARRAY();
-       try {
-            obj = arr.getJSONObject(0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
         ProfileInfo info = singleton.getProfileInfo();
-       /* try {
-            info = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
-                    obj.getString("Источник финансирования обучения"),
-                    obj.getString("Форма обучения"), obj.getString("Группа"),
-                    obj.getString("Специальность"), "fdsf", "01.01.2018", obj.getString("Номер контактного телефона"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         initViews();
         tvFIO.setText(info.getFIO());

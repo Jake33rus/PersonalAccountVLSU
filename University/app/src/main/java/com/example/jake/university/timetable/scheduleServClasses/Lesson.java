@@ -7,7 +7,7 @@ public class Lesson
     private String teacherName;
     private String pairType;
     private String cabNum;
-    private boolean isPair = false;
+    private boolean isPair = true;
 
     public boolean isPair() {
         return isPair;
@@ -55,5 +55,22 @@ public class Lesson
 
     public void setCabNum(String cabNum) {
         this.cabNum = cabNum;
+    }
+
+    public Lesson(String pairName, String teacherName, String pairType, String cabNum)
+    {
+        this.pairName = pairName;
+        this.teacherName = teacherName;
+        this.pairType = pairType;
+        this.cabNum = cabNum;
+    }
+
+    public Lesson(boolean isPair)
+    {
+        this.isPair=isPair;
+        this.pairName = "";
+        this.teacherName = "";
+        this.pairType = "";
+        this.cabNum = "";
     }
 }

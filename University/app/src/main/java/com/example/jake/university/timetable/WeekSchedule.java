@@ -2,7 +2,9 @@ package com.example.jake.university.timetable;
 
 import com.example.jake.university.timetable.scheduleServClasses.*;
 
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -10,16 +12,63 @@ public class WeekSchedule
 {
     private ArrayList<Day> weekSchedule;
 
-    public void addDay(Day D)
-    {
-        weekSchedule.add(D);
-    }
-
     public ArrayList<Day> getSchedule()
     {
         return weekSchedule;
     }
 
-    public WeekSchedule(JSONObject unparsedWeek)
-    {}
+    public WeekSchedule(JSONArray unparsedWeek) throws JSONException
+    {
+        weekSchedule = new ArrayList<>();
+        JSONObject jbuf;
+        Day dBuf;
+        Lesson lBuf;
+        String buf;
+        String delimetrFirst = ",";
+        String delimetrSecond = "\n";
+        String subStrFirst[], subbStrSecond[];
+        int ix = unparsedWeek.length();
+
+        for(int i =0; i<unparsedWeek.length(); i++)
+        {
+            dBuf = new Day();
+            jbuf = unparsedWeek.getJSONObject(i);
+            dBuf.setDayFullName(jbuf.getString("name"));
+            dBuf.setDayShortName(jbuf.getString("name_short"));
+
+for(int j = 0;j<=6;j++)
+            {
+                if(!jbuf.getString("n"+j).equals("null") && !jbuf.getString("n"+j).equals(""))
+                {
+                    buf = jbuf.getString("n"+j);
+                    subStrFirst = buf.split(delimetrFirst);
+                    subbStrSecond = subStrFirst[2].split(delimetrSecond);
+
+                    lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1],subStrFirst[1],subbStrSecond[0]);
+
+                }
+                else
+                {
+                    lBuf = new Lesson(false);
+                }
+                dBuf.addEven(lBuf);
+
+                if(!jbuf.getString("z"+j).equals("null") && !jbuf.getString("z"+j).equals(""))
+                {
+                    buf = jbuf.getString("z"+j);
+                    subStrFirst = buf.split(delimetrFirst);
+                    subbStrSecond = subStrFirst[2].split(delimetrSecond);
+
+                    lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1],subStrFirst[1],subbStrSecond[0]);
+
+                }
+                else
+                {
+                    lBuf = new Lesson(false);
+                }
+                dBuf.addOdd(lBuf);
+            }
+             weekSchedule.add(dBuf);
+        }
+    }
 }

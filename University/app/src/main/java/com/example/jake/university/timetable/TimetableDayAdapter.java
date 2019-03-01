@@ -9,17 +9,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.jake.university.R;
+import com.example.jake.university.timetable.scheduleServClasses.Lesson;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 
-public class TimetableDayAdapter extends ArrayAdapter<Pairs> {
+public class TimetableDayAdapter extends ArrayAdapter<Lesson> {
     private LayoutInflater inflater;
     private int layout;
-    private ArrayList<Pairs> itemList;
+    private ArrayList<Lesson> itemList;
 
-    public TimetableDayAdapter (@NonNull Context context, int resource, ArrayList<Pairs> items) {
+    public TimetableDayAdapter (@NonNull Context context, int resource, ArrayList<Lesson> items) {
         super(context, resource, items);
         this.itemList = items;
         this.layout = resource;
@@ -36,15 +37,12 @@ public class TimetableDayAdapter extends ArrayAdapter<Pairs> {
         else{
             viewHolder = (TimetableDayAdapter.ViewHolder) convertView.getTag();
         }
-        final Pairs item = itemList.get(position);
-
-        /*
-        viewHolder.lectureHallTV.setText(item.);
-        viewHolder.teacherTV.setText(item.);
-        viewHolder.pairNameTV.setText(item.);
-        viewHolder.timePairTV.setText(item.);
-        viewHolder.typePairTV.setText(item.);
-        */
+        final Lesson item = itemList.get(position);
+        viewHolder.lectureHallTV.setText(item.getCabNum());
+        viewHolder.teacherTV.setText(item.getTeacherName());
+        viewHolder.pairNameTV.setText(item.getPairName());
+        viewHolder.timePairTV.setText(item.getTime());
+        viewHolder.typePairTV.setText(item.getPairType());
         return convertView;
     }
 

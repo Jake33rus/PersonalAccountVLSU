@@ -11,17 +11,19 @@ import android.widget.TextView;
 import com.example.jake.university.R;
 import com.example.jake.university.scholarships.Scholarships;
 import com.example.jake.university.scholarships.ScholarshipsAdapter;
+import com.example.jake.university.timetable.scheduleServClasses.Day;
+import com.example.jake.university.timetable.scheduleServClasses.Lesson;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 
-public class TimetableAdapter extends ArrayAdapter<Timetable> {
+public class TimetableAdapter extends ArrayAdapter<Day> {
     private LayoutInflater inflater;
     private int layout;
-    private ArrayList<Timetable> itemList;
+    private ArrayList<Day> itemList;
 
-    public TimetableAdapter (@NonNull Context context, int resource, ArrayList<Timetable> items) {
+    public TimetableAdapter (@NonNull Context context, int resource, ArrayList<Day> items) {
         super(context, resource, items);
         this.itemList = items;
         this.layout = resource;
@@ -38,11 +40,13 @@ public class TimetableAdapter extends ArrayAdapter<Timetable> {
         else{
             viewHolder = (TimetableAdapter.ViewHolder) convertView.getTag();
         }
-        final Timetable item = itemList.get(position);
-
-      /*  viewHolder.dateTV.setText(item.getType());
-        viewHolder.dayOfWeekTV.setText(item.getPreDate());
-        viewHolder.pairLV.setAdapter();*/
+        final Day item = itemList.get(position);
+        TimetableDayAdapter adapter = null;
+        ArrayList<Lesson> even = item.getEven();
+        ArrayList<Lesson> odd = item.getOdd();
+        adapter = new TimetableDayAdapter(convertView.getContext(), R.layout.item_pair, even);
+        ListView lv = (ListView) convertView.findViewById(R.id.pairLV);
+        lv.setAdapter(adapter);
         return convertView;
     }
 

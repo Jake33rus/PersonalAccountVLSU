@@ -2,8 +2,8 @@ package com.example.jake.university.profile;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.scholarships.Scholarships;
-import com.example.jake.university.timetable.Timetable;
 import com.example.jake.university.exams.ExamItem;
+import com.example.jake.university.timetable.WeekSchedule;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +24,7 @@ public class Singleton {
     ArrayList<ExamItem> passedExams;
     ArrayList<Scholarships> scholarships;
     ProfileInfo profileInfo;
-    Timetable timetable;
+    WeekSchedule schedule;
 
     private static Singleton instance;
 
@@ -107,11 +107,10 @@ public class Singleton {
                 obj.getString("Специальность"), "fdsf", "01.01.2018", obj.getString("Номер контактного телефона"));
     }
     private void setTimetable() throws JSONException, ExecutionException, InterruptedException {
-        JSONObject obj = new JSONObject();
         postReq comand = new postReq();
         comand.execute("10","[dbo].[_A_SCD_StudSchedule]","0,"+nrec+",0,0,-1,2018,0,-1").get();
         JSONArray arr = comand.getjARRAY();
-        obj = arr.getJSONObject(0);
+        schedule = new WeekSchedule(arr);
     }
     public ArrayList<ExamItem> getArrears(){return arrears;}
 
@@ -123,7 +122,7 @@ public class Singleton {
 
     public ProfileInfo getProfileInfo() {return profileInfo;}
 
-    public Timetable getTimetable() {return timetable;}
+    public WeekSchedule getTimetable() {return schedule;}
 
     /*Реализация Singleton*/
     public static Singleton getInstance(String nrec) throws ExecutionException, InterruptedException, JSONException {

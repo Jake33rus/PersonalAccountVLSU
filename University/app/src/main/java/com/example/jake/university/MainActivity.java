@@ -113,7 +113,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 break;
             case R.id.nav_timetable:
-                ftrans.replace(R.id.fragment_container, new FragmentTimetable()).addToBackStack(null).commit();
+                try {
+                    ftrans.replace(R.id.fragment_container, new FragmentTimetable()).addToBackStack(null).commit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

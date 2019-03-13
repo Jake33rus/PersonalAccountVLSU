@@ -25,9 +25,14 @@ public class LockScreenActivity extends AppCompatActivity {
         newtonCradleLoading.start();
         newtonCradleLoading.setLoadingColor(R.color.colorPrimary);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         Bundle arguments = getIntent().getExtras();
         String nrec = arguments.get("nrec").toString();
-         try {
+        try {
             Singleton.getInstance(nrec);
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -36,7 +41,6 @@ public class LockScreenActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        newtonCradleLoading.stop();
         Intent toMain = new Intent(this, MainActivity.class);
         startActivity(toMain);
     }

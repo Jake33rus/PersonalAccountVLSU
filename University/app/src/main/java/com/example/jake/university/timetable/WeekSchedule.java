@@ -42,9 +42,20 @@ for(int j = 0;j<=6;j++)
                 {
                     buf = jbuf.getString("n"+j);
                     subStrFirst = buf.split(delimetrFirst);
-                    subbStrSecond = subStrFirst[2].split(delimetrSecond);
 
-                    lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1],subStrFirst[1],subbStrSecond[0]);
+                    if(subStrFirst.length>=3)
+                    {
+                        subbStrSecond = subStrFirst[2].split(delimetrSecond);
+                        lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1],subStrFirst[1],subbStrSecond[0], Day.getTime(j));
+
+                    }
+                    else
+                    {
+                        subbStrSecond = subStrFirst[1].split(delimetrSecond);
+                        lBuf = new Lesson(subbStrSecond[1], "",subbStrSecond[0],"", Day.getTime(j));
+                    }
+
+
 
                 }
                 else
@@ -57,9 +68,17 @@ for(int j = 0;j<=6;j++)
                 {
                     buf = jbuf.getString("z"+j);
                     subStrFirst = buf.split(delimetrFirst);
-                    subbStrSecond = subStrFirst[2].split(delimetrSecond);
+                    if(subStrFirst.length>=3)
+                    {
+                        subbStrSecond = subStrFirst[2].split(delimetrSecond);
+                        lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1],subStrFirst[1],subbStrSecond[0], Day.getTime(j));
 
-                    lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1],subStrFirst[1],subbStrSecond[0]);
+                    }
+                    else
+                    {
+                        subbStrSecond = subStrFirst[1].split(delimetrSecond);
+                        lBuf = new Lesson(subbStrSecond[1], "",subbStrSecond[0],"", Day.getTime(j));
+                    }
 
                 }
                 else

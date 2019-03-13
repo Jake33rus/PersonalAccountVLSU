@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -16,6 +17,8 @@ public class Singleton {
 
     /*Поля класса*/
     String nrec;
+    BigInteger longNrec;
+    String bigNrec;
     JSONArray arrExams;
     JSONObject jobj;
     postReq comand;
@@ -30,6 +33,8 @@ public class Singleton {
     /* Конструктор */
     private Singleton(String nrec) throws ExecutionException, InterruptedException, JSONException {
         this.nrec = nrec;
+            longNrec = new BigInteger(nrec.replaceFirst("0x8", ""), 16);
+        bigNrec = longNrec.toString();
         setTimetable();
         setExamsList();
         setArrears();
@@ -105,9 +110,10 @@ public class Singleton {
                 obj.getString("Форма обучения"), obj.getString("Группа"),
                 obj.getString("Специальность"), "fdsf", "01.01.2018", obj.getString("Номер контактного телефона"));
     }
-    private void setTimetable() throws JSONException, ExecutionException, InterruptedException {
+    private void setTimetable() throws JSONException, ExecutionException, InterruptedException
+    {
         postReq comand = new postReq();
-        comand.execute("10","[dbo].[_A_SCD_StudSchedule]","0,"+nrec+",0,0,-1,2018,0,-1").get();
+        comand.execute("10", "[dbo].[_A_SCD_StudSchedule]", "0," +bigNrec+ ",0,0,-1,2018,0,-1").get();
         JSONArray arr = comand.getjARRAY();
         schedule = new WeekSchedule(arr);
     }
@@ -130,13 +136,12 @@ public class Singleton {
     public void setParity() {
 
     }
-
-
     private static Singleton instance;
 
     /*Реализация Singleton*/
     public static Singleton getInstance(String nrec) throws ExecutionException, InterruptedException, JSONException {
-        if(instance == null){
+        if(instance == null)
+        {
             instance = new Singleton(nrec);
         }
         return instance;

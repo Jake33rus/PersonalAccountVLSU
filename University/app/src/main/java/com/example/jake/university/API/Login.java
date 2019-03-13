@@ -16,17 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jake.university.API.MD5;
-import com.example.jake.university.API.TripleDES;
-import com.example.jake.university.API.postReq;
-import com.example.jake.university.MainActivity;
+import com.example.jake.university.LockScreenActivity;
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.FingerprintHandler;
-import com.example.jake.university.profile.Singleton;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -38,7 +30,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-import java.util.concurrent.ExecutionException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -47,6 +38,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -60,44 +52,40 @@ public class Login extends AppCompatActivity {
     private FingerprintManager fingerprintManager;
     private KeyguardManager keyguardManager;
 
+    private AlertDialog.Builder ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ImageView fp = (ImageView)findViewById(R.id.fingerprint);
-        ImageView ad = (ImageView)findViewById(R.id.arrowDown);
+        ImageView fp = (ImageView) findViewById(R.id.fingerprint);
+        ImageView ad = (ImageView) findViewById(R.id.arrowDown);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             keyguardManager =
                     (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
             fingerprintManager =
                     (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
 
-            if (!fingerprintManager.isHardwareDetected())
-            {
+            if (!fingerprintManager.isHardwareDetected()) {
 
             }
             //Check whether the user has granted your app the USE_FINGERPRINT permission//
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED)
-            {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
 
             }
 
             //Check that the user has registered at least one fingerprint//
-            if (!fingerprintManager.hasEnrolledFingerprints())
-            {
+            if (!fingerprintManager.hasEnrolledFingerprints()) {
 
             }
 
             //Check that the lockscreen is secured//
-            if (!keyguardManager.isKeyguardSecure())
-            {
+            if (!keyguardManager.isKeyguardSecure()) {
 
-            }
-            else {
+            } else {
 
                 fp.setVisibility(View.VISIBLE);
                 ad.setVisibility(View.VISIBLE);
@@ -200,41 +188,29 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    public void onButtonClick (View v) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-          TextView login = (TextView) findViewById(R.id.loginField);
+    public void onButtonClick(View v) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException, InterruptedException {
+        TextView login = (TextView) findViewById(R.id.loginField);
         TextView password = (TextView) findViewById(R.id.passField);
 
         String logStr, passStr;
-
         logStr = login.getText().toString();
         passStr = password.getText().toString();
 
-
         String[] result = postReq.getLogin(logStr, passStr);
 
-if(result[0]!="0")
-{
-    try {
-        Singleton.getInstance(result[0]);
-    } catch (ExecutionException e) {
-        e.printStackTrace();
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    } catch (JSONException e) {
-        e.printStackTrace();
-    }
-
-    Intent toMain = new Intent(this, MainActivity.class);
-            startActivity(toMain);
+        if (result[0] != "0")
+        {
+            Intent toLock = new Intent(this, LockScreenActivity.class);
+            toLock.putExtra("nrec", result[0]);
+            startActivity(toLock);
             finish();
-        }
-        else
-            {
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Неверный логин или пароль!", Toast.LENGTH_SHORT);
-                toast.show();
-                password.setText("");
 
-            }
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Неверный логин или пароль!", Toast.LENGTH_SHORT);
+            toast.show();
+            password.setText("");
+
+        }
     }
 }

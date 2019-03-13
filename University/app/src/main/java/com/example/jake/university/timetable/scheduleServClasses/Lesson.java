@@ -57,12 +57,13 @@ public class Lesson
         this.cabNum = cabNum;
     }
 
-    public Lesson(String pairName, String teacherName, String pairType, String cabNum)
+    public Lesson(String pairName, String teacherName, String pairType, String cabNum, String time)
     {
         this.pairName = pairName;
         this.teacherName = teacherName;
         this.pairType = pairType;
         this.cabNum = cabNum;
+        this.time = time;
     }
 
     public Lesson(boolean isPair)

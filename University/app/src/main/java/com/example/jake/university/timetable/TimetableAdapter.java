@@ -17,50 +17,49 @@ import com.example.jake.university.timetable.scheduleServClasses.Lesson;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-public class TimetableAdapter extends ArrayAdapter<Day> {
+public class TimetableAdapter extends ArrayAdapter<Lesson> {
     private LayoutInflater inflater;
     private int layout;
-    private ArrayList<Day> itemList;
-    private boolean parity;
+    private ArrayList<Lesson> itemList;
 
-    public TimetableAdapter (@NonNull Context context, int resource, ArrayList<Day> items) {
+    public TimetableAdapter(@NonNull Context context, int resource, ArrayList<Lesson> items) {
         super(context, resource, items);
         this.itemList = items;
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
     }
+
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         final TimetableAdapter.ViewHolder viewHolder;
-        if(convertView==null){
+        if (convertView == null) {
             convertView = inflater.inflate(this.layout, parent, false);
-            viewHolder = new TimetableAdapter.ViewHolder(convertView);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        else{
-            viewHolder = (TimetableAdapter.ViewHolder) convertView.getTag();
-        }
-        final Day item = itemList.get(position);
-        TimetableDayAdapter adapter = null;
-        ArrayList<Lesson> even = item.getEven();
-        ArrayList<Lesson> odd = item.getOdd();
-        if(parity)
-            adapter = new TimetableDayAdapter(convertView.getContext(), R.layout.item_pair, even);
-        else
-            adapter = new TimetableDayAdapter(convertView.getContext(), R.layout.item_pair, odd);
-        ListView lv = (ListView) convertView.findViewById(R.id.pairLV);
-        lv.setAdapter(adapter);
+        final Lesson item = itemList.get(position);
+        viewHolder.pairNameTV.setText(item.getPairName());
+        viewHolder.lectureHallTV.setText(item.getCabNum());
+        viewHolder.teacherTV.setText(item.getTeacherName());
+        viewHolder.typePairTV.setText(item.getPairType());
+        viewHolder.timePairTV.setText(item.getTime());
+
         return convertView;
     }
 
     private class ViewHolder {
-        final ListView pairLV;
-        final TextView dateTV, dayOfWeekTV;
-        ViewHolder(View view){
-            pairLV = (ListView) view.findViewById(R.id.pairLV);
-            dateTV = (TextView) view.findViewById(R.id.dateTV);
-            dayOfWeekTV = (TextView) view.findViewById(R.id.dayOfWeek);
+        final TextView timePairTV, typePairTV, pairNameTV, teacherTV, lectureHallTV;
+
+        ViewHolder(View view) {
+            timePairTV = (TextView) view.findViewById(R.id.timePairTV);
+            typePairTV = (TextView) view.findViewById(R.id.typePairTV);
+            pairNameTV = (TextView) view.findViewById(R.id.pairNameTV);
+            teacherTV = (TextView) view.findViewById(R.id.teacherTV);
+            lectureHallTV = (TextView) view.findViewById(R.id.lectureHallTV);
         }
     }
 }

@@ -27,9 +27,6 @@ public class FragmentArrears extends Fragment {
     public FragmentArrears() throws InterruptedException, ExecutionException, JSONException {
     }
 
-    /* JSONArray arr;
-     JSONObject jobj;
-     postReq comand;*/
     public static FragmentArrears getInstance() throws InterruptedException, ExecutionException, JSONException {
         Bundle args = new Bundle();
         FragmentArrears fragment = new FragmentArrears();
@@ -37,6 +34,7 @@ public class FragmentArrears extends Fragment {
 
         return fragment;
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,19 +45,6 @@ public class FragmentArrears extends Fragment {
         lv.setAdapter(adapter);
         return view;
     }
-    /*protected ArrayList<ExamItem> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
-        jobj = new JSONObject();
-        comand = new postReq();
-        comand.execute("10","A_LKS_GetMarks","0x8001000000027C02").get();
-        arr = comand.getjARRAY();
-        ArrayList<ExamItem> list = new ArrayList();
-        for (int i=0; i<arr.length(); i++) {
-            jobj = arr.getJSONObject(i);
-            if (jobj.getString("Положит").equals("0")) {
-                list.add(new ExamItem(jobj.getString("Наименование дисциплины"),
-                        jobj.getString("Тип"), jobj.getString("Семестр")));
-            }
-        }
-        return list;
-    }*/
 }
+
+

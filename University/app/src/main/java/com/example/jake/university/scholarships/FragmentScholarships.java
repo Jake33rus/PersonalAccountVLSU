@@ -44,25 +44,4 @@ public class FragmentScholarships extends Fragment {
         lv.setAdapter(adapter);
         return view;
     }
-
-
-   /* protected ArrayList<Scholarships> ReadInDB() throws ExecutionException, InterruptedException, JSONException {
-
-       /* jobj = new JSONObject();
-        comand = new postReq();
-        comand.execute("10","A_LKS_GetBonuses","0x8001000000027C02").get();
-        arr = comand.getjARRAY();
-        ArrayList<Scholarships> list = new ArrayList<>();
-        for (int i=0; i<arr.length(); i++)
-        {
-            jobj=arr.getJSONObject(i);
-            list.add(new Scholarships(jobj.getString("Тип"), jobj.getString("Дата начала"),
-                    jobj.getString("Дата окончания"), jobj.getString("Сумма")));
-        }*/
-       /*ArrayList<Scholarships> list = new ArrayList<>();
-       list.add(new Scholarships("Академическая стипендия","01.09.2017","31.01.2018","1653"));
-       list.add(new Scholarships("Академическая стипендия","01.02.2018","31.07.2018","2066"));
-       list.add(new Scholarships("Академическая стипендия","01.08.2018","31.01.2019","2066"));
-        return list;
-    }*/
 }

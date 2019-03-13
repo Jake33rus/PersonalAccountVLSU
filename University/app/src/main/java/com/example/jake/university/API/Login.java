@@ -201,7 +201,7 @@ public class Login extends AppCompatActivity {
         if (result[0] != "0")
         {
             Intent toLock = new Intent(this, LockScreenActivity.class);
-            toLock.putExtra("nrec", result[0]);
+            toLock.putExtra("nrec", "puuuuuuut");
             startActivity(toLock);
             finish();
 

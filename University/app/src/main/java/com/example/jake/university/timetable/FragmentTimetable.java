@@ -10,15 +10,12 @@ import android.widget.TextView;
 
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.UIUtiles;
-import com.example.jake.university.exams.TabsPagerFragmentAdapter;
 import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.timetable.scheduleServClasses.Day;
 import com.example.jake.university.timetable.scheduleServClasses.Lesson;
 import com.example.jake.university.timetable.scheduleServClasses.TimeController;
-import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -28,7 +25,6 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 public class FragmentTimetable extends Fragment {
@@ -56,7 +52,7 @@ public class FragmentTimetable extends Fragment {
         TimetableAdapter adapter = null;
         ArrayList<Day> days = singleton.getTimetable().getSchedule();
         ArrayList<Lesson> lessons= null;
-        TextView numberOfPairs = (TextView) view.findViewById(R.id.numberOfPairs);
+        TextView numberOfPairs = (TextView) view.findViewById(R.id.chooseTeacher);
         TextView numbersOfWeek = (TextView) view.findViewById(R.id.numbersOfWeekTV);
         TextView parityOfWeek = (TextView) view.findViewById(R.id.parityOfWeekTV);
         if(TimeController.getWeekTypeByDate() == 1)
@@ -65,27 +61,27 @@ public class FragmentTimetable extends Fragment {
             parity = false;
         TimetableAdapter adapter1 = null;
         ListView lv1 = (ListView) view.findViewById(R.id.pairLV1);
-        TextView date1 = (TextView) view.findViewById(R.id.dateTV1);
+        TextView date1 = (TextView) view.findViewById(R.id.lectureDateTV1);
         TextView dayOfWeek1 = (TextView) view.findViewById(R.id.dayOfWeek1);
         TimetableAdapter adapter2 = null;
         ListView lv2 = (ListView) view.findViewById(R.id.pairLV2);
-        TextView date2 = (TextView) view.findViewById(R.id.dateTV2);
+        TextView date2 = (TextView) view.findViewById(R.id.lectureDateTV2);
         TextView dayOfWeek2 = (TextView) view.findViewById(R.id.dayOfWeek2);
         TimetableAdapter adapter3 = null;
         ListView lv3 = (ListView) view.findViewById(R.id.pairLV3);
-        TextView date3 = (TextView) view.findViewById(R.id.dateTV3);
+        TextView date3 = (TextView) view.findViewById(R.id.lectureDateTV3);
         TextView dayOfWeek3 = (TextView) view.findViewById(R.id.dayOfWeek3);
         TimetableAdapter adapter4 = null;
         ListView lv4 = (ListView) view.findViewById(R.id.pairLV4);
-        TextView date4 = (TextView) view.findViewById(R.id.dateTV4);
+        TextView date4 = (TextView) view.findViewById(R.id.lectureDateTV4);
         TextView dayOfWeek4 = (TextView) view.findViewById(R.id.dayOfWeek4);
         TimetableAdapter adapter5 = null;
         ListView lv5 = (ListView) view.findViewById(R.id.pairLV5);
-        TextView date5 = (TextView) view.findViewById(R.id.dateTV5);
+        TextView date5 = (TextView) view.findViewById(R.id.lectureDateTV5);
         TextView dayOfWeek5 = (TextView) view.findViewById(R.id.dayOfWeek5);
         TimetableAdapter adapter6 = null;
         ListView lv6 = (ListView) view.findViewById(R.id.pairLV6);
-        TextView date6 = (TextView) view.findViewById(R.id.dateTV6);
+        TextView date6 = (TextView) view.findViewById(R.id.lectureDateTV6);
         TextView dayOfWeek6 = (TextView) view.findViewById(R.id.dayOfWeek6);
         if(parity) {
             parityOfWeek.setText("Эта неделя - числитель");

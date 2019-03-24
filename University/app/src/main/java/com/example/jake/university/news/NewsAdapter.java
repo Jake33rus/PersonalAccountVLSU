@@ -50,8 +50,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.nwDate.setText(ni.getDate());
         holder.nwTitle.setText(ni.getTitle());
         Picasso.get().load(ni.getImgUrl()).into(holder.nwPic);
-
-        /*holder.nwPic*/
     }
 
     @Override

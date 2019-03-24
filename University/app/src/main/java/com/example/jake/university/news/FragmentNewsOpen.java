@@ -89,7 +89,7 @@ public class FragmentNewsOpen extends Fragment {
                 {
                     imgURL = contentImg.first().absUrl("src");
                 }
-                else{imgURL = "https://i.ytimg.com/vi/iEjtJROdPVI/hqdefault.jpg";}
+                else{imgURL = "https://smedvedem.ru/image/cache/catalog/logo/net_foto-1200x800.png";}
 
 
 

@@ -3,17 +3,20 @@ package com.example.jake.university;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.jake.university.exams.FragmentExamsAndArrears;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.payment.FragmentPayment;
 import com.example.jake.university.profile.FragmentProfile;
+import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.scholarships.FragmentScholarships;
 import com.example.jake.university.timetable.FragmentLecturerSchedule;
 import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
+import org.w3c.dom.Text;
 
 import java.util.concurrent.ExecutionException;
 
@@ -34,6 +37,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDrawerlayout = findViewById(R.id.drawer);
+        TextView tvHeaderName = (TextView) findViewById(R.id.tvHeaderName);
+        try {
+            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);

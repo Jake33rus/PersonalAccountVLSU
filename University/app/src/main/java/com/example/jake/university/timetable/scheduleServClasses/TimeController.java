@@ -41,8 +41,9 @@ public class TimeController {
         for (int i = 2; i < 9 ; i++)
         {
             int weekday = calendar.get(Calendar.DAY_OF_WEEK);
+            if(weekday == 1)
+                weekday = 8;
             int days = i-weekday;
-            if(days < 0) days += 7;
             calendar.add(Calendar.DAY_OF_YEAR, days);
             Date date = calendar.getTime();
             week.add(j, df.format(date));

@@ -32,8 +32,7 @@ public class Singleton {
     ArrayList<Scholarships> scholarships;
     ProfileInfo profileInfo;
     WeekSchedule schedule;
-    HashSet<String> lecturersList;
-
+    HashSet<String> lecturersList;;
 
     boolean parity;
 
@@ -49,7 +48,6 @@ public class Singleton {
         setUpcomingExams();
         setProfileInfo();
         setScholarships();
-        setLecturersList();
     }
 
     private void setArrears() throws JSONException, ExecutionException, InterruptedException {

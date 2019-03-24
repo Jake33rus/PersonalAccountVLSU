@@ -63,7 +63,7 @@ public class FragmentNews extends Fragment {
         rv = (RecyclerView) view.findViewById(R.id.NewsView);
         rv.setHasFixedSize(true);
         newsItems = new ArrayList<>();
-        nextPageLink = "http://www.vlsu.ru/index.php?id=1412";
+        nextPageLink = "http://www.vlsu.ru/index.php?id=1";
         new NewThread().execute();
         layoutManager = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(layoutManager);

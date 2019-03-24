@@ -3,7 +3,9 @@ package com.example.jake.university.API;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
@@ -51,6 +53,10 @@ public class Login extends AppCompatActivity {
     private FingerprintManager.CryptoObject cryptoObject;
     private FingerprintManager fingerprintManager;
     private KeyguardManager keyguardManager;
+    public static final String APP_PREFERENCES = "login_vault";
+    public static final String APP_SAVED_LOGIN = "saved_login";
+    public static final String APP_SAVED_NREC = "saved_nrec";
+    private SharedPreferences checkingLogin;
 
     private AlertDialog.Builder ad;
 
@@ -61,6 +67,16 @@ public class Login extends AppCompatActivity {
 
         ImageView fp = (ImageView) findViewById(R.id.fingerprint);
         ImageView ad = (ImageView) findViewById(R.id.arrowDown);
+        TextView login = (TextView) findViewById(R.id.loginField);
+
+        if (checkingLogin.contains(APP_SAVED_LOGIN))
+        {
+            String buf = checkingLogin.getString(APP_SAVED_LOGIN, "DEFAULT");
+            if(!buf.equals("DEFAULT"))
+            {login.setText(buf);}
+        }
+
+        checkingLogin = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -100,7 +116,7 @@ public class Login extends AppCompatActivity {
                     //If the cipher is initialized successfully, then create a CryptoObject instance//
                     cryptoObject = new FingerprintManager.CryptoObject(cipher);
 
-                    FingerprintHandler helper = new FingerprintHandler(this);
+                    FingerprintHandler helper = new FingerprintHandler(this, "put", checkingLogin);
                     helper.startAuth(fingerprintManager, cryptoObject);
 
                 }
@@ -200,8 +216,13 @@ public class Login extends AppCompatActivity {
 
         if (result[0] != "0")
         {
+            SharedPreferences.Editor editor = checkingLogin.edit();
+            editor.putString(APP_SAVED_LOGIN, logStr);
+            editor.putString(APP_SAVED_NREC, result[0]);
+            editor.apply();
+
             Intent toLock = new Intent(this, LockScreenActivity.class);
-            toLock.putExtra("nrec", "puuuuuuut");
+            toLock.putExtra("nrec", result[0]);
             startActivity(toLock);
             finish();
 

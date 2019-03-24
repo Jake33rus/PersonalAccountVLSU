@@ -3,6 +3,7 @@ package com.example.jake.university.adapter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.Manifest;
@@ -10,12 +11,14 @@ import android.os.Build;
 import android.os.CancellationSignal;
 import android.widget.Toast;
 
+import com.example.jake.university.LockScreenActivity;
 import com.example.jake.university.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import static androidx.core.content.ContextCompat.startActivity;
+
 
 @TargetApi(Build.VERSION_CODES.M)
 public class FingerprintHandler extends  FingerprintManager.AuthenticationCallback
@@ -25,10 +28,18 @@ public class FingerprintHandler extends  FingerprintManager.AuthenticationCallba
 
     private CancellationSignal cancellationSignal;
     private Context context;
+    private String login;
+    private SharedPreferences checkingLogin;
+    public static final String APP_PREFERENCES = "login_vault";
+    public static final String APP_SAVED_LOGIN = "saved_login";
+    public static final String APP_SAVED_NREC = "saved_nrec";
 
-    public FingerprintHandler(Context mContext)
+
+    public FingerprintHandler(Context mContext, String login, SharedPreferences checkingLogin)
     {
         context = mContext;
+        this.login=login;
+        this.checkingLogin=checkingLogin;
     }
 
     //Implement the startAuth method, which is responsible for starting the fingerprint authentication process//
@@ -74,13 +85,23 @@ public class FingerprintHandler extends  FingerprintManager.AuthenticationCallba
     public void onAuthenticationSucceeded(
             FingerprintManager.AuthenticationResult result)
     {
-
-        starterActivity(context);
+        if (checkingLogin.contains(APP_SAVED_LOGIN))
+        {
+            String buf = checkingLogin.getString(APP_SAVED_LOGIN, "DEFAULT");
+            if(buf.equals(login))
+            {starterActivity(context, checkingLogin);}
+        }
     }
 
-    public static void starterActivity(Context context)
+    public static void starterActivity(Context context, SharedPreferences sp)
     {
-        context.startActivity(new Intent(context, MainActivity.class));
+        //context.startActivity(new Intent(context, MainActivity.class));
+
+        String buf = sp.getString(APP_SAVED_NREC, "DEFAULT");
+        Intent toLock = new Intent(context, LockScreenActivity.class);
+        toLock.putExtra("nrec", buf);
+        context.startActivity(toLock);
+
     }
 
 }

@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.jake.university.API.ScheduleAlarms;
 import com.example.jake.university.exams.FragmentExamsAndArrears;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.payment.FragmentPayment;
@@ -19,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 import org.json.JSONException;
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
@@ -33,27 +35,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
     private FragmentTransaction ftrans;
+    private HashMap<Integer, Integer> times;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        times.put(8,0);
+        times.put(10,0);
+        times.put(11,50);
+        times.put(13,40);
+        times.put(15,30);
+        times.put(17,20);
+        times.put(19,10);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDrawerlayout = findViewById(R.id.drawer);
+        try {
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
-        try {
             tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
         }
         navigationView.setNavigationItemSelectedListener(this);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();
+        ScheduleAlarms.getInstance().startAlarm(this, "12", "55", 100); //генерируем алларм на 12 55
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView.setCheckedItem(R.id.nav_news);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

@@ -60,7 +60,7 @@ public class postReq extends AsyncTask<String, Void, Void>
         JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
         TripleDES coder = new TripleDES();
-        String myURL = "http://172.18.14.9:3000/getData";
+        String myURL = "http://172.18.14.165:3000/getData";
         byte[] data = null;
         InputStream is = null;
 

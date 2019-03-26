@@ -13,10 +13,15 @@
         android:title="@string/profile_title"
         android:icon="@drawable/ic_account_circle"/>
     <item
-        android:id="@+id/nav_arrears"
-        android:title="@string/exams_arrears_title"
-        android:checkable="true"
-        android:icon="@drawable/ic_clipboard_text"/>
+       android:id="@+id/nav_arrears"
+       android:title="@string/exams_arrears_title"
+       android:checkable="true"
+       android:icon="@drawable/ic_clipboard_text"/>
+    <item
+       android:id="@+id/nav_ranked"
+       android:title="@string/ranked_title"
+       android:checkable="true"
+       android:icon="@drawable/ic_clipboard_text"/>
     <item
         android:id="@+id/nav_payment"
         android:title="@string/payments_title"

@@ -12,6 +12,7 @@ import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.payment.FragmentPayment;
 import com.example.jake.university.profile.FragmentProfile;
 import com.example.jake.university.profile.Singleton;
+import com.example.jake.university.ranked.FragmentRanked;
 import com.example.jake.university.scholarships.FragmentScholarships;
 import com.example.jake.university.timetable.FragmentLecturerSchedule;
 import com.example.jake.university.timetable.FragmentTimetable;
@@ -50,11 +51,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDrawerlayout = findViewById(R.id.drawer);
-        try {
         NavigationView navigationView = findViewById(R.id.nav_view);
+        try {
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
-            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
+        tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -116,6 +117,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_profile:
                 try {
                     ftrans.replace(R.id.fragment_container, new FragmentProfile()).addToBackStack(null).commit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.nav_ranked:
+                try {
+                    ftrans.replace(R.id.fragment_container, new FragmentRanked()).addToBackStack(null).commit();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {

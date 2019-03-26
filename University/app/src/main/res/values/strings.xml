@@ -29,4 +29,5 @@
     <string name="lectureHall">Аудитория</string>
     <string name="schedule">Расписание</string>
     <string name="lec_schedule">Расписание преподавателей</string>
+    <string name="ranked_title">Рейтинги</string>
 </resources>

@@ -69,14 +69,14 @@ public class Login extends AppCompatActivity {
         ImageView ad = (ImageView) findViewById(R.id.arrowDown);
         TextView login = (TextView) findViewById(R.id.loginField);
 
+        checkingLogin = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+
         if (checkingLogin.contains(APP_SAVED_LOGIN))
         {
             String buf = checkingLogin.getString(APP_SAVED_LOGIN, "DEFAULT");
             if(!buf.equals("DEFAULT"))
             {login.setText(buf);}
         }
-
-        checkingLogin = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 

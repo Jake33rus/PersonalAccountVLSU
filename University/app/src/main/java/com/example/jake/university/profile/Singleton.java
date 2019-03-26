@@ -1,11 +1,14 @@
 package com.example.jake.university.profile;
 
 import com.example.jake.university.API.postReq;
+import com.example.jake.university.ranked.RankedItem;
 import com.example.jake.university.scholarships.Scholarships;
 import com.example.jake.university.exams.ExamItem;
+import com.example.jake.university.timetable.TimetableAdapter;
 import com.example.jake.university.timetable.WeekSchedule;
 import com.example.jake.university.timetable.scheduleServClasses.Day;
 import com.example.jake.university.timetable.scheduleServClasses.Lesson;
+import com.example.jake.university.timetable.scheduleServClasses.TimeController;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +24,7 @@ public class Singleton {
 
     /*Поля класса*/
     String nrec;
+    String studentID;
     BigInteger longNrec;
     String bigNrec;
     JSONArray arrExams;
@@ -32,7 +36,8 @@ public class Singleton {
     ArrayList<Scholarships> scholarships;
     ProfileInfo profileInfo;
     WeekSchedule schedule;
-    HashSet<String> lecturersList;;
+    HashSet<String> lecturersList;
+    ArrayList<RankedItem> rankedList;
 
     boolean parity;
 
@@ -48,6 +53,7 @@ public class Singleton {
         setUpcomingExams();
         setProfileInfo();
         setScholarships();
+        setRankedList();
     }
 
     private void setArrears() throws JSONException, ExecutionException, InterruptedException {
@@ -111,10 +117,12 @@ public class Singleton {
         comand.execute("10","A_LKS_GetStudentInfo_Mobile",nrec).get();
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
+        studentID = obj.getString("ID64");
         profileInfo = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
                 obj.getString("Источник финансирования обучения"),
                 obj.getString("Форма обучения"), obj.getString("Группа"),
-                obj.getString("Специальность"), "fdsf", "01.01.2018", obj.getString("Номер контактного телефона"));
+                obj.getString("Специальность"), "fdsf", "01.01.2018",
+                obj.getString("Номер контактного телефона"), obj.getString("Email"));
     }
     private void setTimetable() throws JSONException, ExecutionException, InterruptedException
     {
@@ -170,4 +178,42 @@ public class Singleton {
         return instance;
     }
     public static Singleton getter() {return instance;}
+
+    public ArrayList<Lesson> getTodayPairs()
+    {
+        ArrayList<Lesson> todayLesson = new ArrayList<>();
+        if(TimeController.getWeekTypeByDate() == 1)
+           todayLesson = getTimetable().getSchedule().get(TimeController.getDayOfWeekNumber()).getEven();
+        else if (TimeController.getWeekTypeByDate() == 2)
+            todayLesson = getTimetable().getSchedule().get(TimeController.getDayOfWeekNumber()).getOdd();
+        return todayLesson;
+    }
+
+    public ArrayList<RankedItem> getRankedItems() {
+        return rankedList;
+    }
+    public void setRankedList() throws ExecutionException, InterruptedException, JSONException {
+        rankedList = new ArrayList<>();
+        JSONObject obj = new JSONObject();
+        postReq comand = new postReq();
+        String name = "", rank1 = "", rank2 = "", rank3 = "";
+        comand.execute("35","0","select * from _getRatingMarks(4,"+studentID+","+4+",-1,-1,'',-1)").get();
+        JSONArray arr = comand.getjARRAY();
+        for(int i = 0; i<arr.length(); i++){
+            obj = arr.getJSONObject(i);
+            if(arr.getJSONObject(i).getInt("number")==1)
+            {
+                name = obj.getString("name_dis");
+                rank1 = obj.getString("mark");
+            }
+            if(arr.getJSONObject(i).getInt("number")==2)
+                rank2 = obj.getString("mark");
+            if(arr.getJSONObject(i).getInt("number")==3)
+                rank3 = obj.getString("mark");
+            if(arr.getJSONObject(i+1).getInt("number")==1){
+                rankedList.add(new RankedItem(name, rank1, rank2, rank3));
+                name = ""; rank1 = ""; rank2 = ""; rank3 = "";
+            }
+        }
+    }
 }

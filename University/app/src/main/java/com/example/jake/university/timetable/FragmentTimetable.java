@@ -53,6 +53,20 @@ public class FragmentTimetable extends Fragment {
         ArrayList<Day> days = singleton.getTimetable().getSchedule();
         ArrayList<Lesson> lessons= null;
         TextView numberOfPairs = (TextView) view.findViewById(R.id.chooseTeacher);
+
+        int size = 0;
+        for (Lesson lesson: singleton.getTodayPairs()) {
+            if(lesson.isPair())
+                size++;
+        }
+        String pair;
+        if(size == 1)
+            pair = " пара";
+        else if(size >= 5)
+            pair = " пар";
+        else
+            pair = " пары";
+        numberOfPairs.setText("Сегодня " + size + pair);
         TextView numbersOfWeek = (TextView) view.findViewById(R.id.numbersOfWeekTV);
         TextView parityOfWeek = (TextView) view.findViewById(R.id.parityOfWeekTV);
         if(TimeController.getWeekTypeByDate() == 1)

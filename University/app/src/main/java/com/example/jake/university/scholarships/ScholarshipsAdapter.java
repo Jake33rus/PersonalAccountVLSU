@@ -38,7 +38,27 @@ public class ScholarshipsAdapter extends ArrayAdapter<Scholarships> {
         }
         final Scholarships item = itemList.get(position);
 
-        viewHolder.typeTV.setText(item.getType());
+
+        switch (Integer.parseInt(item.getType())){
+            case 30023:
+                viewHolder.typeTV.setText("Академическая стипендия");
+                break;
+            case 30011:
+                viewHolder.typeTV.setText("Социальная стипендия");
+                break;
+            case 30003:
+                viewHolder.typeTV.setText("Материальная помощь");
+                break;
+            case 30020:
+                viewHolder.typeTV.setText("Академическая стипендия (240 по ЕГЭ)");
+                break;
+            case 30026:
+                viewHolder.typeTV.setText("Повышенная академическая стипендия");
+                break;
+            case 30027:
+                viewHolder.typeTV.setText("Повышенная социальная стипендия");
+                break;
+        }
         viewHolder.preDateTV.setText(item.getPreDate());
         viewHolder.postDateTV.setText(item.getPostDate());
         viewHolder.summTV.setText(item.getSumm());

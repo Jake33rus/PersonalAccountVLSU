@@ -45,7 +45,7 @@ public class JSOUP_parser
                 String textL = contents.get_lSide().child(3).text();
                 textL.replace("[подробнее]", "");
 
-                String imgSrcL = "https://i.ytimg.com/vi/iEjtJROdPVI/hqdefault.jpg";
+                String imgSrcL = "https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png";
                 Elements eh = contents.get_lSide().select("img[src~=(?i)\\.(jpe?g)]");
                 if (eh.size() > 0) {
                     imgSrcL = eh.first().absUrl("src");
@@ -58,7 +58,7 @@ public class JSOUP_parser
                 String textR = contents.get_rSide().child(3).text();
                 textR.replace("[подробнее]", "");
 
-                String imgSrcR = "https://i.ytimg.com/vi/iEjtJROdPVI/hqdefault.jpg";
+                String imgSrcR = "https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png";
                 eh = contents.get_rSide().select("img[src~=(?i)\\.(jpe?g)]");
                 if (eh.size() > 0) {
                     imgSrcR = eh.first().absUrl("src");

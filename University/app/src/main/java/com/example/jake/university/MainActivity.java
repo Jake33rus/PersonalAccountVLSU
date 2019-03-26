@@ -3,6 +3,7 @@ package com.example.jake.university;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.jake.university.exams.FragmentExamsAndArrears;
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDrawerlayout = findViewById(R.id.drawer);
-        TextView tvHeaderName = (TextView) findViewById(R.id.tvHeaderName);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headView = navigationView.getHeaderView(0);
+        TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
         try {
             tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
         } catch (ExecutionException e) {
@@ -47,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
@@ -136,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                break;
             case R.id.nav_timetable_lec:
                 ftrans.replace(R.id.fragment_container, new FragmentLecturerSchedule()).addToBackStack(null).commit();
         }

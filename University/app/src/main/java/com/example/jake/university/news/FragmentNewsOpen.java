@@ -89,7 +89,10 @@ public class FragmentNewsOpen extends Fragment {
                 {
                     imgURL = contentImg.first().absUrl("src");
                 }
-                else{imgURL = "https://smedvedem.ru/image/cache/catalog/logo/net_foto-1200x800.png";}
+                else{
+                    imgURL = "https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png";
+                    IV.setVisibility(View.INVISIBLE);
+                }
 
 
 
@@ -104,6 +107,8 @@ public class FragmentNewsOpen extends Fragment {
         {
             TV.setText(Text);
             Picasso.get().load(imgURL).into(IV);
+            if(IV.getVisibility()==View.INVISIBLE)
+                IV.setVisibility(View.GONE);
         }
 
     }

@@ -25,6 +25,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText"
+        android:shadowColor="@color/Black"
+        android:shadowRadius="8"
         tools:layout_width="wrap_content" />
 
 </LinearLayout>

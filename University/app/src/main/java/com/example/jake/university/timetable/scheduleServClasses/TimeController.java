@@ -54,7 +54,7 @@ public class TimeController {
     public static int getDayOfWeekNumber()
     {
         Calendar calendar = Calendar.getInstance();
-        return calendar.get(Calendar.DAY_OF_WEEK);
+        return calendar.get(Calendar.DAY_OF_WEEK)-2;
     }
     public static int getWeekTypeByDate()
     {

@@ -2,7 +2,7 @@ package com.example.jake.university.profile;
 
 public class ProfileInfo
 {
-    public ProfileInfo(String FIO, String faculty, String finType, String educForm, String group, String speciality, String photo, String startDate, String phoneNum) {
+    public ProfileInfo(String FIO, String faculty, String finType, String educForm, String group, String speciality, String photo, String startDate, String phoneNum, String email) {
         this.FIO = FIO;
         Faculty = faculty;
         FinType = finType;
@@ -12,6 +12,7 @@ public class ProfileInfo
         Photo = photo;
         StartDate = startDate;
         PhoneNum = phoneNum;
+        Email = email;
     }
 
     public ProfileInfo() {
@@ -98,4 +99,14 @@ public class ProfileInfo
     private String Photo;
     private String StartDate;
     private String PhoneNum;
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    private String Email;
 }

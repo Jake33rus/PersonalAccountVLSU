@@ -95,10 +95,10 @@ public class FragmentLecturerSchedule extends Fragment {
                     toast.setGravity(Gravity.CENTER,0,0);
                     toast.show();
                 }
-                else{
+                else {
                     postReq comand = new postReq();
                     try {
-                        comand.execute("10", "[dbo].[A_LKS_GetLecturesListGal]","0,0,0,'',"+lectureFio+",'','',0,0").get();
+                        comand.execute("10", "[dbo].[A_LKS_GetLecturesListGal]", "0,0,0,'','" + lectureFio + "','','',0,0").get();
                     } catch (ExecutionException | InterruptedException e) {
                         Toast toast = Toast.makeText(myContext, "Такого преподавателя нет!",
                                 Toast.LENGTH_SHORT);
@@ -109,16 +109,16 @@ public class FragmentLecturerSchedule extends Fragment {
                     try {
                         String lecNrec = arr.getJSONObject(0).getString("nrec_lec");
                         postReq comand2 = new postReq();
-                        comand2.execute("10", "[dbo].[_A_SCD_StudSchedule]", "2," +lecNrec+ ",0,0,-1,2018,0,-1").get();
+                        comand2.execute("10", "[dbo].[_A_SCD_StudSchedule]", "2,'" + lecNrec + "',0,0,-1,2018,0,-1").get();
                         schedule = new WeekSchedule(comand2.getjARRAY());
 
                     } catch (JSONException | InterruptedException | ExecutionException e) {
-                       e.printStackTrace();
+                        e.printStackTrace();
                     }
+                    initSchedule();
                 }
             }
         });
-        initSchedule();
         return view;
     }
     private void initSchedule(){

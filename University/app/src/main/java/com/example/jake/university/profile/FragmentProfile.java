@@ -37,6 +37,7 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
         tvStudyForm.setText(info.getEducForm());
         tvFinans.setText(info.getFinType());
         tvMobile.setText(info.getPhoneNum());
+        tvEmail.setText(info.getEmail());
         return view;
     }
     void initViews() {

@@ -4,7 +4,6 @@ import com.example.jake.university.API.postReq;
 import com.example.jake.university.ranked.RankedItem;
 import com.example.jake.university.scholarships.Scholarships;
 import com.example.jake.university.exams.ExamItem;
-import com.example.jake.university.timetable.TimetableAdapter;
 import com.example.jake.university.timetable.WeekSchedule;
 import com.example.jake.university.timetable.scheduleServClasses.Day;
 import com.example.jake.university.timetable.scheduleServClasses.Lesson;
@@ -17,7 +16,6 @@ import org.json.JSONObject;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Singleton {
@@ -199,7 +197,7 @@ public class Singleton {
         String name = "", rank1 = "", rank2 = "", rank3 = "";
         comand.execute("35","0","select * from _getRatingMarks(4,"+studentID+","+4+",-1,-1,'',-1)").get();
         JSONArray arr = comand.getjARRAY();
-        for(int i = 0; i<arr.length(); i++){
+        for(int i = 0; i < arr.length(); i++){
             obj = arr.getJSONObject(i);
             if(arr.getJSONObject(i).getInt("number")==1)
             {
@@ -210,6 +208,12 @@ public class Singleton {
                 rank2 = obj.getString("mark");
             if(arr.getJSONObject(i).getInt("number")==3)
                 rank3 = obj.getString("mark");
+            if(i+1==arr.length())
+            {
+                rankedList.add(new RankedItem(name, rank1, rank2, rank3));
+                name = ""; rank1 = ""; rank2 = ""; rank3 = "";
+                break;
+            }
             if(arr.getJSONObject(i+1).getInt("number")==1){
                 rankedList.add(new RankedItem(name, rank1, rank2, rank3));
                 name = ""; rank1 = ""; rank2 = ""; rank3 = "";

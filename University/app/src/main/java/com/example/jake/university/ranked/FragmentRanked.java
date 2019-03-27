@@ -8,9 +8,7 @@ import android.widget.ListView;
 
 import com.example.jake.university.R;
 import com.example.jake.university.profile.Singleton;
-import com.example.jake.university.scholarships.ScholarshipsAdapter;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;

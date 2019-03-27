@@ -9,11 +9,9 @@ import android.widget.TextView;
 
 import com.example.jake.university.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import androidx.annotation.NonNull;
 
+import androidx.annotation.NonNull;
 
 
 public class RankedAdapter extends ArrayAdapter<RankedItem> {

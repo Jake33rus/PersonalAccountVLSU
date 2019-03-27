@@ -3,30 +3,23 @@ package com.example.jake.university;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
-<<<<<<< HEAD
 import android.view.View;
 import android.widget.TextView;
-=======
->>>>>>> parent of 640b9fd... mini fix
 
-import com.example.jake.university.API.ScheduleAlarms;
 import com.example.jake.university.exams.FragmentExamsAndArrears;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.payment.FragmentPayment;
 import com.example.jake.university.profile.FragmentProfile;
-<<<<<<< HEAD
 import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.ranked.FragmentRanked;
-=======
->>>>>>> parent of 640b9fd... mini fix
 import com.example.jake.university.scholarships.FragmentScholarships;
 import com.example.jake.university.timetable.FragmentLecturerSchedule;
 import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
+import org.w3c.dom.Text;
 
-import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
@@ -41,41 +34,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
     private FragmentTransaction ftrans;
-    private HashMap<Integer, Integer> times;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        times.put(8,0);
-        times.put(10,0);
-        times.put(11,50);
-        times.put(13,40);
-        times.put(15,30);
-        times.put(17,20);
-        times.put(19,10);
-
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDrawerlayout = findViewById(R.id.drawer);
         NavigationView navigationView = findViewById(R.id.nav_view);
-<<<<<<< HEAD
-        try {
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
-        tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
+        /*try {
+            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-            e.printStackTrace();
         } catch (JSONException e) {
-        }
-=======
->>>>>>> parent of 640b9fd... mini fix
+            e.printStackTrace();
+        }*/
         navigationView.setNavigationItemSelectedListener(this);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();
-        ScheduleAlarms.getInstance().startAlarm(this, "12", "55", 100); //генерируем алларм на 12 55
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView.setCheckedItem(R.id.nav_news);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -133,17 +112,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     e.printStackTrace();
                 }
                 break;
-            case R.id.nav_ranked:
-                try {
-                    ftrans.replace(R.id.fragment_container, new FragmentRanked()).addToBackStack(null).commit();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
             case R.id.nav_arrears:
                 ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).addToBackStack(null).commit();
                 break;
@@ -153,6 +121,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_scholarships:
                 try {
                     ftrans.replace(R.id.fragment_container, new FragmentScholarships()).addToBackStack(null).commit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.nav_ranked:
+                try {
+                    ftrans.replace(R.id.fragment_container, new FragmentRanked()).addToBackStack(null).commit();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {

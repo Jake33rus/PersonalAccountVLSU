@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/tvRanked1"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/tvRanked2"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
 
     <TextView
         android:id="@+id/tvRanked3"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"

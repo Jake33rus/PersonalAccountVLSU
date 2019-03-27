@@ -8,18 +8,20 @@
     android:padding="20dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView7"
+        android:layout_width="262dp"
         android:layout_height="wrap_content"
-        android:text = "Иванов Иван Иванович"
+        android:text="Добрый день!"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText" />
+        android:textSize="18sp" />
+
     <TextView
+        android:id="@+id/tvHeaderName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="mymail@mymail.ru"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:text="Иванов Иван Иванович"
         android:textColor="@color/colorWhite"
-<<<<<<< HEAD
         android:textSize="18sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText"
@@ -27,14 +29,4 @@
         android:shadowRadius="8"
         tools:layout_width="wrap_content" />
 
-=======
-        tools:ignore="HardcodedText" />
-    <androidx.appcompat.widget.AppCompatImageView
-        android:src="@drawable/photo"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        tools:ignore="RtlHardcoded" />
->>>>>>> parent of 640b9fd... mini fix
 </LinearLayout>

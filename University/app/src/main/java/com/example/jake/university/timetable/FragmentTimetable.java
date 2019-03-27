@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.jake.university.R;
 import com.example.jake.university.adapter.UIUtiles;
 import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.timetable.scheduleServClasses.Day;

@@ -3,23 +3,28 @@ package com.example.jake.university;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import android.view.View;
 import android.widget.TextView;
+=======
+>>>>>>> parent of 640b9fd... mini fix
 
 import com.example.jake.university.API.ScheduleAlarms;
 import com.example.jake.university.exams.FragmentExamsAndArrears;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.payment.FragmentPayment;
 import com.example.jake.university.profile.FragmentProfile;
+<<<<<<< HEAD
 import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.ranked.FragmentRanked;
+=======
+>>>>>>> parent of 640b9fd... mini fix
 import com.example.jake.university.scholarships.FragmentScholarships;
 import com.example.jake.university.timetable.FragmentLecturerSchedule;
 import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         mDrawerlayout = findViewById(R.id.drawer);
         NavigationView navigationView = findViewById(R.id.nav_view);
+<<<<<<< HEAD
         try {
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
@@ -63,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         } catch (JSONException e) {
         }
+=======
+>>>>>>> parent of 640b9fd... mini fix
         navigationView.setNavigationItemSelectedListener(this);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);

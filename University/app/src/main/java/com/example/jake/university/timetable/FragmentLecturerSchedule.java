@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jake.university.API.postReq;
-import com.example.jake.university.R;
 import com.example.jake.university.adapter.UIUtiles;
 import com.example.jake.university.timetable.scheduleServClasses.Day;
 import com.example.jake.university.timetable.scheduleServClasses.TimeController;

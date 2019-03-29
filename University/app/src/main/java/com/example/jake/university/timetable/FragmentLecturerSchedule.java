@@ -35,7 +35,7 @@ public class FragmentLecturerSchedule extends Fragment {
     private View view;
     private ViewPager viewPager;
     private FragmentActivity myContext;
-    WeekSchedule schedule;
+    JSONArray schedule;
     private CardView cv1, cv2, cv3, cv4, cv5, cv6;
     private ListView lv1,lv2,lv3,lv4,lv5,lv6;
     private TextView date1, date2,date3, date4, date5, date6, dayOfWeek1, dayOfWeek2, dayOfWeek3,
@@ -110,19 +110,23 @@ public class FragmentLecturerSchedule extends Fragment {
                         String lecNrec = arr.getJSONObject(0).getString("nrec_lec");
                         postReq comand2 = new postReq();
                         comand2.execute("10", "[dbo].[_A_SCD_StudSchedule]", "2,'" + lecNrec + "',0,0,-1,2018,0,-1").get();
-                        schedule = new WeekSchedule(comand2.getjARRAY());
+                        schedule = comand2.getjARRAY();
 
                     } catch (JSONException | InterruptedException | ExecutionException e) {
                         e.printStackTrace();
                     }
-                    initSchedule();
+                    try {
+                        initSchedule();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
         return view;
     }
-    private void initSchedule(){
-        ArrayList<Day> days = schedule.getSchedule();
+    private void initSchedule() throws JSONException {
+        ArrayList<Day> days = WeekSchedule.teacherSchedule(schedule);
         if(TimeController.getWeekTypeByDate() == 1) {
             if(days.get(0).getParsedEven().size()>0)
                 cv1.setVisibility(View.VISIBLE);

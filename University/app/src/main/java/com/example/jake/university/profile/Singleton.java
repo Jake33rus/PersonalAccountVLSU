@@ -36,6 +36,7 @@ public class Singleton {
     WeekSchedule schedule;
     HashSet<String> lecturersList;
     ArrayList<RankedItem> rankedList;
+    int studentCurse;
 
     boolean parity;
 
@@ -116,6 +117,7 @@ public class Singleton {
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
         studentID = obj.getString("ID64");
+        studentCurse = obj.getInt("Курс");
         profileInfo = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
                 obj.getString("Источник финансирования обучения"),
                 obj.getString("Форма обучения"), obj.getString("Группа"),
@@ -195,7 +197,8 @@ public class Singleton {
         JSONObject obj = new JSONObject();
         postReq comand = new postReq();
         String name = "", rank1 = "", rank2 = "", rank3 = "";
-        comand.execute("35","0","select * from _getRatingMarks(4,"+studentID+","+4+",-1,-1,'',-1)").get();
+        Integer semmestr = studentCurse * 2 - TimeController.getSemesterByDate();
+        comand.execute("35","0","select * from _getRatingMarks(4,"+studentID+","+semmestr+",-1,-1,'',-1)").get();
         JSONArray arr = comand.getjARRAY();
         for(int i = 0; i < arr.length(); i++){
             obj = arr.getJSONObject(i);

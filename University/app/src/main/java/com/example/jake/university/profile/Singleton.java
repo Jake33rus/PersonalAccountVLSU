@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigInteger;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
@@ -127,7 +128,9 @@ public class Singleton {
     private void setTimetable() throws JSONException, ExecutionException, InterruptedException
     {
         postReq comand = new postReq();
-        comand.execute("10", "[dbo].[_A_SCD_StudSchedule]", "0," +bigNrec+ ",0,0,-1,2018,0,-1").get();
+        comand.execute("10", "[dbo].[_A_SCD_StudSchedule]", "0," +bigNrec+ ",0,0,-1,"+
+                TimeController.getStudyYearByDate() +","
+                +TimeController.getSemesterByDate()+",-1").get();
         JSONArray arr = comand.getjARRAY();
         schedule = new WeekSchedule(arr);
     }

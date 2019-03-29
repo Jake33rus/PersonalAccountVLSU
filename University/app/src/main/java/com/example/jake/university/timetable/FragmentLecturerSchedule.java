@@ -109,7 +109,9 @@ public class FragmentLecturerSchedule extends Fragment {
                     try {
                         String lecNrec = arr.getJSONObject(0).getString("nrec_lec");
                         postReq comand2 = new postReq();
-                        comand2.execute("10", "[dbo].[_A_SCD_StudSchedule]", "2,'" + lecNrec + "',0,0,-1,2018,0,-1").get();
+                        comand2.execute("10", "[dbo].[_A_SCD_StudSchedule]", "2,'" + lecNrec +
+                                "',0,0,-1,"+TimeController.getStudyYearByDate()+","+
+                                TimeController.getSemesterByDate()+",-1").get();
                         schedule = comand2.getjARRAY();
 
                     } catch (JSONException | InterruptedException | ExecutionException e) {

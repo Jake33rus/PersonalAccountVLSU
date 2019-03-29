@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.jake.university.exams.FragmentExamsAndArrears;
 import com.example.jake.university.news.FragmentNews;
+import com.example.jake.university.notifications.ScheduleAlarms;
 import com.example.jake.university.payment.FragmentPayment;
 import com.example.jake.university.profile.FragmentProfile;
 import com.example.jake.university.profile.Singleton;
@@ -51,7 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        ScheduleAlarms.getInstance().startAlarmBundle(this);
         navigationView.setNavigationItemSelectedListener(this);
+
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();

@@ -30,6 +30,11 @@
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".LockScreenActivity" />
+        <receiver android:name=".notifications.AlarmBootReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

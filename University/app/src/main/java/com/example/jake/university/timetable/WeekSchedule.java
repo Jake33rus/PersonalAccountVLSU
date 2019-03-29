@@ -99,7 +99,13 @@ public class WeekSchedule {
                             try {
 
                                 subbStrSecond = subStrFirst[2].split(delimetrSecond);
+                                if(subbStrSecond.length >=3)
                                 lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                                else
+                                {
+                                    String[] subStrFourth = subStrFirst[3].split(delimetrSecond);
+                                    lBuf = new Lesson(subStrFourth[1], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                                }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -120,7 +126,13 @@ public class WeekSchedule {
                         subStrFirst = s.split(delimetrFirst);
                         if (subStrFirst.length >= 3) {
                             subbStrSecond = subStrFirst[2].split(delimetrSecond);
+                            if(subbStrSecond.length >=3)
                             lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                            else
+                            {
+                                String[] subStrFourth = subStrFirst[3].split(delimetrSecond);
+                                lBuf = new Lesson(subStrFourth[1], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                            }
                         } else {
                             subbStrSecond = subStrFirst[1].split(delimetrSecond);
                             lBuf = new Lesson(subbStrSecond[1], "", subbStrSecond[0], "", Day.getTime(j));

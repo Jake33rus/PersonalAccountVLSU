@@ -60,15 +60,15 @@ public class postReq extends AsyncTask<String, Void, Void>
         JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
         TripleDES coder = new TripleDES();
-        String myURL = "http://172.18.14.165:3000/getData";
+        String myURL = "http://172.18.14.9:3000/getData";
         byte[] data = null;
         InputStream is = null;
 
         try {
 
-           idDb = coder.Encr(idDb);
+            /*idDb = coder.Encr(idDb);
             nameExec = coder.Encr(nameExec);
-            paramsList = coder.Encr(paramsList);
+            paramsList = coder.Encr(paramsList);*/
 
             Map<String,String> info = new LinkedHashMap<>();
 
@@ -94,7 +94,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.toString().getBytes().length));
             OutputStream os = null;
             try {
-                  os = conn.getOutputStream();
+                os = conn.getOutputStream();
                 data = postData.toString().getBytes("UTF-8");
             }
             catch (Exception e){
@@ -228,6 +228,5 @@ public class postReq extends AsyncTask<String, Void, Void>
 
     }
     else return arrg;
-
     }
 }

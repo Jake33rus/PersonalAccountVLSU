@@ -87,6 +87,7 @@ public class PaymentItem {
 
     public PaymentItem(String id, String summ, String dateCreate, String datePay, String payment, String peny, String studyYear) {
         this.summ = summ;
+        this.id = id;
         this.dateCreate = dateCreate;
         this.datePay = datePay;
         this.payment = payment;
@@ -94,6 +95,7 @@ public class PaymentItem {
         this.studyYear = studyYear;
     }
     public PaymentItem(String id, String summ, String dateCreate, String datePay, String payment, String studyYear) {
+        this.id = id;
         this.summ = summ;
         this.dateCreate = dateCreate;
         this.datePay = datePay;

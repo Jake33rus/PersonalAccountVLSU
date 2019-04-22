@@ -11,8 +11,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.jake.university.R;
+import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.ranked.RankedAdapter;
 
+import org.json.JSONException;
 import org.w3c.dom.Text;
 
 import androidx.annotation.NonNull;
@@ -21,14 +23,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class FragmentPayment extends Fragment {
     Button payLocation;
+    Singleton singleton = Singleton.getInstance("0");
+
+    public FragmentPayment() throws InterruptedException, ExecutionException, JSONException{
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_payment, container, false);
         payLocation = (Button) view.findViewById(R.id.butPayLocation);
+        ArrayList<PaymentItem> listTrue=null;
+        ArrayList<PaymentItem> listFalse=null;
         payLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,21 +47,24 @@ public class FragmentPayment extends Fragment {
             }
         });
         PaymentAdapter adapterTrue, adapterFalse;
-        ArrayList<PaymentItem> listTrue = new ArrayList<>(); //Поменять на созданный массив c оплаченными квитанциями!!!
-        ArrayList<PaymentItem> listFalse = new ArrayList<>(); //Поменять на созданный массив c оплаченными квитанциями!!!
+
+           listTrue = singleton.getPaidPayments();
+           listFalse = singleton.getNotPaidPayments();
+
+        //Поменять на созданный массив c оплаченными квитанциями!!!
         adapterTrue = new PaymentAdapter(view.getContext(), R.layout.payment_item, listTrue);
         adapterFalse = new PaymentAdapter(view.getContext(), R.layout.payment_item, listFalse);
         ListView lvPayTrue = (ListView) view.findViewById(R.id.lv_pay_true);
         ListView lvPayFalse = (ListView) view.findViewById(R.id.lv_pay_false);
         lvPayFalse.setAdapter(adapterFalse);
-        lvPayFalse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*lvPayFalse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position != 0){
 
                 }
             }
-        });
+        });*/
         lvPayTrue.setAdapter(adapterTrue);
         return view;
     }

@@ -141,28 +141,30 @@ public class Singleton {
 
     public void setPayments() throws ExecutionException, InterruptedException, JSONException {
         JSONObject obj = new JSONObject();
+        PaymentItem paymentItem;
         postReq comand = new postReq();
         comand.execute("10","0","select * from _getReceiptsPaymentsList(2,"+nrec+",0)").get();
         JSONArray arr = comand.getjARRAY();
-        for(int i = 0; i<arr.length(); i++){
+        /*for(int i = 0; i<arr.length(); i++){
             obj = arr.getJSONObject(i);
             obj=null;
-        }
+        }*/
         postReq comand2 = new postReq();
+        paidPayments = new ArrayList<>();
+        notPaidPayments = new ArrayList<>();
         comand2.execute("5","get_kvit_listnew",nrec).get();
         arr = comand2.getjARRAY();
         for(int i = 0; i<arr.length(); i++){
             obj = arr.getJSONObject(i);
-            PaymentItem paymentItem = new PaymentItem(obj.getString("id"),
+            paymentItem = new PaymentItem(obj.getString("id"),
                     obj.getString("summa"),
                     obj.getString("srok_from"),
                     obj.getString("srok_to")
                     ,obj.getString("name"),
                     obj.getString("yeardog"));
-
-            if(obj.getString("pay_status")=="1")
+            if(obj.getString("pay_status").equals("1"))
                 paidPayments.add(paymentItem);
-            if(obj.getString("pay_status")=="0")
+            if(obj.getString("pay_status").equals("0"))
                 notPaidPayments.add(paymentItem);
         }
     }

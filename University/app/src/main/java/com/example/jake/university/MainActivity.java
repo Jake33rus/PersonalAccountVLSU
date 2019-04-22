@@ -120,7 +120,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).addToBackStack(null).commit();
                 break;
             case R.id.nav_payment:
-                ftrans.replace(R.id.fragment_container, new FragmentPayment()).addToBackStack(null).commit();
+                try {
+                    ftrans.replace(R.id.fragment_container, new FragmentPayment()).addToBackStack(null).commit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.nav_scholarships:
                 try {

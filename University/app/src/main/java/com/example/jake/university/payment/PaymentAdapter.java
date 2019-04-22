@@ -39,8 +39,8 @@ public class PaymentAdapter extends ArrayAdapter<PaymentItem> {
 
         viewHolder.paymentSumm.setText(item.getSumm());
         viewHolder.payment.setText(item.getPayment());
-        viewHolder.payYearSem.setText(item.getStudyYear() + " | " + item.getSemestr());
-        viewHolder.payType.setText(item.getType());
+        viewHolder.payYearSem.setText(item.getStudyYear());
+        viewHolder.payType.setText(item.getDateCreate()+"-"+item.getDatePay());
         return convertView;
     }
     private class ViewHolder {

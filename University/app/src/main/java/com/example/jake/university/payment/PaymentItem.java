@@ -1,14 +1,24 @@
 package com.example.jake.university.payment;
 
-class PaymentItem {
+public class PaymentItem {
+
+
+    private String id;
     private String summ;
     private String dateCreate;
     private String datePay;
     private String payment;
     private String peny;
-    private String StudyYear;
+    private String studyYear;
     private String semestr;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getType() {
         return type;
     }
@@ -60,11 +70,11 @@ class PaymentItem {
     }
 
     public String getStudyYear() {
-        return StudyYear;
+        return studyYear;
     }
 
     public void setStudyYear(String studyYear) {
-        StudyYear = studyYear;
+        this.studyYear = studyYear;
     }
 
     public String getSemestr() {
@@ -75,13 +85,19 @@ class PaymentItem {
         this.semestr = semestr;
     }
 
-    public PaymentItem(String summ, String dateCreate, String datePay, String payment, String peny, String studyYear, String semestr) {
+    public PaymentItem(String id, String summ, String dateCreate, String datePay, String payment, String peny, String studyYear) {
         this.summ = summ;
         this.dateCreate = dateCreate;
         this.datePay = datePay;
         this.payment = payment;
         this.peny = peny;
-        StudyYear = studyYear;
-        this.semestr = semestr;
+        this.studyYear = studyYear;
+    }
+    public PaymentItem(String id, String summ, String dateCreate, String datePay, String payment, String studyYear) {
+        this.summ = summ;
+        this.dateCreate = dateCreate;
+        this.datePay = datePay;
+        this.payment = payment;
+        this.studyYear = studyYear;
     }
 }

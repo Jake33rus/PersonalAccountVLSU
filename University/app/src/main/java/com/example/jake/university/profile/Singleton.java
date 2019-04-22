@@ -1,6 +1,7 @@
 package com.example.jake.university.profile;
 
 import com.example.jake.university.API.postReq;
+import com.example.jake.university.payment.PaymentItem;
 import com.example.jake.university.ranked.RankedItem;
 import com.example.jake.university.scholarships.Scholarships;
 import com.example.jake.university.exams.ExamItem;
@@ -37,6 +38,8 @@ public class Singleton {
     WeekSchedule schedule;
     HashSet<String> lecturersList;
     ArrayList<RankedItem> rankedList;
+    ArrayList<PaymentItem> paidPayments;
+    ArrayList<PaymentItem> notPaidPayments;
     int studentCurse;
 
     boolean parity;
@@ -46,7 +49,8 @@ public class Singleton {
         this.nrec = nrec;
             longNrec = new BigInteger(nrec.replaceFirst("0x8", ""), 16);
         bigNrec = longNrec.toString();
-        setTimetable();
+       // setTimetable();
+        setPayments();
         setExamsList();
         setArrears();
         setPassedExams();
@@ -135,6 +139,39 @@ public class Singleton {
         schedule = new WeekSchedule(arr);
     }
 
+    public void setPayments() throws ExecutionException, InterruptedException, JSONException {
+        JSONObject obj = new JSONObject();
+        postReq comand = new postReq();
+        comand.execute("10","0","select * from _getReceiptsPaymentsList(2,"+nrec+",0)").get();
+        JSONArray arr = comand.getjARRAY();
+        for(int i = 0; i<arr.length(); i++){
+            obj = arr.getJSONObject(i);
+            obj=null;
+        }
+        postReq comand2 = new postReq();
+        comand2.execute("5","get_kvit_listnew",nrec).get();
+        arr = comand2.getjARRAY();
+        for(int i = 0; i<arr.length(); i++){
+            obj = arr.getJSONObject(i);
+            PaymentItem paymentItem = new PaymentItem(obj.getString("id"),
+                    obj.getString("summa"),
+                    obj.getString("srok_from"),
+                    obj.getString("srok_to")
+                    ,obj.getString("name"),
+                    obj.getString("yeardog"));
+
+            if(obj.getString("pay_status")=="1")
+                paidPayments.add(paymentItem);
+            if(obj.getString("pay_status")=="0")
+                notPaidPayments.add(paymentItem);
+        }
+    }
+    public ArrayList<PaymentItem> getPaidPayments(){
+        return paidPayments;
+    }
+    public ArrayList<PaymentItem> getNotPaidPayments(){
+        return notPaidPayments;
+    }
     public ArrayList<ExamItem> getArrears(){return arrears;}
 
     public ArrayList<ExamItem> getUpcomingExams(){return upcomingExams;}
@@ -151,9 +188,6 @@ public class Singleton {
         return parity;
     }
 
-    public void setParity() {
-
-    }
     public HashSet<String> getLecturersList() {
         return lecturersList;
     }

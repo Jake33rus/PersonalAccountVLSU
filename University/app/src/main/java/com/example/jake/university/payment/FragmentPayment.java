@@ -29,6 +29,7 @@ public class FragmentPayment extends Fragment {
                 fm.beginTransaction().replace(R.id.fragment_container, new FragmentPaymentInfo()).addToBackStack(null).commit();
             }
         });
+
         return view;
     }
 }

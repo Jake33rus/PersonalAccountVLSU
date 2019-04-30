@@ -96,7 +96,7 @@ public class FragmentLecturerSchedule extends Fragment {
                     toast.show();
                 }
                 else {
-                    postReq comand = new postReq();
+                    postReq comand = new postReq("getData");
                     try {
                         comand.execute("10", "[dbo].[A_LKS_GetLecturesListGal]", "0,0,0,'','" + lectureFio + "','','',0,0").get();
                     } catch (ExecutionException | InterruptedException e) {
@@ -108,7 +108,7 @@ public class FragmentLecturerSchedule extends Fragment {
                     JSONArray arr = comand.getjARRAY();
                     try {
                         String lecNrec = arr.getJSONObject(0).getString("nrec_lec");
-                        postReq comand2 = new postReq();
+                        postReq comand2 = new postReq("getData");
                         comand2.execute("10", "[dbo].[_A_SCD_StudSchedule]", "2,'" + lecNrec +
                                 "',0,0,-1,"+TimeController.getStudyYearByDate()+","+
                                 TimeController.getSemesterByDate()+",-1").get();

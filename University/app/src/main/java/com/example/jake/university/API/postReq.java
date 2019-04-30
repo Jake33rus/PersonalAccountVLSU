@@ -27,11 +27,27 @@ import javax.crypto.IllegalBlockSizeException;
 public class postReq extends AsyncTask<String, Void, Void>
 {
     private JSONArray jARRAY = null;
+    private String type = "";
+    private String firstArgName="idDb", secArgName="nameExec", thirdArgName = "paramsList";
     ProgressDialog progressDialog;
     int progressIncr = 1;
     public JSONArray getjARRAY() {
         return jARRAY;
     }
+
+    public postReq(String type)
+    {
+        this.type=type;
+    }
+
+    public postReq(String type, String firstArgName, String secArgName, String thirdArgName)
+    {
+        this.type=type;
+        this.firstArgName=firstArgName;
+        this.secArgName=secArgName;
+        this.thirdArgName=thirdArgName;
+    }
+
 
     @Override
     protected void onPreExecute() {
@@ -60,7 +76,7 @@ public class postReq extends AsyncTask<String, Void, Void>
         JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
         TripleDES coder = new TripleDES();
-        String myURL = "http://172.18.14.9:3000/getData";
+        String myURL = "http://172.18.14.9:3000/"+type;
         byte[] data = null;
         InputStream is = null;
 
@@ -72,9 +88,14 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             Map<String,String> info = new LinkedHashMap<>();
 
-            info.put("idDb", idDb);
-            info.put("nameExec", nameExec);
-            info.put("paramsList", paramsList);
+    info.put(firstArgName, idDb);
+    info.put(secArgName, nameExec);
+    info.put(thirdArgName, paramsList);
+
+
+//            "idDb", idDb);
+//            info.put("nameExec", nameExec);
+//            info.put("paramsList"
 
             StringBuilder postData = new StringBuilder();
 
@@ -151,7 +172,7 @@ public class postReq extends AsyncTask<String, Void, Void>
         TripleDES tde = new TripleDES();
         JSONArray arr;
         JSONObject obj = new JSONObject();
-        postReq comand = new postReq();
+        postReq comand = new postReq("getData");
         String[] arrg = {"0"};
 
         try {
@@ -178,7 +199,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             }
 //Этап 2. Получаем PerID
 
-            postReq comand2 = new postReq();
+            postReq comand2 = new postReq("getData");
 
             try {
                 comand2.execute("20","dbo.UserProfiles_GetData","0,'',0,"+CPerson+",0,0,0,0").get();
@@ -202,7 +223,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             }
             //Этап 3. Получаем nrec
 
-            postReq comand3 = new postReq();
+            postReq comand3 = new postReq("getData");
             try {
                 comand3.execute("10","dbo.A_LKS_GetStudentId_last","'',"+PerID).get();
             } catch (Exception e) {

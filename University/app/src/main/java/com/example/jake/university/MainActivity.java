@@ -6,10 +6,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.jake.university.API.postReq;
 import com.example.jake.university.exams.FragmentExamsAndArrears;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.notifications.ScheduleAlarms;
 import com.example.jake.university.payment.FragmentPayment;
+import com.example.jake.university.payment.PaymentGetter;
 import com.example.jake.university.profile.FragmentProfile;
 import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.ranked.FragmentRanked;
@@ -18,9 +20,17 @@ import com.example.jake.university.timetable.FragmentLecturerSchedule;
 import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
@@ -63,6 +73,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_news);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new FragmentNews()).commit();
+
+        PaymentGetter obj = new PaymentGetter();
+        String[] buf = obj.idGetter(obj.receiptGetter());
+        String str = obj.pdfGetter(buf[0]);
+        int i;
+        i = 10;
+
     }
 
     @Override
@@ -170,5 +187,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void toPDF(String string, String name)
+    {
+        PDDocument document = new PDDocument();
+
+        document.addPage(new PDPage());
+
+        try {
+            document.save(name+".pdf");
+            document.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        byte[] bm = string.getBytes();
+        OutputStream out = null;
+        try {
+            out = new FileOutputStream(name+".pdf");
+            out.write(bm);
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

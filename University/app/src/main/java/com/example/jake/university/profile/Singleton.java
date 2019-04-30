@@ -73,7 +73,7 @@ public class Singleton {
 
     private void setExamsList() throws ExecutionException, InterruptedException {
         jobj = new JSONObject();
-        comand = new postReq();
+        comand = new postReq("getData");
         comand.execute("10", "A_LKS_GetMarks", nrec).get();
         arrExams = comand.getjARRAY();
     }
@@ -103,7 +103,7 @@ public class Singleton {
 
     private void setScholarships() throws ExecutionException, InterruptedException, JSONException {
         JSONObject jobj = new JSONObject();
-        postReq comand = new postReq();
+        postReq comand = new postReq("getData");
         comand.execute("10","A_LKS_GetBonuses",nrec).get();
         JSONArray arr = comand.getjARRAY();
         scholarships = new ArrayList<>();
@@ -117,7 +117,7 @@ public class Singleton {
 
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
         JSONObject obj = new JSONObject();
-        postReq comand = new postReq();
+        postReq comand = new postReq("getData");
         comand.execute("10","A_LKS_GetStudentInfo_Mobile",nrec).get();
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
@@ -131,7 +131,7 @@ public class Singleton {
     }
     private void setTimetable() throws JSONException, ExecutionException, InterruptedException
     {
-        postReq comand = new postReq();
+        postReq comand = new postReq("getData");
         comand.execute("10", "[dbo].[_A_SCD_StudSchedule]", "0," +bigNrec+ ",0,0,-1,"+
                 TimeController.getStudyYearByDate() +","
                 +TimeController.getSemesterByDate()+",-1").get();
@@ -142,14 +142,14 @@ public class Singleton {
     public void setPayments() throws ExecutionException, InterruptedException, JSONException {
         JSONObject obj = new JSONObject();
         PaymentItem paymentItem;
-        postReq comand = new postReq();
+        postReq comand = new postReq("getData");
         comand.execute("10","0","select * from _getReceiptsPaymentsList(2,"+nrec+",0)").get();
         JSONArray arr = comand.getjARRAY();
         /*for(int i = 0; i<arr.length(); i++){
             obj = arr.getJSONObject(i);
             obj=null;
         }*/
-        postReq comand2 = new postReq();
+        postReq comand2 = new postReq("getData");
         paidPayments = new ArrayList<>();
         notPaidPayments = new ArrayList<>();
         comand2.execute("5","get_kvit_listnew",nrec).get();
@@ -234,7 +234,7 @@ public class Singleton {
     public void setRankedList() throws ExecutionException, InterruptedException, JSONException {
         rankedList = new ArrayList<>();
         JSONObject obj = new JSONObject();
-        postReq comand = new postReq();
+        postReq comand = new postReq("getData");
         String name = "", rank1 = "", rank2 = "", rank3 = "";
         Integer semmestr = studentCurse * 2 - TimeController.getSemesterByDate();
         comand.execute("35","0","select * from _getRatingMarks(4,"+studentID+","+semmestr+",-1,-1,'',-1)").get();
@@ -261,5 +261,13 @@ public class Singleton {
                 name = ""; rank1 = ""; rank2 = ""; rank3 = "";
             }
         }
+    }
+    public String getNrec()
+    {
+        return nrec;
+    }
+    public String getBigNrec()
+    {
+        return bigNrec;
     }
 }

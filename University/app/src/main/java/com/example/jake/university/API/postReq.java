@@ -29,6 +29,8 @@ public class postReq extends AsyncTask<String, Void, Void>
     private JSONArray jARRAY = null;
     private String type = "";
     private String firstArgName="idDb", secArgName="nameExec", thirdArgName = "paramsList";
+    private byte[] bytes;
+    private String string;
     ProgressDialog progressDialog;
     int progressIncr = 1;
     public JSONArray getjARRAY() {
@@ -140,8 +142,10 @@ public class postReq extends AsyncTask<String, Void, Void>
             {e.printStackTrace();}
 
             data = baos.toByteArray();
+            bytes = data;
 
             String finalRes =  new String(data, StandardCharsets.UTF_8);
+            string=finalRes;
             //String[] parts = finalRes.split();
             jArr = new JSONArray(finalRes);
 
@@ -250,4 +254,9 @@ public class postReq extends AsyncTask<String, Void, Void>
     }
     else return arrg;
     }
+
+    public byte[] getBytes()
+    {return bytes;}
+    public String getString()
+    {return string;}
 }

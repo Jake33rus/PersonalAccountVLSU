@@ -1,6 +1,11 @@
 package com.example.jake.university;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,12 +36,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
@@ -45,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
     private FragmentTransaction ftrans;
+    private int REQUEST_CODE_ASK_PERMISSIONS=111;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,9 +84,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         PaymentGetter obj = new PaymentGetter();
         String[] buf = obj.idGetter(obj.receiptGetter());
-        String str = obj.pdfGetter(buf[0]);
-        int i;
-        i = 10;
+
+//        PackageManager pm=getPackageManager();
+//        Intent testIntent = new Intent(Intent.ACTION_VIEW);
+//        testIntent.setType("application/pdf");
+//        List list = pm.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
+//        if(list.size()>0)
+//        {
+            int hasWriteStoragePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if (hasWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CONTACTS)) {
+                        showMessageOKCancel("You need to allow access to Storage",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                                    REQUEST_CODE_ASK_PERMISSIONS);
+                                        }
+                                    }
+                                });
+                        return;
+                    }
+
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            REQUEST_CODE_ASK_PERMISSIONS);
+                }
+                return;
+            }else
+                {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_QUICK_VIEW);
+            Uri uri=Uri.fromFile(obj.pdfGetter(buf[0]));
+            intent.setDataAndType(uri, "application/pdf");
+            startActivity(intent);
+       }
 
     }
 
@@ -213,6 +255,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
 
+    }
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
     }
 
 

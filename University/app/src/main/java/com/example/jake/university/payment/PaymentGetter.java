@@ -1,12 +1,24 @@
 package com.example.jake.university.payment;
 
+import android.content.pm.PackageManager;
+import android.os.Environment;
+
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.profile.Singleton;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.concurrent.ExecutionException;
 
 public class PaymentGetter
@@ -73,7 +85,7 @@ public class PaymentGetter
         return idBuf;
     }
 
-    public String pdfGetter(String kvitId)
+    public File pdfGetter(String kvitId)
     {
         JSONObject jobj = new JSONObject();
         postReq comand = new postReq("getReceipt", "kvitID","studID","type");
@@ -87,17 +99,37 @@ public class PaymentGetter
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JSONArray paymentArr = comand.getjARRAY();
-        byte[] buff=comand.
-        String str="";
+
+        String bufferedString = comand.getString();
+        byte[] buffer = new byte[0];
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            try {
+                buffer = Base64.getDecoder().decode(bufferedString.getBytes());
+            }catch (Exception e)
+            {e.printStackTrace();}
+        }
+
+
+        File docsFolder = new File(Environment.getExternalStorageDirectory()+"/Documents");
+        if(!docsFolder.exists())
+        {
+            docsFolder.mkdir();
+        }
+        File pdfFile = new File(docsFolder.getAbsolutePath(), "test.pdf");
+
+        FileOutputStream fos = null;
         try {
-            str = paymentArr.getString(0);
-        } catch (JSONException e) {
+            fos = new FileOutputStream(pdfFile);
+            fos.write(buffer);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
 
-        return str;
+        return pdfFile;
 
     }
 

@@ -91,7 +91,7 @@ public class PaymentGetter
         postReq comand = new postReq("getReceipt", "kvitID","studID","type");
 
         try {
-            comand.execute(kvitId, Singleton.getInstance("").getNrec(), "1");
+            comand.execute(kvitId, Singleton.getInstance("").getNrec(), "0");
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

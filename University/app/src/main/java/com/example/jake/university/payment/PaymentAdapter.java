@@ -1,10 +1,12 @@
 package com.example.jake.university.payment;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,15 +43,25 @@ public class PaymentAdapter extends ArrayAdapter<PaymentItem> {
         viewHolder.payment.setText(item.getPayment());
         viewHolder.payYearSem.setText(item.getStudyYear());
         viewHolder.payType.setText(item.getDateCreate()+"-"+item.getDatePay());
+        viewHolder.download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentGetter obj = new PaymentGetter();
+                Uri uri= Uri.fromFile(obj.pdfGetter(item.getId()));
+            }
+        });
         return convertView;
     }
     private class ViewHolder {
         final TextView paymentSumm, payment, payYearSem, payType;
+        final Button download;
         ViewHolder(View view){
             paymentSumm = (TextView) view.findViewById(R.id.tvPaymentSum);
             payment = (TextView) view.findViewById(R.id.tvPayment);
             payYearSem = (TextView) view.findViewById(R.id.tvPayYearSemestr);
             payType = (TextView) view.findViewById(R.id.tvPayType);
+            download = (Button) view.findViewById(R.id.downloadPaymentButton);
         }
     }
 }
+

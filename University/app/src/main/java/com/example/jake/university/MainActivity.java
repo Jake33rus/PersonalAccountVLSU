@@ -82,45 +82,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new FragmentNews()).commit();
 
-        PaymentGetter obj = new PaymentGetter();
-        String[] buf = obj.idGetter(obj.receiptGetter());
-
-//        PackageManager pm=getPackageManager();
-//        Intent testIntent = new Intent(Intent.ACTION_VIEW);
-//        testIntent.setType("application/pdf");
-//        List list = pm.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
-//        if(list.size()>0)
-//        {
-            int hasWriteStoragePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            if (hasWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CONTACTS)) {
-                        showMessageOKCancel("You need to allow access to Storage",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                                    REQUEST_CODE_ASK_PERMISSIONS);
-                                        }
-                                    }
-                                });
-                        return;
-                    }
-
-                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            REQUEST_CODE_ASK_PERMISSIONS);
-                }
-                return;
-            }else
-                {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_QUICK_VIEW);
-            Uri uri=Uri.fromFile(obj.pdfGetter(buf[0]));
-            intent.setDataAndType(uri, "application/pdf");
-            startActivity(intent);
-       }
+//        PaymentGetter obj = new PaymentGetter();
+//        String[] buf = obj.idGetter(obj.receiptGetter());
+//
+////        PackageManager pm=getPackageManager();
+////        Intent testIntent = new Intent(Intent.ACTION_VIEW);
+////        testIntent.setType("application/pdf");
+////        List list = pm.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
+////        if(list.size()>0)
+////        {
+//            int hasWriteStoragePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//            if (hasWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CONTACTS)) {
+//                        showMessageOKCancel("You need to allow access to Storage",
+//                                new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                                            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//                                                    REQUEST_CODE_ASK_PERMISSIONS);
+//                                        }
+//                                    }
+//                                });
+//                        return;
+//                    }
+//
+//                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//                            REQUEST_CODE_ASK_PERMISSIONS);
+//                }
+//                return;
+//            }else
+//                {
+//            Intent intent = new Intent();
+//            intent.setAction(Intent.ACTION_QUICK_VIEW);
+//            Uri uri=Uri.fromFile(obj.pdfGetter(buf[0]));
+//            intent.setDataAndType(uri, "application/pdf");
+//            startActivity(intent);
+//       }
 
     }
 

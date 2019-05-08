@@ -48,23 +48,15 @@ public class FragmentPayment extends Fragment {
         });
         PaymentAdapter adapterTrue, adapterFalse;
 
-           listTrue = singleton.getPaidPayments();
-           listFalse = singleton.getNotPaidPayments();
+        listTrue = singleton.getPaidPayments();
+        listFalse = singleton.getNotPaidPayments();
 
-        //Поменять на созданный массив c оплаченными квитанциями!!!
-        adapterTrue = new PaymentAdapter(view.getContext(), R.layout.payment_item, listTrue);
-        adapterFalse = new PaymentAdapter(view.getContext(), R.layout.payment_item, listFalse);
         ListView lvPayTrue = (ListView) view.findViewById(R.id.lv_pay_true);
         ListView lvPayFalse = (ListView) view.findViewById(R.id.lv_pay_false);
-        lvPayFalse.setAdapter(adapterFalse);
-        /*lvPayFalse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position != 0){
+        adapterTrue = new PaymentAdapter(view.getContext(), R.layout.payment_item, listTrue);
+        adapterFalse = new PaymentAdapter(view.getContext(), R.layout.payment_item, listFalse);
 
-                }
-            }
-        });*/
+        lvPayFalse.setAdapter(adapterFalse);
         lvPayTrue.setAdapter(adapterTrue);
         return view;
     }

@@ -1,6 +1,7 @@
 package com.example.jake.university.profile;
 
 import com.example.jake.university.API.postReq;
+import com.example.jake.university.payment.PaymentGetter;
 import com.example.jake.university.payment.PaymentItem;
 import com.example.jake.university.ranked.RankedItem;
 import com.example.jake.university.scholarships.Scholarships;
@@ -49,8 +50,7 @@ public class Singleton {
         this.nrec = nrec;
             longNrec = new BigInteger(nrec.replaceFirst("0x8", ""), 16);
         bigNrec = longNrec.toString();
-       // setTimetable();
-        setPayments();
+        setTimetable();
         setExamsList();
         setArrears();
         setPassedExams();
@@ -58,8 +58,65 @@ public class Singleton {
         setProfileInfo();
         setScholarships();
         setRankedList();
+        setReceiptPayments();
+        setHostelGetter();
     }
 
+    public void setReceiptPayments()
+    {
+        paidPayments = new ArrayList<>();
+        notPaidPayments = new ArrayList<>();
+        JSONObject obj = new JSONObject();
+        PaymentGetter getter = new PaymentGetter();
+        JSONArray buf = getter.receiptGetter(bigNrec);
+        if(buf==null)return;
+        PaymentItem paymentItem;
+
+        for(int i = 0; i<buf.length(); i++)
+        {
+            try {
+                obj=buf.getJSONObject(i);
+                paymentItem = new PaymentItem(obj.getString("nrec"),
+                        obj.getString("summa"),
+                        obj.getString("date"),
+                        obj.getString("date_to"),
+                        "За обучение",
+                        obj.getString("yeared")+" "+ obj.getString("semester"));
+                if(obj.getString("stat").equals("опла."))
+                    paidPayments.add(paymentItem);
+                else{notPaidPayments.add(paymentItem);}
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    public void setHostelGetter()
+    {  JSONObject obj = new JSONObject();
+        PaymentGetter getter = new PaymentGetter();
+        JSONArray buf = null;
+        buf = getter.hostelGetter(nrec);
+        if(buf==null)return;
+        PaymentItem paymentItem;
+
+        for(int i = 0; i<buf.length(); i++)
+        {
+            try {
+                obj=buf.getJSONObject(i);
+                paymentItem = new PaymentItem(obj.getString("id"),
+                        obj.getString("summa"),
+                        obj.getString("srok_from"),
+                        obj.getString("srok_to"),
+                        obj.getString("name"),
+                        obj.getString("yeardog"));
+                if(obj.getString("pay_status").equals("1"))
+                    paidPayments.add(paymentItem);
+                else{notPaidPayments.add(paymentItem);}
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }}
     private void setArrears() throws JSONException, ExecutionException, InterruptedException {
         arrears = new ArrayList();
         for (int i=0; i<arrExams.length(); i++) {
@@ -139,35 +196,6 @@ public class Singleton {
         schedule = new WeekSchedule(arr);
     }
 
-    public void setPayments() throws ExecutionException, InterruptedException, JSONException {
-        JSONObject obj = new JSONObject();
-        PaymentItem paymentItem;
-        postReq comand = new postReq("getData");
-        comand.execute("10","0","select * from _getReceiptsPaymentsList(2,"+nrec+",0)").get();
-        JSONArray arr = comand.getjARRAY();
-        /*for(int i = 0; i<arr.length(); i++){
-            obj = arr.getJSONObject(i);
-            obj=null;
-        }*/
-        postReq comand2 = new postReq("getData");
-        paidPayments = new ArrayList<>();
-        notPaidPayments = new ArrayList<>();
-        comand2.execute("5","get_kvit_listnew",nrec).get();
-        arr = comand2.getjARRAY();
-        for(int i = 0; i<arr.length(); i++){
-            obj = arr.getJSONObject(i);
-            paymentItem = new PaymentItem(obj.getString("id"),
-                    obj.getString("summa"),
-                    obj.getString("srok_from"),
-                    obj.getString("srok_to")
-                    ,obj.getString("name"),
-                    obj.getString("yeardog"));
-            if(obj.getString("pay_status").equals("1"))
-                paidPayments.add(paymentItem);
-            if(obj.getString("pay_status").equals("0"))
-                notPaidPayments.add(paymentItem);
-        }
-    }
     public ArrayList<PaymentItem> getPaidPayments(){
         return paidPayments;
     }

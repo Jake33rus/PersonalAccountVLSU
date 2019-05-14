@@ -12,36 +12,20 @@
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="Сумма"
         app:autoSizeMaxTextSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvPayment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvPayment"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Квитанция"
-        app:autoSizeMaxTextSize="92dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvPayYearSemestr"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPayYearSemestr"
         android:layout_width="80dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
@@ -51,6 +35,7 @@
         app:autoSizeMaxTextSize="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvPayType"
+        app:layout_constraintStart_toEndOf="@+id/tvPaymentSum"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -62,7 +47,7 @@
         android:layout_marginBottom="4dp"
         android:layout_weight="1"
         android:gravity="center|center_horizontal"
-        android:text="Тип платежки"
+        android:text="Информация"
         app:autoSizeMaxTextSize="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/downloadPaymentButton"

@@ -26,47 +26,34 @@ public class PaymentGetter
     public PaymentGetter()
     {}
 
-    public JSONArray hostelGetter()
+    public JSONArray hostelGetter(String nrec)
     {
         JSONObject jobj = new JSONObject();
         postReq comand = new postReq("getData");
 
-        try {
-            comand.execute("5", "get_kvit_listnew", Singleton.getInstance("").getNrec());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        comand.execute("5", "get_kvit_listnew", nrec);
+
         JSONArray paymentArr = comand.getjARRAY();
 
+        if(paymentArr.isNull(0))return null;
         return paymentArr;
     }
 
-    public JSONArray receiptGetter()
+    public JSONArray receiptGetter(String nrec)
     {
         JSONObject jobj = new JSONObject();
         postReq comand = new postReq("getData");
         String kek ="";
+
         try {
-            kek = Singleton.getInstance("").getBigNrec();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            comand.execute("10","0","select * from _getReceiptsPaymentsList(2,"+kek+",0)").get();
+            comand.execute("10","0","select * from _getReceiptsPaymentsList(2,"+nrec+",0)").get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         JSONArray paymentArr = comand.getjARRAY();
+        if(paymentArr.isNull(0))return null;
        return paymentArr;
     }
 
@@ -85,7 +72,7 @@ public class PaymentGetter
         return idBuf;
     }
 
-    public File pdfGetter(String kvitId)
+    public File pdfGetter(String kvitId, String name)
     {
         JSONObject jobj = new JSONObject();
         postReq comand = new postReq("getReceipt", "kvitID","studID","type");
@@ -100,11 +87,10 @@ public class PaymentGetter
             e.printStackTrace();
         }
 
-        String bufferedString = comand.getString();
         byte[] buffer = new byte[0];
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             try {
-                buffer = Base64.getDecoder().decode(bufferedString.getBytes());
+                buffer = Base64.getDecoder().decode(comand.getString().getBytes());
             }catch (Exception e)
             {e.printStackTrace();}
         }
@@ -115,7 +101,7 @@ public class PaymentGetter
         {
             docsFolder.mkdir();
         }
-        File pdfFile = new File(docsFolder.getAbsolutePath(), "test.pdf");
+        File pdfFile = new File(docsFolder.getAbsolutePath(), name+".pdf");
 
         FileOutputStream fos = null;
         try {

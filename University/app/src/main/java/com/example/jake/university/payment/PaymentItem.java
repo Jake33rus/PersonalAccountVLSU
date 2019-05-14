@@ -1,6 +1,10 @@
 package com.example.jake.university.payment;
 
-public class PaymentItem {
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class PaymentItem implements Serializable {
 
 
     private String id;

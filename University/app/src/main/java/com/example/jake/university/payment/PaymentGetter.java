@@ -33,9 +33,10 @@ public class PaymentGetter
 
         comand.execute("5", "get_kvit_listnew", nrec);
 
-        JSONArray paymentArr = comand.getjARRAY();
+        JSONArray paymentArr = new JSONArray();
+        paymentArr = comand.getjARRAY();
 
-        if(paymentArr.isNull(0))return null;
+        if(paymentArr==null)return null;
         return paymentArr;
     }
 
@@ -52,8 +53,10 @@ public class PaymentGetter
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        JSONArray paymentArr = comand.getjARRAY();
-        if(paymentArr.isNull(0))return null;
+
+        JSONArray paymentArr = new JSONArray();
+        paymentArr = comand.getjARRAY();
+        if(paymentArr==null)return null;
        return paymentArr;
     }
 

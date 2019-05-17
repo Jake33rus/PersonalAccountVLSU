@@ -23,7 +23,7 @@ public class WeekSchedule {
         String buf;
         String delimetrFirst = ",";
         String delimetrSecond = "\n";
-        String subStrFirst[], subbStrSecond[];
+        String subStrFirst[], subbStrSecond[], subStrThird[];
         int ix = unparsedWeek.length();
 
         for (int i = 0; i < unparsedWeek.length(); i++) {
@@ -39,7 +39,15 @@ public class WeekSchedule {
 
                     if (subStrFirst.length >= 3) {
                         subbStrSecond = subStrFirst[2].split(delimetrSecond);
-                        lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                        if(subbStrSecond.length <3)
+                        {
+                            subStrThird=subStrFirst[3].split(delimetrSecond);
+                            lBuf = new Lesson(subStrThird[1], subbStrSecond[1], subStrFirst[1], subStrFirst[0], Day.getTime(j));
+                        }
+                        else
+                            {
+                                lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                            }
 
                     } else {
                         subbStrSecond = subStrFirst[1].split(delimetrSecond);
@@ -53,9 +61,17 @@ public class WeekSchedule {
                 if (!jbuf.getString("z" + j).equals("null") && !jbuf.getString("z" + j).equals("")) {
                     buf = jbuf.getString("z" + j);
                     subStrFirst = buf.split(delimetrFirst);
-                    if (subStrFirst.length >= 3) {
-                        subbStrSecond = subStrFirst[2].split(delimetrSecond);
-                        lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                    if (subStrFirst.length >= 3) {subbStrSecond = subStrFirst[2].split(delimetrSecond);
+                        if(subbStrSecond.length <3)
+                        {
+                            subStrThird=subStrFirst[3].split(delimetrSecond);
+                            lBuf = new Lesson(subStrThird[1], subbStrSecond[1], subStrFirst[1], subStrFirst[0], Day.getTime(j));
+                        }
+                        else
+                        {
+                            lBuf = new Lesson(subbStrSecond[2], subbStrSecond[1], subStrFirst[1], subbStrSecond[0], Day.getTime(j));
+                        }
+
                     } else {
                         subbStrSecond = subStrFirst[1].split(delimetrSecond);
                         lBuf = new Lesson(subbStrSecond[1], "", subbStrSecond[0], "", Day.getTime(j));

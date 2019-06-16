@@ -18,15 +18,15 @@
     <TextView
         android:id="@+id/tvHeaderName"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="73dp"
         android:layout_marginTop="8dp"
+        android:shadowColor="@color/Black"
+        android:shadowRadius="8"
         android:text="Иванов Иван Иванович"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText"
-        android:shadowColor="@color/Black"
-        android:shadowRadius="8"
         tools:layout_width="wrap_content" />
 
 </LinearLayout>

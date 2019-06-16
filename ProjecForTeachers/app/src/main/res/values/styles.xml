@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryLight</item>
+    </style>
+    <style name="LoginButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:backgroundTint">@color/colorPrimaryLight</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="LinkText">
+        <item name="android:textColor">@color/colorSecondaryLight</item>
+    </style>
+    <style name="ThemeOverlay.AppCompat.navTheme">
+        <item name="android:colorPrimary">@color/Black</item>
+        <item name="android:colorControlHighlight">@color/blue300</item>
+    </style>
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>

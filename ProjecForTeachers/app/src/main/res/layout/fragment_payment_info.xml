@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text='г.Владимир\nОктябрьский проспект, 25\nСев.Торговые ряды\n(цокольный этаж)\nмагазин "Глобус"\nСуздальский пр-кт'
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/textView36"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Банковские учреждения:"
+        android:textColor="@color/Black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="БИНБАНК\nСбор 0,3%"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text='г.Владимир\nCуздальский пр-т, 13\nпр-т Ленина, д.9\nОктябрьский пр-т, 36 \n(кафе "Эгоист")'
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/textView32"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="г.Ковров\nул.Чернышевского, 2"
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="УРАЛСИББАНК\nСбор 0,5%"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="г.Владимир\nул. Горького, 56а (только безналичный расчет)\nПри оплате наличными деньгами через терминалы, \n на счет университета поступает некорректная сумма!"
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/textView34"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ПРОМСВЯЗЬБАНК\nСбор 0,5%"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="РОССЕЛЬХОЗБАНК\nСбор 0,5%"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="МиНБ\nСбор 2%"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="МиНБ\nСбор 1.4%"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Отделения Сбербанка г. Владимира и обл. Собр 3%.\nОтделения Сбербанка г. Владимира и обл. \nТЕРМИНАЛЫ - 1%\n (только безналичный расчет)\n при оплате наличными деньгами через терминалы,\n на счет университета поступает некорректная сумма!"
+        android:textColor="@color/Black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="г. Гусь-Хрустальный,\n ул. Интернациональная, 22\nг. Ковров, ул. Труда, 1\nг. Муром, ул. Московская, 17\nг.Александров,\n ул. Институтская, 10а\nг.Лакинск, пр.Ленина, 42"
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/textView34"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text='г. Владимир\nОстановка "Вокз. спуск"\nул. Б.Московская, 90а\nмагазин "Пилиграм"\nул.Безымеского, 9\nул.Песочная \n(Загородный парк), 17а'
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/textView36"
+        app:layout_constraintTop_toTopOf="@+id/textView36" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="г. Вязники, ул. Чехова, 25\nг. Гусь-Хр., \nул. Карла-Маркса, 58a\nг. Камешково,\n ул.Свердлова, 18\nг. Киржач, ул. Советская, 2а\nг. Ковров, ул. Дегтярева, 122\nг. Кольчугино,\n ул.III Интернационала, 40\n п. Кр. Горбатка\n ул. Красноармейская, 6\nг. Муром, ул.Ленина, 12\nг. Меленки, \nул. Красноармейская, 78\nг. Петушки, \nПолевой пр-д, 4а \n г.Покров, ул. Герасимова, 18\n г.Судогда,\n пер.Первомайский, 2\n г.Юрьев-Пол.,\nул.Горького, 19"
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/textView37"
+        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="г.Владимир, ул. Горького, 77; ул. Горького, 86"
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/textView37"
+        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text='онлайн платежи из "личного кабинета" на сайте vlsu.ru'
+        android:textColor="@color/Black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/textView37"
+        app:layout_constraintTop_toTopOf="@+id/textView40" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">ВлГУ</string>
+    <string name="news_title">Новости</string>
+    <string name="profile_title">Анкета</string>
+    <string name="exams_arrears_title">Экзамены и задолженности</string>
+    <string name="upcoming_exams_title">Предстоящие экзамены</string>
+    <string name="passed_exams_title">Сданные экзамены</string>
+    <string name="learning_activities_title">Учебная деятельность</string>
+    <string name="personal_achievements_title">Личные достижения</string>
+    <string name="payments_title">Платежи и договоры</string>
+    <string name="scholarships_title">Стипендии и выплаты</string>
+    <string name="recommended_literature_title">Рекомендуемая литература</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login">Войти</string>
+    <string name="problem">Не можете войти?</string>
+    <string name="nameDiscipline">Дисциплина</string>
+    <string name="Semestr">Семестр</string>
+    <string name="TypeExams">Тип</string>
+    <string name="grade">Оценка</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="time">Время</string>
+    <string name="typePair">Тип пары</string>
+    <string name="lectureName">Название предмета</string>
+    <string name="teacher">Преподаватель</string>
+    <string name="lectureHall">Аудитория</string>
+    <string name="schedule">Расписание</string>
+    <string name="lec_schedule">Расписание преподавателей</string>
+    <string name="ranked_title">Рейтинги</string>
+</resources>

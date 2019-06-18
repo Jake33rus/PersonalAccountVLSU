@@ -78,26 +78,17 @@ public class postReq extends AsyncTask<String, Void, Void>
         JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
         TripleDES coder = new TripleDES();
-        String myURL = "http://172.18.14.9:3000/"+type;
+        String myURL = "http://172.18.14.137:3000/"+type;
         byte[] data = null;
         InputStream is = null;
 
         try {
-
-            /*idDb = coder.Encr(idDb);
-            nameExec = coder.Encr(nameExec);
-            paramsList = coder.Encr(paramsList);*/
 
             Map<String,String> info = new LinkedHashMap<>();
 
     info.put(firstArgName, idDb);
     info.put(secArgName, nameExec);
     info.put(thirdArgName, paramsList);
-
-
-//            "idDb", idDb);
-//            info.put("nameExec", nameExec);
-//            info.put("paramsList"
 
             StringBuilder postData = new StringBuilder();
 
@@ -152,21 +143,6 @@ public class postReq extends AsyncTask<String, Void, Void>
 
         }catch(Exception e)
         {e.printStackTrace();}
-       /*catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
-        }*/
 
         return jArr;
     }

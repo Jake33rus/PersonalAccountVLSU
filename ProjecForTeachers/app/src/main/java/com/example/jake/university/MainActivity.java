@@ -11,17 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.jake.university.API.postReq;
-import com.example.jake.university.exams.FragmentExamsAndArrears;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.notifications.ScheduleAlarms;
-import com.example.jake.university.payment.FragmentPayment;
-import com.example.jake.university.payment.PaymentGetter;
+
 import com.example.jake.university.profile.FragmentProfile;
 import com.example.jake.university.profile.Singleton;
-import com.example.jake.university.ranked.FragmentRanked;
-import com.example.jake.university.scholarships.FragmentScholarships;
-import com.example.jake.university.timetable.FragmentLecturerSchedule;
 import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
@@ -81,47 +75,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_news);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new FragmentNews()).commit();
-
-//        PaymentGetter obj = new PaymentGetter();
-//        String[] buf = obj.idGetter(obj.receiptGetter());
-//
-////        PackageManager pm=getPackageManager();
-////        Intent testIntent = new Intent(Intent.ACTION_VIEW);
-////        testIntent.setType("application/pdf");
-////        List list = pm.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
-////        if(list.size()>0)
-////        {
-//            int hasWriteStoragePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//            if (hasWriteStoragePermission != PackageManager.PERMISSION_GRANTED) {
-//
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CONTACTS)) {
-//                        showMessageOKCancel("You need to allow access to Storage",
-//                                new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                                            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                                                    REQUEST_CODE_ASK_PERMISSIONS);
-//                                        }
-//                                    }
-//                                });
-//                        return;
-//                    }
-//
-//                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                            REQUEST_CODE_ASK_PERMISSIONS);
-//                }
-//                return;
-//            }else
-//                {
-//            Intent intent = new Intent();
-//            intent.setAction(Intent.ACTION_QUICK_VIEW);
-//            Uri uri=Uri.fromFile(obj.pdfGetter(buf[0]));
-//            intent.setDataAndType(uri, "application/pdf");
-//            startActivity(intent);
-//       }
-
     }
 
     @Override
@@ -175,42 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     e.printStackTrace();
                 }
                 break;
-            case R.id.nav_arrears:
-                ftrans.replace(R.id.fragment_container, new FragmentExamsAndArrears()).addToBackStack(null).commit();
-                break;
-            case R.id.nav_payment:
-                try {
-                    ftrans.replace(R.id.fragment_container, new FragmentPayment()).addToBackStack(null).commit();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.nav_scholarships:
-                try {
-                    ftrans.replace(R.id.fragment_container, new FragmentScholarships()).addToBackStack(null).commit();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.nav_ranked:
-                try {
-                    ftrans.replace(R.id.fragment_container, new FragmentRanked()).addToBackStack(null).commit();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
             case R.id.nav_timetable:
                 try {
                     ftrans.replace(R.id.fragment_container, new FragmentTimetable()).addToBackStack(null).commit();
@@ -222,8 +139,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     e.printStackTrace();
                 }
                 break;
-            case R.id.nav_timetable_lec:
-                ftrans.replace(R.id.fragment_container, new FragmentLecturerSchedule()).addToBackStack(null).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

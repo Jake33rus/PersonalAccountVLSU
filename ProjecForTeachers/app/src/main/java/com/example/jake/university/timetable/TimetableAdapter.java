@@ -9,9 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.jake.university.R;
-import com.example.jake.university.scholarships.Scholarships;
-import com.example.jake.university.scholarships.ScholarshipsAdapter;
-import com.example.jake.university.timetable.scheduleServClasses.Day;
+
 import com.example.jake.university.timetable.scheduleServClasses.Lesson;
 
 import java.util.ArrayList;

@@ -1,0 +1,43 @@
+[{"ID":12736,"UserID":12729,"Login":"presnyakov","PwdHash":"3D7EFDA7F509F321B96C464EF2823CF2",
+"Email":"vasilyev@vlsu.ru","PhoneNumb":"","PhomeID":0,"ChangePassDateTime":"2019-06-19T11:20:56","ChangeMailDateTime":"2019-06-19T11:20:56",
+"ChangePhoneDateTime":"1753-12-12T00:00:00","NoteID":0,"NoteText":"","CPerson":281474976901614}]
+
+[{"UNS":"","StID":0,"PerID":281474976901614,"SotrID":281474976716877,
+"PerTabNumb":"NO-2061","SirName":"Пресняков","Name":"Анатолий","MidName":"Николаевич","StGroupName":"",
+"ProfName":"Сотр. каф. КИТП","InstID":281474976710826,"InstName":"КИТП",
+"KafID":281474976880527,"KafName":"КИТП","SubvisID":281474976880527,"ProfTypeID":47,"ParusID":626211196}]
+
+[
+    {
+        "RN": 626211196,
+        "STATUS": "Текущий",
+        
+"DATE_UVOL": "29.06.2019",
+        "TAB_NUMBER": "NO-2061",
+        
+"FIO": "Пресняков Анатолий Николаевич",
+        "FAMILYNAME": "Пресняков",
+       
+ "FIRSTNAME": "Анатолий",
+        "LASTNAME": "Николаевич",
+        "BIRTHDAY": "02.05.1949",
+       
+ "PODR_RN": 35088110,
+        "PODR": "Колледж ВлГУ",
+        "PODPODR_RN": 553359258,
+       
+ "PODPODR": "Колледж ВлГУ Отделение среднего профессионального юридического образования",
+       
+ "DOLJ_RN": 130325,
+        "DOLJ": "Преподаватель",
+        "DOLJ_FULL_RN": 553448791,
+      
+  "DOLJ_FULL": "Преподаватель",
+        "USL": "Внутренний совместитель",
+        
+"UCHST": "без ученой степени",
+       
+ "UCHZV": "без ученого звания",
+        "STRAH_STAG": "41г2м17д",
+        "PED_STAG": "14л9м18д"
+    }

@@ -78,7 +78,7 @@ public class postReq extends AsyncTask<String, Void, Void>
         JSONArray jArr = new JSONArray();
         JSONParser jsonParser=new JSONParser();
         TripleDES coder = new TripleDES();
-        String myURL = "http://172.18.14.9:3000/"+type;
+        String myURL = "http://172.18.14.137:3000/"+type;
         byte[] data = null;
         InputStream is = null;
 
@@ -229,7 +229,7 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             postReq comand3 = new postReq("getData");
             try {
-                comand3.execute("10","dbo.A_LKS_GetStudentId_last","'',"+PerID).get();
+                comand3.execute("10","A_LKS_GetUserIdsByTabNumb",CPerson).get();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -248,7 +248,7 @@ public class postReq extends AsyncTask<String, Void, Void>
                 e.printStackTrace();
             }
 
-            arrg[0] = nrec;
+            arrg[0] = CPerson;
             return arrg;
 
     }

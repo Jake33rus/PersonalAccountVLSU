@@ -38,7 +38,7 @@ public class Singleton {
         this.nrec = nrec;
             longNrec = new BigInteger(nrec.replaceFirst("0x8", ""), 16);
         bigNrec = longNrec.toString();
-        setTimetable();
+       // setTimetable();
         setProfileInfo();
     }
 
@@ -46,7 +46,7 @@ public class Singleton {
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
-        comand.execute("10","A_LKS_GetStudentInfo_Mobile",nrec).get();
+        comand.execute("15","vlsu_lk_SotrList",nrec).get();
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
         studentID = obj.getString("ID64");
@@ -61,12 +61,12 @@ public class Singleton {
 
     private void setTimetable() throws JSONException, ExecutionException, InterruptedException
     {
-        postReq comand = new postReq("getData");
+     /*   postReq comand = new postReq("getData");
         comand.execute("10", "[dbo].[_A_SCD_StudSchedule]", "2," +bigNrec+ ",0,0,-1,"+
                 TimeController.getStudyYearByDate() +","
                 +TimeController.getSemesterByDate()+",-1").get();
         JSONArray arr = comand.getjARRAY();
-        schedule = new WeekSchedule(arr);
+        schedule = new WeekSchedule(arr);*/
     }
 
     public ProfileInfo getProfileInfo() {return profileInfo;}

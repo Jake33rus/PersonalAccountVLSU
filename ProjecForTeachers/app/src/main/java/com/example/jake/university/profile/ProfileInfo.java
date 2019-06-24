@@ -2,111 +2,109 @@ package com.example.jake.university.profile;
 
 public class ProfileInfo
 {
-    public ProfileInfo(String FIO, String faculty, String finType, String educForm, String group, String speciality, String photo, String startDate, String phoneNum, String email) {
-        this.FIO = FIO;
-        Faculty = faculty;
-        FinType = finType;
-        EducForm = educForm;
-        Group = group;
-        Speciality = speciality;
-        Photo = photo;
-        StartDate = startDate;
-        PhoneNum = phoneNum;
-        Email = email;
+   String fio;
+   String uch_step;
+   String uch_zv;
+   String post;
+   String institute;
+   String cathedra;
+   String ped_stazh;
+   String general_stazh;
+   String email;
+   String tel_numb;
+
+    public ProfileInfo(String fio, String uch_step, String uch_zv, String post, String institute,
+                       String cathedra, String ped_stazh, String general_stazh, String email,
+                       String tel_numb) {
+        this.fio = fio;
+        this.uch_step = uch_step;
+        this.uch_zv = uch_zv;
+        this.post = post;
+        this.institute = institute;
+        this.cathedra = cathedra;
+        this.ped_stazh = ped_stazh;
+        this.general_stazh = general_stazh;
+        this.email = email;
+        this.tel_numb = tel_numb;
     }
 
-    public ProfileInfo() {
+    public String getFio() {
+        return fio;
     }
 
-    public String getFIO() {
-        return FIO;
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
-    public void setFIO(String FIO) {
-        this.FIO = FIO;
+    public String getUch_step() {
+        return uch_step;
     }
 
-    public String getFaculty() {
-        return Faculty;
+    public void setUch_step(String uch_step) {
+        this.uch_step = uch_step;
     }
 
-    public void setFaculty(String faculty) {
-        Faculty = faculty;
+    public String getUch_zv() {
+        return uch_zv;
     }
 
-    public String getFinType() {
-        return FinType;
+    public void setUch_zv(String uch_zv) {
+        this.uch_zv = uch_zv;
     }
 
-    public void setFinType(String finType) {
-        FinType = finType;
+    public String getPost() {
+        return post;
     }
 
-    public String getEducForm() {
-        return EducForm;
+    public void setPost(String post) {
+        this.post = post;
     }
 
-    public void setEducForm(String educForm) {
-        EducForm = educForm;
+    public String getInstitute() {
+        return institute;
     }
 
-    public String getGroup() {
-        return Group;
+    public void setInstitute(String institute) {
+        this.institute = institute;
     }
 
-    public void setGroup(String group) {
-        Group = group;
+    public String getCathedra() {
+        return cathedra;
     }
 
-    public String getSpeciality() {
-        return Speciality;
+    public void setCathedra(String cathedra) {
+        this.cathedra = cathedra;
     }
 
-    public void setSpeciality(String speciality) {
-        Speciality = speciality;
+    public String getPed_stazh() {
+        return ped_stazh;
     }
 
-    public String getPhoto() {
-        return Photo;
+    public void setPed_stazh(String ped_stazh) {
+        this.ped_stazh = ped_stazh;
     }
 
-    public void setPhoto(String photo) {
-        Photo = photo;
+    public String getGeneral_stazh() {
+        return general_stazh;
     }
 
-    public String getStartDate() {
-        return StartDate;
+    public void setGeneral_stazh(String general_stazh) {
+        this.general_stazh = general_stazh;
     }
-
-    public void setStartDate(String startDate) {
-        StartDate = startDate;
-    }
-
-    public String getPhoneNum() {
-        return PhoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        PhoneNum = phoneNum;
-    }
-
-    private String FIO;
-    private String Faculty;
-    private String FinType;
-    private String EducForm;
-    private String Group;
-    private String Speciality;
-    private String Photo;
-    private String StartDate;
-    private String PhoneNum;
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    private String Email;
+    public String getTel_numb() {
+        return tel_numb;
+    }
+
+    public void setTel_numb(String tel_numb) {
+        this.tel_numb = tel_numb;
+    }
 }

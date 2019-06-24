@@ -49,13 +49,11 @@ public class Singleton {
         comand.execute("15","vlsu_lk_SotrList",nrec).get();
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
-        studentID = obj.getString("ID64");
-        studentCurse = obj.getInt("Курс");
-        profileInfo = new ProfileInfo(obj.getString("ФИО"), obj.getString("Факультет"),
-                obj.getString("Источник финансирования обучения"),
-                obj.getString("Форма обучения"), obj.getString("Группа"),
-                obj.getString("Специальность"), "fdsf", "01.01.2018",
-                obj.getString("Номер контактного телефона"), obj.getString("Email"));
+        profileInfo = new ProfileInfo(obj.getString("FIO"), obj.getString("UCHST"),
+                obj.getString("UCHZV"),
+                obj.getString("DOLJ_FULL"), obj.getString("PODR"),
+                obj.getString("PODPODR"), obj.getString("PED_STAG"),
+                obj.getString("STRAH_STAG"), "email", "tel_num");
     }
 
 

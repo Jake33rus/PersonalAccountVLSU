@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ArrayList<Document> docs = new ArrayList<>();
+       /* ArrayList<Document> docs = new ArrayList<>();
         DocWorker dw = new DocWorker();
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
         comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
                 "0, 0, 0, 0, '', '', False, 281474976904107, 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
         docs = dw.getDocList(comand.getjARRAY());
-        int i = 5;
+        int i = 5;*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

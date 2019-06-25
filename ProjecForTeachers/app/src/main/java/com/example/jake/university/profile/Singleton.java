@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 public class Singleton {
 
     /*Поля класса*/
-    String nrec;
+    String parusID;
     String studentID;
     BigInteger longNrec;
     String bigNrec;
@@ -36,9 +36,9 @@ public class Singleton {
     boolean parity;
 
     /* Конструктор */
-    private Singleton(String nrec) throws ExecutionException, InterruptedException, JSONException {
-        this.nrec = nrec;
-            longNrec = new BigInteger(nrec.replaceFirst("0x8", ""), 16);
+    private Singleton(String ParusID) throws ExecutionException, InterruptedException, JSONException {
+        this.parusID = ParusID;
+            longNrec = new BigInteger(parusID.replaceFirst("0x8", ""), 16);
         bigNrec = longNrec.toString();
        // setTimetable();
         setProfileInfo();
@@ -48,7 +48,8 @@ public class Singleton {
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
-        comand.execute("15","vlsu_lk_SotrList",nrec).get();
+        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
+                "podrId:empty,TabNum:empty,uslId:empty,kateg:empty").get();
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
         profileInfo = new ProfileInfo(obj.getString("FIO"), obj.getString("UCHST"),
@@ -102,9 +103,9 @@ public class Singleton {
         return todayLesson;
     }
 
-    public String getNrec()
+    public String getParusID()
     {
-        return nrec;
+        return parusID;
     }
     public String getBigNrec()
     {

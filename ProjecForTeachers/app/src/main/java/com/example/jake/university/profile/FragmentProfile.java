@@ -20,16 +20,18 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
     View view;
     TextView tvFIO, tvUchStep, tvUchZv, tvDolzh, tvInstitut, tvCathdra, tvPedStazh, tvCommonStazh, tvMobile, tvEmail;
     Singleton singleton;
+    ProfileInfo info;
     public FragmentProfile() throws InterruptedException, ExecutionException, JSONException {
+        singleton = Singleton.getInstance("");
+        info = singleton.getProfileInfo();
     }
 
     @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        singleton = Singleton.getter();
-        ProfileInfo info = singleton.getProfileInfo();
-        view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        view = inflater.inflate(R.layout.profile, container, false);
         initViews();
         tvFIO.setText(info.getFio());
         tvUchStep.setText(info.getUch_step());

@@ -240,15 +240,15 @@ public class postReq extends AsyncTask<String, Void, Void>
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            String nrec = new String();
+            String parusID = new String();
 
             try {
-                nrec =  obj.getString("ID");
+                parusID =  obj.getString("ParusID");
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            arrg[0] = CPerson;
+            arrg[0] = parusID;
             return arrg;
 
     }

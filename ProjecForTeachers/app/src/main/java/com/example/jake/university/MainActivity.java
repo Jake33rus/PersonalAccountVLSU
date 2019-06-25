@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.jake.university.API.postReq;
+import com.example.jake.university.Docs.DocWorker;
+import com.example.jake.university.Docs.Document;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.notifications.ScheduleAlarms;
 
@@ -30,6 +33,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -49,21 +53,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int REQUEST_CODE_ASK_PERMISSIONS=111;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ArrayList<Document> docs = new ArrayList<>();
+        DocWorker dw = new DocWorker();
+        JSONObject obj = new JSONObject();
+        postReq comand = new postReq("getData");
+        comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                "0, 0, 0, 0, '', '', False, 281474976904107, 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+        docs = dw.getDocList(comand.getjARRAY());
+        int i = 5;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDrawerlayout = findViewById(R.id.drawer);
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
-        try {
-            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         ScheduleAlarms.getInstance().startAlarmBundle(this);
         navigationView.setNavigationItemSelectedListener(this);

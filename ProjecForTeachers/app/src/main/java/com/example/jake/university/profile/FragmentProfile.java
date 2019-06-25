@@ -29,14 +29,14 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
         ProfileInfo info = singleton.getProfileInfo();
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         initViews();
-        tvFIO.setText(info.getFIO());
-        tvGroup.setText(info.getGroup());
-        tvInstitut.setText(info.getFaculty());//
-        tvKafedra.setText(info.getGroup());//
-        tvStartStudy.setText(info.getStartDate());
-        tvStudyForm.setText(info.getEducForm());
-        tvFinans.setText(info.getFinType());
-        tvMobile.setText(info.getPhoneNum());
+//        tvFIO.setText(info.getFIO());
+//        tvGroup.setText(info.getGroup());
+//        tvInstitut.setText(info.getFaculty());//
+//        tvKafedra.setText(info.getGroup());//
+//        tvStartStudy.setText(info.getStartDate());
+//        tvStudyForm.setText(info.getEducForm());
+//        tvFinans.setText(info.getFinType());
+//        tvMobile.setText(info.getPhoneNum());
         tvEmail.setText(info.getEmail());
         return view;
     }

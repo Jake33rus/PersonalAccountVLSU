@@ -1,6 +1,8 @@
 package com.example.jake.university.profile;
 
 import com.example.jake.university.API.postReq;
+import com.example.jake.university.Docs.DocWorker;
+import com.example.jake.university.Docs.Document;
 import com.example.jake.university.timetable.WeekSchedule;
 import com.example.jake.university.timetable.scheduleServClasses.Day;
 import com.example.jake.university.timetable.scheduleServClasses.Lesson;
@@ -54,6 +56,9 @@ public class Singleton {
                 obj.getString("DOLJ_FULL"), obj.getString("PODR"),
                 obj.getString("PODPODR"), obj.getString("PED_STAG"),
                 obj.getString("STRAH_STAG"), "email", "tel_num");
+
+
+
     }
 
 

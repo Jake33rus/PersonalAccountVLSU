@@ -11,7 +11,7 @@
         android:minHeight="800dp">
 
         <TextView
-            android:id="@+id/text_view_finans2"
+            android:id="@+id/tv_ped_stazh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -22,10 +22,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_finansValue" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_cathedra" />
 
         <TextView
-            android:id="@+id/text_view_finansValue2"
+            android:id="@+id/tv_common_stazh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_finans2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_ped_stazh" />
 
         <ImageView
             android:id="@+id/imageView9"
@@ -44,11 +44,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_finansValue2"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_finansValue"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_common_stazh"
+            app:layout_constraintEnd_toStartOf="@+id/tv_cathedra"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_finansValue"
-            app:srcCompat="@drawable/ic_cash_multiple" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_cathedra"
+            app:srcCompat="@mipmap/ic_stazh" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -62,9 +62,9 @@
             android:id="@+id/imageView2"
             android:layout_width="300dp"
             android:layout_height="32dp"
-            android:layout_marginTop="108dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fio"
             app:srcCompat="@color/blue100" />
 
         <ImageView
@@ -73,7 +73,7 @@
             android:layout_height="32dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_finansValue2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_common_stazh"
             app:srcCompat="@color/blue100" />
 
         <ImageView
@@ -82,11 +82,11 @@
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_startValue2"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_uch_step"
             app:layout_constraintEnd_toStartOf="@+id/text_view_institute"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_view_institute"
-            app:srcCompat="@drawable/ic_earth" />
+            app:srcCompat="@drawable/ic_school" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -94,11 +94,11 @@
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_startValue3"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_uch_zv"
             app:layout_constraintEnd_toStartOf="@+id/text_view_kafedra"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_view_kafedra"
-            app:srcCompat="@drawable/ic_laptop" />
+            app:srcCompat="@drawable/ic_clipboard_alert" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -106,13 +106,13 @@
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_startValue"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_dolzhnost"
             app:layout_constraintEnd_toStartOf="@+id/text_view_start"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_view_start"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_clock_start" />
+            app:srcCompat="@mipmap/ic_dolzhnost" />
 
         <ImageView
             android:id="@+id/imageView12"
@@ -120,11 +120,11 @@
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_studyFormValue"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_institute"
             app:layout_constraintEnd_toStartOf="@+id/text_view_studyForm"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_view_studyForm"
-            app:srcCompat="@drawable/ic_format_list_checks" />
+            app:srcCompat="@mipmap/ic_institute" />
 
         <ImageView
             android:id="@+id/imageView13"
@@ -132,11 +132,11 @@
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_finansValue"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_finansValue"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_cathedra"
+            app:layout_constraintEnd_toStartOf="@+id/tv_cathedra"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_view_finans"
-            app:srcCompat="@drawable/ic_cash_multiple" />
+            app:srcCompat="@mipmap/ic_cathedra" />
 
         <ImageView
             android:id="@+id/imageView14"
@@ -177,12 +177,15 @@
             android:id="@+id/text_view_fio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="Иванов Иван Иванович"
             android:textSize="20sp"
             android:textStyle="italic"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_view_institute"
@@ -210,7 +213,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_startValue2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_uch_step" />
 
         <TextView
             android:id="@+id/text_view_start"
@@ -224,7 +227,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_startValue3" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_uch_zv" />
 
         <TextView
             android:id="@+id/text_view_studyForm"
@@ -233,14 +236,14 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="Институт"
+            android:text="Институт:"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_startValue" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dolzhnost" />
 
         <TextView
-            android:id="@+id/text_view_studyFormValue"
+            android:id="@+id/tv_institute"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -253,7 +256,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_studyForm" />
 
         <TextView
-            android:id="@+id/text_view_startValue"
+            android:id="@+id/tv_dolzhnost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -266,7 +269,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_start" />
 
         <TextView
-            android:id="@+id/text_view_startValue3"
+            android:id="@+id/tv_uch_zv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -279,7 +282,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_kafedra" />
 
         <TextView
-            android:id="@+id/text_view_startValue2"
+            android:id="@+id/tv_uch_step"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -303,10 +306,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_studyFormValue" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_institute" />
 
         <TextView
-            android:id="@+id/text_view_finansValue"
+            android:id="@+id/tv_cathedra"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

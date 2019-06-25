@@ -52,7 +52,7 @@
                 android:layout_height="32dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_finansValue"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cathedra"
                 app:srcCompat="@color/blue100" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -85,7 +85,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/text_view_startValue"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_dolzhnost"
                 app:layout_constraintEnd_toStartOf="@+id/text_view_start"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/text_view_studyFormValue"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_institute"
                 app:layout_constraintEnd_toStartOf="@+id/text_view_studyForm"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_view_studyForm"
@@ -111,8 +111,8 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/text_view_finansValue"
-                app:layout_constraintEnd_toStartOf="@+id/text_view_finansValue"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_cathedra"
+                app:layout_constraintEnd_toStartOf="@+id/tv_cathedra"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_view_finans"
                 app:srcCompat="@drawable/ic_cash_multiple" />
@@ -229,10 +229,10 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_startValue" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_dolzhnost" />
 
             <TextView
-                android:id="@+id/text_view_studyFormValue"
+                android:id="@+id/tv_institute"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -245,7 +245,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_view_studyForm" />
 
             <TextView
-                android:id="@+id/text_view_startValue"
+                android:id="@+id/tv_dolzhnost"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -269,10 +269,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_studyFormValue" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_institute" />
 
             <TextView
-                android:id="@+id/text_view_finansValue"
+                android:id="@+id/tv_cathedra"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

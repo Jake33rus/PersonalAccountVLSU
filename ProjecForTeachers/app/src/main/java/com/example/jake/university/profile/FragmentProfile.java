@@ -1,5 +1,6 @@
 package com.example.jake.university.profile;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +18,12 @@ import androidx.annotation.Nullable;
 
 public class FragmentProfile extends androidx.fragment.app.Fragment {
     View view;
-    TextView tvFIO, tvGroup, tvInstitut, tvKafedra, tvStartStudy, tvStudyForm, tvFinans, tvMobile, tvEmail;;
+    TextView tvFIO, tvUchStep, tvUchZv, tvDolzh, tvInstitut, tvCathdra, tvPedStazh, tvCommonStazh, tvMobile, tvEmail;
     Singleton singleton;
     public FragmentProfile() throws InterruptedException, ExecutionException, JSONException {
     }
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,25 +31,29 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
         ProfileInfo info = singleton.getProfileInfo();
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         initViews();
-        tvFIO.setText(info.getFIO());
-        tvGroup.setText(info.getGroup());
-        tvInstitut.setText(info.getFaculty());//
-        tvKafedra.setText(info.getGroup());//
-        tvStartStudy.setText(info.getStartDate());
-        tvStudyForm.setText(info.getEducForm());
-        tvFinans.setText(info.getFinType());
-        tvMobile.setText(info.getPhoneNum());
+        tvFIO.setText(info.getFio());
+        tvUchStep.setText(info.getUch_step());
+        tvUchZv.setText(info.getUch_zv());
+        tvDolzh.setText(info.getPost());
+        tvInstitut.setText(info.getInstitute());
+        tvCathdra.setText(info.getCathedra());
+        String temp = (String) tvPedStazh.getText();
+        tvPedStazh.setText(temp + " " + info.getPed_stazh());
+        temp = (String) tvCommonStazh.getText();
+        tvCommonStazh.setText(temp + " " + info.getGeneral_stazh());
+        tvMobile.setText(info.getTel_numb());
         tvEmail.setText(info.getEmail());
         return view;
     }
     void initViews() {
         tvFIO = (TextView) view.findViewById(R.id.text_view_fio);
-        tvGroup = (TextView) view.findViewById(R.id.text_view_group);
-        tvInstitut = (TextView) view.findViewById(R.id.text_view_institute);
-        tvKafedra = (TextView) view.findViewById(R.id.text_view_kafedra);
-        tvStartStudy = (TextView) view.findViewById(R.id.text_view_startValue);
-        tvStudyForm = (TextView) view.findViewById(R.id.text_view_studyFormValue);
-        tvFinans = (TextView) view.findViewById(R.id.text_view_finansValue);
+        tvUchStep = (TextView) view.findViewById(R.id.tv_uch_step);
+        tvUchZv = (TextView) view.findViewById(R.id.tv_uch_zv);
+        tvDolzh = (TextView) view.findViewById(R.id.tv_dolzhnost);
+        tvInstitut = (TextView) view.findViewById(R.id.tv_institute);
+        tvCathdra = (TextView) view.findViewById(R.id.tv_cathedra);
+        tvPedStazh = (TextView) view.findViewById(R.id.tv_ped_stazh);
+        tvCommonStazh = (TextView) view.findViewById(R.id.tv_common_stazh);
         tvMobile = (TextView) view.findViewById(R.id.text_view_mobile2);
         tvEmail = (TextView) view.findViewById(R.id.text_view_email2);
     }

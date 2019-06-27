@@ -44,7 +44,7 @@ public class Singleton {
         setProfileInfo();
     }
 
-//TODO: Изменить хранимку с студентов на преподов, проверить входящие данные
+//TODO: проверить вторую хранимку
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
@@ -57,7 +57,12 @@ public class Singleton {
                 obj.getString("DOLJ_FULL"), obj.getString("PODR"),
                 obj.getString("PODPODR"), obj.getString("PED_STAG"),
                 obj.getString("STRAH_STAG"), "email", "tel_num");
-
+        postReq comand1 = new postReq("getData");
+        comand1.execute("20","AuthData_GetData","0,0,'"+profileInfo.getFio()+"','','','',0,'','',0").get();
+        JSONArray arr1 = comand1.getjARRAY();
+        JSONObject object = arr1.getJSONObject(0);
+        profileInfo.setEmail(object.getString("email"));
+        profileInfo.setTel_numb(object.getString("Tel"));
 
 
     }

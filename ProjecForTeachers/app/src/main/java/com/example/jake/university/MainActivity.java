@@ -1,47 +1,33 @@
 package com.example.jake.university;
 
-import android.Manifest;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.jake.university.API.postReq;
-import com.example.jake.university.Docs.DocWorker;
-import com.example.jake.university.Docs.Document;
+import com.example.jake.university.Docs.FragmentDocuments;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.notifications.ScheduleAlarms;
 
 import com.example.jake.university.profile.FragmentProfile;
-import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
@@ -144,7 +130,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_timetable:
                 try {
-                    ftrans.replace(R.id.fragment_container, new FragmentTimetable()).addToBackStack(null).commit();
+                    ftrans.replace(R.id.fragment_container,
+                            new FragmentTimetable()).addToBackStack(null).commit();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -152,6 +139,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                break;
+            case R.id.nav_documents:
+                ftrans.replace(R.id.fragment_container, new FragmentDocuments()).addToBackStack(null).commit();
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);

@@ -177,7 +177,7 @@ public class postReq extends AsyncTask<String, Void, Void>
         JSONArray arr;
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
-        String[] arrg = {"0"};
+        String[] arrg = {"0", login};
 
         try {
             comand.execute("20","AuthData_GetData",

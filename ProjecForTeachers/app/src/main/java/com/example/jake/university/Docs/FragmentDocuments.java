@@ -160,18 +160,7 @@ public class FragmentDocuments extends Fragment {
                         fdl).addToBackStack(null).commit();
             }
         });
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getFragmentManager();
-                FragmentDocumentsList fdl = new FragmentDocumentsList();
-                bundle = new Bundle();
-                bundle.putSerializable("list", docs);
-                fdl.setArguments(bundle);
-                fm.beginTransaction().replace(R.id.fragment_container,
-                        fdl).addToBackStack(null).commit();
-            }
-        });
+
         return view;
     }
 }

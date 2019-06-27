@@ -1,5 +1,6 @@
 package com.example.jake.university.profile;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.jake.university.API.postReq;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
 
+import static com.example.jake.university.API.Login.APP_PREFERENCES;
+
 public class Singleton {
 
     /*Поля класса*/
@@ -33,22 +36,38 @@ public class Singleton {
     ProfileInfo profileInfo;
     WeekSchedule schedule;
     HashSet<String> lecturersList;
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    String login;
     int studentCurse;
-    SharedPreferences sp;
+
 
     boolean parity;
 
     /* Конструктор */
     private Singleton(String ParusID) throws ExecutionException, InterruptedException, JSONException {
         this.parusID = ParusID;
-            longNrec = new BigInteger(parusID.replaceFirst("0x8", ""), 16);
+        longNrec = new BigInteger(parusID.replaceFirst("0x8", ""), 16);
         bigNrec = longNrec.toString();
-       // setTimetable();
         setProfileInfo();
+        // setTimetable();
     }
+    private Singleton(String ParusID, String login) throws ExecutionException, InterruptedException, JSONException {
+        this.parusID = ParusID;
+        this.login = login;
+        longNrec = new BigInteger(parusID.replaceFirst("0x8", ""), 16);
+        bigNrec = longNrec.toString();
+        setProfileInfo();
+        // setTimetable();
+    }
+
 
 //TODO: проверить вторую хранимку
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
+
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
         comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
@@ -61,7 +80,9 @@ public class Singleton {
                 obj.getString("PODPODR"), obj.getString("PED_STAG"),
                 obj.getString("STRAH_STAG"), "email", "tel_num");
         postReq comand1 = new postReq("getData");
-        comand1.execute("20","AuthData_GetData","0,0,'"+sp.getString("saved_login","DEFAULT")+"','','','',0,'','',0").get();
+
+
+        comand1.execute("20","AuthData_GetData","0,0,'"+login+"','','','',0,'','',0").get();
         JSONArray arr1 = comand1.getjARRAY();
         JSONObject object = arr1.getJSONObject(0);
         profileInfo.setEmail(object.getString("Email"));
@@ -99,6 +120,16 @@ public class Singleton {
         }
         return instance;
     }
+
+    public static Singleton getInstance(String nrec, String login) throws ExecutionException, InterruptedException, JSONException {
+        if(instance == null)
+        {
+            instance = new Singleton(nrec, login);
+        }
+        return instance;
+    }
+
+
     public static Singleton getter() {return instance;}
 
     public ArrayList<Lesson> getTodayPairs()

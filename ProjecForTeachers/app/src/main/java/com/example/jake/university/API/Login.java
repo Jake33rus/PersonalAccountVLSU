@@ -222,6 +222,7 @@ public class Login extends AppCompatActivity {
 
             Intent toLock = new Intent(this, LockScreenActivity.class);
             toLock.putExtra("nrec", result[0]);
+            toLock.putExtra("login", result[1]);
             startActivity(toLock);
             finish();
 

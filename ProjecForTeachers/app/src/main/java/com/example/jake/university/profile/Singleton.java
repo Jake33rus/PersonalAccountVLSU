@@ -61,8 +61,8 @@ public class Singleton {
         comand1.execute("20","AuthData_GetData","0,0,'"+profileInfo.getFio()+"','','','',0,'','',0").get();
         JSONArray arr1 = comand1.getjARRAY();
         JSONObject object = arr1.getJSONObject(0);
-        profileInfo.setEmail(object.getString("email"));
-        profileInfo.setTel_numb(object.getString("Tel"));
+        profileInfo.setEmail(object.getString("Email"));
+        profileInfo.setTel_numb(object.getString("PhoneNumb"));
 
 
     }

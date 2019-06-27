@@ -36,7 +36,6 @@ public class FragmentDocuments extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_documents_main, container, false);
         butSearch = (Button) view.findViewById(R.id.butSearch); //Кнопка поиска
-        button5 = (Button) view.findViewById(R.id.butSearchDate);
         button1 = (Button) view.findViewById(R.id.but1); // Приказы
         button2 = (Button) view.findViewById(R.id.but2); //Распоряжения
         button3 = (Button) view.findViewById(R.id.but3); //Документы СМК
@@ -56,19 +55,19 @@ public class FragmentDocuments extends Fragment {
                 DocWorker dw = new DocWorker();
                 JSONObject obj = new JSONObject();
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, 281474976904107, 0, 281474976904130, 0, 0, 12729, 1," +
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+ORDERS+", 0, 281474976904130, 0, 0, 12729, 1," +
                                 " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
                 docs = dw.getDocList(comand.getjARRAY());
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, 281474976904108, 0, 281474976904130, 0, 0, 12729, 1," +
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+DISPOSALS+", 0, 281474976904130, 0, 0, 12729, 1," +
                                 " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
                 docs.addAll(dw.getDocList(comand.getjARRAY()));
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, 281474976904113, 0, 281474976904130, 0, 0, 12729, 1," +
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+SMK_DOCS+", 0, 281474976904130, 0, 0, 12729, 1," +
                                 " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
                 docs.addAll(dw.getDocList(comand.getjARRAY()));
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, 281474976904111, 0, 281474976904130, 0, 0, 12729, 1," +
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+BLANKS+", 0, 281474976904130, 0, 0, 12729, 1," +
                                 " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
                 docs.addAll(dw.getDocList(comand.getjARRAY()));
 
@@ -89,7 +88,7 @@ public class FragmentDocuments extends Fragment {
                 JSONObject obj = new JSONObject();
                 postReq comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, 281474976904107, 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                        "0, 0, 0, 0, '', '', False, "+ORDERS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
                 docs = dw.getDocList(comand.getjARRAY());
 
                 FragmentManager fm = getFragmentManager();
@@ -109,7 +108,7 @@ public class FragmentDocuments extends Fragment {
                 JSONObject obj = new JSONObject();
                 postReq comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, 281474976904108, 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                        "0, 0, 0, 0, '', '', False, "+DISPOSALS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
                 docs = dw.getDocList(comand.getjARRAY());
 
                 FragmentManager fm = getFragmentManager();
@@ -129,7 +128,7 @@ public class FragmentDocuments extends Fragment {
                 JSONObject obj = new JSONObject();
                 postReq comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, 281474976904113, 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                        "0, 0, 0, 0, '', '', False, "+SMK_DOCS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
                 docs = dw.getDocList(comand.getjARRAY());
 
                 FragmentManager fm = getFragmentManager();
@@ -149,7 +148,7 @@ public class FragmentDocuments extends Fragment {
                 JSONObject obj = new JSONObject();
                 postReq comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, 281474976904111, 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                        "0, 0, 0, 0, '', '', False, "+BLANKS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
                 docs = dw.getDocList(comand.getjARRAY());
 
                 FragmentManager fm = getFragmentManager();

@@ -16,10 +16,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearchName3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchName" />
 
     <EditText
-        android:id="@+id/tvSearchName3"
+        android:id="@+id/tvSearchName"
         android:layout_width="201dp"
         android:layout_height="52dp"
         android:layout_marginStart="8dp"
@@ -36,21 +36,23 @@
         android:id="@+id/tvSearchDateTo"
         android:layout_width="110dp"
         android:layout_height="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="164dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNumb" />
 
     <EditText
         android:id="@+id/tvSearchDateFrom"
         android:layout_width="110dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        tools:layout_editor_absoluteY="164dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNumb" />
 
     <Button
         android:id="@+id/butSearch"
@@ -119,9 +121,9 @@
         android:layout_marginStart="16dp"
         android:gravity="end"
         android:text="Название"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSearchName3"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSearchName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSearchName3" />
+        app:layout_constraintTop_toTopOf="@+id/tvSearchName" />
 
     <TextView
         android:id="@+id/textView4"

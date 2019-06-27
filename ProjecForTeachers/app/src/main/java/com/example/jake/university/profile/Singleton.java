@@ -1,5 +1,7 @@
 package com.example.jake.university.profile;
 
+import android.content.SharedPreferences;
+
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.Docs.DocWorker;
 import com.example.jake.university.Docs.Document;
@@ -32,6 +34,7 @@ public class Singleton {
     WeekSchedule schedule;
     HashSet<String> lecturersList;
     int studentCurse;
+    SharedPreferences sp;
 
     boolean parity;
 
@@ -58,7 +61,7 @@ public class Singleton {
                 obj.getString("PODPODR"), obj.getString("PED_STAG"),
                 obj.getString("STRAH_STAG"), "email", "tel_num");
         postReq comand1 = new postReq("getData");
-        comand1.execute("20","AuthData_GetData","0,0,'"+profileInfo.getFio()+"','','','',0,'','',0").get();
+        comand1.execute("20","AuthData_GetData","0,0,'"+sp.getString("saved_login","DEFAULT")+"','','','',0,'','',0").get();
         JSONArray arr1 = comand1.getjARRAY();
         JSONObject object = arr1.getJSONObject(0);
         profileInfo.setEmail(object.getString("Email"));

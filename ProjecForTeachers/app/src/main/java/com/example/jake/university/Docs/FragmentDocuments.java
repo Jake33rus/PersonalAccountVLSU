@@ -13,32 +13,64 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-class FragmentDocuments extends Fragment {
+public class FragmentDocuments extends Fragment {
     Button butSearch, button1, button2, button3, button4, button5;
-    TextView tvName, tvData;
+    TextView tvName, tvDataFrom, tvDataTo, tvNumb;
     ArrayList<Document> docs;
     Bundle bundle;
+    private String ORDERS = "281474976904107",
+            DISPOSALS = "281474976904108",
+            SMK_DOCS = "281474976904113",
+            BLANKS = "281474976904111";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_documents_main, container, false);
-        butSearch = (Button) view.findViewById(R.id.butSearch);
-        button5 = (Button) view.findViewById(R.id.butSearchDate);
-        button1 = (Button) view.findViewById(R.id.but1);
-        button2 = (Button) view.findViewById(R.id.but2);
-        button3 = (Button) view.findViewById(R.id.but3);
-        button4 = (Button) view.findViewById(R.id.but4);
-        tvName = (TextView) view.findViewById(R.id.tvNumb);
-        tvData = (EditText) view.findViewById(R.id.tvSearchDateTo);
+        butSearch = (Button) view.findViewById(R.id.butSearch); //Кнопка поиска
+        button1 = (Button) view.findViewById(R.id.but1); // Приказы
+        button2 = (Button) view.findViewById(R.id.but2); //Распоряжения
+        button3 = (Button) view.findViewById(R.id.but3); //Документы СМК
+        button4 = (Button) view.findViewById(R.id.but4); //Бланки
+        tvName = (TextView) view.findViewById(R.id.tvSearchName);
+        tvNumb = (EditText) view.findViewById(R.id.tvNumb);
+        tvDataFrom = (EditText) view.findViewById(R.id.tvSearchDateFrom);
+        tvDataTo = (EditText) view.findViewById(R.id.tvSearchDateTo);
+
+        docs = new ArrayList<>();
+
         butSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                postReq comand = new postReq("getData");
+                DocWorker dw = new DocWorker();
+                JSONObject obj = new JSONObject();
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+ORDERS+", 0, 281474976904130, 0, 0, 12729, 1," +
+                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
+                docs = dw.getDocList(comand.getjARRAY());
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+DISPOSALS+", 0, 281474976904130, 0, 0, 12729, 1," +
+                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
+                docs.addAll(dw.getDocList(comand.getjARRAY()));
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+SMK_DOCS+", 0, 281474976904130, 0, 0, 12729, 1," +
+                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
+                docs.addAll(dw.getDocList(comand.getjARRAY()));
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+BLANKS+", 0, 281474976904130, 0, 0, 12729, 1," +
+                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
+                docs.addAll(dw.getDocList(comand.getjARRAY()));
+
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
                 bundle = new Bundle();
@@ -51,6 +83,14 @@ class FragmentDocuments extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                DocWorker dw = new DocWorker();
+                JSONObject obj = new JSONObject();
+                postReq comand = new postReq("getData");
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, '', '', False, "+ORDERS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                docs = dw.getDocList(comand.getjARRAY());
+
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
                 bundle = new Bundle();
@@ -63,6 +103,14 @@ class FragmentDocuments extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                DocWorker dw = new DocWorker();
+                JSONObject obj = new JSONObject();
+                postReq comand = new postReq("getData");
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, '', '', False, "+DISPOSALS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                docs = dw.getDocList(comand.getjARRAY());
+
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
                 bundle = new Bundle();
@@ -75,6 +123,14 @@ class FragmentDocuments extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                DocWorker dw = new DocWorker();
+                JSONObject obj = new JSONObject();
+                postReq comand = new postReq("getData");
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, '', '', False, "+SMK_DOCS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                docs = dw.getDocList(comand.getjARRAY());
+
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
                 bundle = new Bundle();
@@ -87,6 +143,14 @@ class FragmentDocuments extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                DocWorker dw = new DocWorker();
+                JSONObject obj = new JSONObject();
+                postReq comand = new postReq("getData");
+                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                        "0, 0, 0, 0, '', '', False, "+BLANKS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                docs = dw.getDocList(comand.getjARRAY());
+
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
                 bundle = new Bundle();

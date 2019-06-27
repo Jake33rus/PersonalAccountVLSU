@@ -34,8 +34,8 @@ class FragmentDocuments extends Fragment {
         button2 = (Button) view.findViewById(R.id.but2);
         button3 = (Button) view.findViewById(R.id.but3);
         button4 = (Button) view.findViewById(R.id.but4);
-        tvName = (TextView) view.findViewById(R.id.tvSearchName);
-        tvData = (EditText) view.findViewById(R.id.tvSearchDate);
+        tvName = (TextView) view.findViewById(R.id.tvNumb);
+        tvData = (EditText) view.findViewById(R.id.tvSearchDateTo);
         butSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -11,6 +11,7 @@ import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.notifications.ScheduleAlarms;
 
 import com.example.jake.university.profile.FragmentProfile;
+import com.example.jake.university.profile.Singleton;
 import com.example.jake.university.timetable.FragmentTimetable;
 import com.google.android.material.navigation.NavigationView;
 
@@ -55,15 +56,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
-//        try {
-//            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFIO());
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFio());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         ScheduleAlarms.getInstance().startAlarmBundle(this);
         navigationView.setNavigationItemSelectedListener(this);

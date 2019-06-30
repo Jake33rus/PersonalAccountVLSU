@@ -1,15 +1,12 @@
 package com.example.jake.university.Docs;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.jake.university.R;
 
@@ -36,31 +33,26 @@ public class DocumentsAdapter extends ArrayAdapter<Document> {
         else
             viewHolder = (ViewHolder) convertView.getTag();
         final Document item = documentsItems.get(position);
-
-        final View finalConvertView = convertView;
-        final View finalConvertView1 = convertView;
-
+        viewHolder.tvName.setText(item.getDocTitle());
+        viewHolder.tvNumb.setText(item.getDocNumb());
+        viewHolder.tvPatterns.setText(item.getTemplate());
+        viewHolder.tvAuthors.setText(item.getAuthor());
         viewHolder.download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
-        viewHolder.preview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-            }
-        });
         return convertView;
     }
     private class ViewHolder {
-        final TextView tvName;
-        final Button preview, download;
+        final TextView tvName, tvNumb, tvAuthors, tvPatterns;
+        final Button download;
         ViewHolder(View view){
-            tvName = (TextView) view.findViewById(R.id.docName);
-            preview = (Button) view.findViewById(R.id.butPreview);
+            tvName = (TextView) view.findViewById(R.id.docNumber);
+            tvNumb = (TextView) view.findViewById(R.id.docNumber);
+            tvAuthors = (TextView) view.findViewById(R.id.docsAuthors);
+            tvPatterns = (TextView) view.findViewById(R.id.docsPatternsVision);
             download = (Button) view.findViewById(R.id.butDownload);
         }
     }

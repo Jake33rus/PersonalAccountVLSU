@@ -49,7 +49,7 @@ public class DocumentsAdapter extends ArrayAdapter<Document> {
         final TextView tvName, tvNumb, tvAuthors, tvPatterns;
         final Button download;
         ViewHolder(View view){
-            tvName = (TextView) view.findViewById(R.id.docNumber);
+            tvName = (TextView) view.findViewById(R.id.docName);
             tvNumb = (TextView) view.findViewById(R.id.docNumber);
             tvAuthors = (TextView) view.findViewById(R.id.docsAuthors);
             tvPatterns = (TextView) view.findViewById(R.id.docsPatternsVision);

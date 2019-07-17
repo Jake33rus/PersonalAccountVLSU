@@ -27,8 +27,6 @@ public class Singleton {
 
     /*Поля класса*/
     String parusID;
-    String studentID;
-    BigInteger longNrec;
     String bigNrec;
     JSONArray arrExams;
     JSONObject jobj;
@@ -48,22 +46,17 @@ public class Singleton {
     boolean parity;
 
     /* Конструктор */
-    private Singleton(String ParusID) throws ExecutionException, InterruptedException, JSONException {
-        this.parusID = ParusID;
-        longNrec = new BigInteger(parusID.replaceFirst("0x8", ""), 16);
-        bigNrec = longNrec.toString();
-        setProfileInfo();
-        // setTimetable();
-    }
-    private Singleton(String ParusID, String login) throws ExecutionException, InterruptedException, JSONException {
-        this.parusID = ParusID;
-        this.login = login;
-        longNrec = new BigInteger(parusID.replaceFirst("0x8", ""), 16);
-        bigNrec = longNrec.toString();
-        setProfileInfo();
-        // setTimetable();
+    private Singleton() throws ExecutionException, InterruptedException, JSONException {
     }
 
+    public void setParusID(String parusID){
+        this.parusID = parusID;
+    }
+
+    public void startApplication() throws InterruptedException, ExecutionException, JSONException {
+        setProfileInfo();
+        setTimetable();
+    }
 
 //TODO: проверить вторую хранимку
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
@@ -87,8 +80,6 @@ public class Singleton {
         JSONObject object = arr1.getJSONObject(0);
         profileInfo.setEmail(object.getString("Email"));
         profileInfo.setTel_numb(object.getString("PhoneNumb"));
-
-
     }
 
 
@@ -113,22 +104,13 @@ public class Singleton {
     private static Singleton instance;
 
     /*Реализация Singleton*/
-    public static Singleton getInstance(String nrec) throws ExecutionException, InterruptedException, JSONException {
+    public static Singleton getInstance() throws ExecutionException, InterruptedException, JSONException {
         if(instance == null)
         {
-            instance = new Singleton(nrec);
+            instance = new Singleton();
         }
         return instance;
     }
-
-    public static Singleton getInstance(String nrec, String login) throws ExecutionException, InterruptedException, JSONException {
-        if(instance == null)
-        {
-            instance = new Singleton(nrec, login);
-        }
-        return instance;
-    }
-
 
     public static Singleton getter() {return instance;}
 
@@ -145,9 +127,5 @@ public class Singleton {
     public String getParusID()
     {
         return parusID;
-    }
-    public String getBigNrec()
-    {
-        return bigNrec;
     }
 }

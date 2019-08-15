@@ -11,7 +11,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto"
         android:text="Сумма           Учебный год         Информация"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp" />
 
     <ListView

@@ -15,20 +15,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/design_default_color_primary_dark"
+        app:srcCompat="@color/colorWhite"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
         android:maxWidth="116dp"
         android:text="@string/nameDiscipline"
-        android:textColor="@color/Black"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,51 +35,46 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
         android:text="@string/Semestr"
-        android:textColor="@color/Black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView19"
         app:layout_constraintEnd_toStartOf="@+id/imageView10"
         app:layout_constraintStart_toEndOf="@+id/imageView19"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
         android:text="@string/grade"
-        android:textColor="@color/Black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintEnd_toStartOf="@+id/imageView19"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
         android:maxWidth="64dp"
         android:text="@string/TypeExams"
-        android:textColor="@color/Black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/lv_passed_exams"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -90,7 +84,7 @@
         app:layout_constraintBottom_toTopOf="@+id/lv_passed_exams"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/design_default_color_primary_dark" />
+        app:srcCompat="@color/colorWhite" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -102,7 +96,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView10"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/design_default_color_primary_dark"
+        app:srcCompat="@color/colorWhite"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -114,7 +108,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@color/design_default_color_primary_dark" />
+        app:srcCompat="@color/colorWhite" />
 
     <ListView
         android:id="@+id/lv_passed_exams"

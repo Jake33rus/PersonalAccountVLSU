@@ -9,60 +9,66 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/timePairTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto"
             android:text="@string/time"
-            android:textColor="@color/Black"
-            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/typePairTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_thin"
             android:text="@string/typePair"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toEndOf="@+id/timePairTV"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/pairNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_light"
             android:maxWidth="300dp"
             android:text="@string/lectureName"
             android:textAlignment="viewStart"
-            android:textColor="@color/Black"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timePairTV" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/teacherTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_thin"
             android:text="@string/teacher"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pairNameTV" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lectureHallTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_thin"
             android:text="@string/lectureHall"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toEndOf="@+id/teacherTV"
             app:layout_constraintTop_toBottomOf="@+id/pairNameTV" />
 

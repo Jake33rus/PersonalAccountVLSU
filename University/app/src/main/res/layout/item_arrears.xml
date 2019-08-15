@@ -14,7 +14,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/blue400" />
+        app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/imageView18"
@@ -24,7 +24,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
-        app:srcCompat="@color/blue400" />
+        app:srcCompat="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/disciplineArrears"
@@ -34,10 +34,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:autoText="true"
+        android:fontFamily="@font/roboto"
         android:maxWidth="154dp"
         android:minWidth="156dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,10 +53,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:autoText="true"
+        android:fontFamily="@font/roboto"
         android:maxWidth="78dp"
         android:minWidth="78dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/TypeArrears"
         app:layout_constraintStart_toEndOf="@+id/disciplineArrears"
@@ -68,10 +72,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:autoText="true"
+        android:fontFamily="@font/roboto"
         android:maxWidth="104dp"
         android:minWidth="104dp"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

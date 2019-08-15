@@ -84,13 +84,6 @@ public class Singleton {
                 obj.getString("STRAH_STAG"), "email", "tel_num");
         postReq comand1 = new postReq("getData");
 
-            @Override
-            public void onFailure(@NonNull Call<profileInfo> call, @NonNull Throwable t)
-            {
-
-            }
-        });
-
 //        JSONObject obj = new JSONObject();
 //        postReq comand = new postReq("getData");
 //        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +

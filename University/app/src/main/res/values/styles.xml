@@ -9,6 +9,7 @@
     </style>
     <style name="LinkText">
         <item name="android:textColor">@color/colorSecondaryLight</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
     </style>
     <style name="ThemeOverlay.AppCompat.navTheme">
         <item name="android:colorPrimary">@color/Black</item>

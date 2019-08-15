@@ -56,15 +56,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
-        try {
-            tvHeaderName.setText(Singleton.getInstance().getProfileInfo().getFio());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            tvHeaderName.setText(Singleton.getInstance().getProfileInfo().getFio());
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         ScheduleAlarms.getInstance().startAlarmBundle(this);
         navigationView.setNavigationItemSelectedListener(this);

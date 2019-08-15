@@ -89,7 +89,7 @@ public class FragmentDocuments extends Fragment {
                 JSONObject obj = new JSONObject();
                 postReq comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, "+ORDERS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+                        "0,0,0,0,'','',False,281474976904107,0,281474976904130,0,0,11549,1,'','',0");
                 docs = dw.getDocList(comand.getjARRAY());
 
                 FragmentManager fm = getFragmentManager();

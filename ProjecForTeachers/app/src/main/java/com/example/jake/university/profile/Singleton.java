@@ -71,18 +71,18 @@ public class Singleton {
 
 //TODO: проверить вторую хранимку
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
-
-        RetroFController rfc = RetroFController.getInstance("http://hqvla2222w02/api/api/");
-        IRetroF api = rfc.getJSONApi();
-        Request req = new Request("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
-               "podrId:empty,TabNum:empty,uslId:empty,kateg:empty");
-        api.profInfo(req).enqueue(new Callback <com.example.jake.university.API.Retrofit.pojoes.profileInfo>() {
-            @Override
-            public void onResponse(@NonNull Call<profileInfo> call, @NonNull Response<profileInfo> response)
-            {
-                profileInfo pi = response.body();
-                profInf = pi;
-            }
+        JSONObject obj = new JSONObject();
+        postReq comand = new postReq("getData");
+        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
+                "podrId:empty,TabNum:empty,uslId:empty,kateg:empty").get();
+        JSONArray arr = comand.getjARRAY();
+        obj = arr.getJSONObject(0);
+        profileInfo = new ProfileInfo(obj.getString("FIO"), obj.getString("UCHST"),
+                obj.getString("UCHZV"),
+                obj.getString("DOLJ_FULL"), obj.getString("PODR"),
+                obj.getString("PODPODR"), obj.getString("PED_STAG"),
+                obj.getString("STRAH_STAG"), "email", "tel_num");
+        postReq comand1 = new postReq("getData");
 
             @Override
             public void onFailure(@NonNull Call<profileInfo> call, @NonNull Throwable t)

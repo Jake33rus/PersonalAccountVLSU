@@ -218,10 +218,10 @@ public class postReq extends AsyncTask<String, Void, Void>
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            String PerID = new String();
+            String LecID = new String();
 
             try {
-                PerID =  obj.getString("PerID");
+                LecID =  obj.getString("LecID");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -229,7 +229,7 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             postReq comand3 = new postReq("getData");
             try {
-                comand3.execute("10","A_LKS_GetUserIdsByTabNumb",CPerson).get();
+                comand3.execute("10","A_LKS_GetLecturesListGal","0,"+LecID+",0,'','','','',0,0").get();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -243,7 +243,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             String parusID = new String();
 
             try {
-                parusID =  obj.getString("ParusID");
+                parusID =  obj.getString("nrec_parus");
             } catch (Exception e) {
                 e.printStackTrace();
             }

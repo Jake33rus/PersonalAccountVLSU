@@ -25,10 +25,11 @@
             android:orientation="vertical"
             android:paddingLeft="8dp">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/newsHeadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
                 android:maxHeight="48dp"
                 android:minHeight="48dp"
                 android:text="Заголовок"
@@ -36,15 +37,16 @@
                 android:textStyle="bold"
                 app:autoSizeMaxTextSize="18sp" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/newsData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/Black"
                 android:layout_marginTop="4dp"
-                android:textStyle="italic"
+                android:fontFamily="@font/roboto_slab"
                 android:text="00.00.0000"
-                android:textSize="12sp" />
+                android:textColor="@color/Black"
+                android:textSize="12sp"
+                android:textStyle="italic" />
         </LinearLayout>
 
         <ImageView

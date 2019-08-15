@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".exams.FragmentExamsAndArrears">
+    android:layout_height="match_parent">
 
 
     <ScrollView
@@ -18,35 +17,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/chooseTeacher"
-            android:layout_width="126dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Сегодня n пар"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chooseTeacher"
+                android:layout_width="126dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:text="Сегодня n пар"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/numbersOfWeekTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="Эта неделя (с какого по какое число)"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chooseTeacher" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/numbersOfWeekTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto"
+                android:text="Эта неделя (с какого по какое число)"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chooseTeacher" />
 
-        <TextView
-            android:id="@+id/parityOfWeekTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="Четность недели"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/numbersOfWeekTV" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/parityOfWeekTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto"
+                android:text="Четность недели"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numbersOfWeekTV" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView1"
@@ -71,27 +76,31 @@
                     app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/blueA100" />
+                    app:srcCompat="@color/colorPrimary" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateTV1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="Дата"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView1"
                     app:layout_constraintStart_toStartOf="@+id/imageView1"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dayOfWeek1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="День недели"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView1"
                     app:layout_constraintEnd_toEndOf="@+id/imageView1"
                     app:layout_constraintStart_toEndOf="@+id/dateTV1"
@@ -138,27 +147,31 @@
                     app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/blueA100" />
+                    app:srcCompat="@color/colorPrimary" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateTV2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="Дата"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintStart_toStartOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dayOfWeek2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="День недели"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintStart_toEndOf="@+id/dateTV2"
@@ -205,27 +218,31 @@
                     app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/blueA100" />
+                    app:srcCompat="@color/colorPrimary" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateTV3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="Дата"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                     app:layout_constraintStart_toStartOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dayOfWeek3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="День недели"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                     app:layout_constraintEnd_toEndOf="@+id/imageView3"
                     app:layout_constraintStart_toEndOf="@+id/dateTV3"
@@ -272,27 +289,31 @@
                     app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/blueA100" />
+                    app:srcCompat="@color/colorPrimary" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateTV4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="Дата"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                     app:layout_constraintStart_toStartOf="@+id/imageView4"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dayOfWeek4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="День недели"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                     app:layout_constraintEnd_toEndOf="@+id/imageView4"
                     app:layout_constraintStart_toEndOf="@+id/dateTV4"
@@ -339,27 +360,31 @@
                     app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/blueA100" />
+                    app:srcCompat="@color/colorPrimary" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateTV5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="Дата"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dayOfWeek5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="День недели"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
                     app:layout_constraintStart_toEndOf="@+id/dateTV5"
@@ -406,27 +431,31 @@
                     app:layout_constraintHorizontal_bias="0.489"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/blueA100" />
+                    app:srcCompat="@color/colorPrimary" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dateTV6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="Дата"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                     app:layout_constraintStart_toStartOf="@+id/imageView6"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dayOfWeek6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
                     android:text="День недели"
+                    android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                     app:layout_constraintEnd_toEndOf="@+id/imageView6"
                     app:layout_constraintStart_toEndOf="@+id/dateTV6"

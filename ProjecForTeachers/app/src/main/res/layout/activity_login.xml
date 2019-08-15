@@ -21,56 +21,88 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/logButton"
-        style="@style/LoginButton"
-        android:layout_width="310dp"
+        android:layout_width="0dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="37dp"
-        android:onClick="onButtonClick"
-        android:text="@string/login"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:theme="@style/FormButton"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:text="Войти"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passField" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginField"
-        android:layout_width="310dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="37dp"
-        android:hint="Логин"
-        android:inputType="text"
-        android:shadowColor="@color/Black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/login_logscreen"
+        android:textColorHint="@color/colorPrimary"
+        app:boxBackgroundColor="@color/blue100"
+        app:hintTextColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/passField"
+        app:layout_constraintStart_toStartOf="@+id/passField"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHighlight="@color/blueA100"
+            android:textColorHint="@color/blue500" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView2"
         style="@style/LinkText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/problem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logButton" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passField"
-        android:layout_width="310dp"
-        android:layout_height="42dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:hint="Пароль"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginField" />
+        android:hint="@string/password"
+        android:textColorHint="@color/colorPrimary"
+        app:boxBackgroundColor="@color/blue100"
+        app:errorEnabled="true"
+        app:hintTextColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/logButton"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="@+id/logButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginField"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:inputType="textPassword"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHighlight="@color/blueA100"
+            android:textColorHint="@color/blue500" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fingerprint"

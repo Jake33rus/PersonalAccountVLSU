@@ -36,7 +36,7 @@ public class LockScreenActivity extends AppCompatActivity {
                String nrec = arguments.get("nrec").toString();
                String login = arguments.get("login").toString();
                try {
-                   Singleton.getInstance(nrec, login);
+                   Singleton.getInstance();
                } catch (ExecutionException e) {
                    e.printStackTrace();
                } catch (InterruptedException e) {

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.jake.university.LockScreenActivity;
 import com.example.jake.university.R;
 import com.example.jake.university.adapter.FingerprintHandler;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -67,7 +68,7 @@ public class Login extends AppCompatActivity {
 
         ImageView fp = (ImageView) findViewById(R.id.fingerprint);
         ImageView ad = (ImageView) findViewById(R.id.arrowDown);
-        TextView login = (TextView) findViewById(R.id.loginField);
+        TextView login = (TextInputEditText) findViewById(R.id.login_edit_text);
 
         checkingLogin = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (checkingLogin.contains(APP_SAVED_LOGIN))
@@ -204,8 +205,8 @@ public class Login extends AppCompatActivity {
     }
 
     public void onButtonClick(View v) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException, InterruptedException {
-        TextView login = (TextView) findViewById(R.id.loginField);
-        TextView password = (TextView) findViewById(R.id.passField);
+        TextView login = (TextInputEditText) findViewById(R.id.login_edit_text);
+        TextView password = (TextInputEditText) findViewById(R.id.password_edit_text);
 
         String logStr, passStr;
         logStr = login.getText().toString();

@@ -33,7 +33,7 @@ public class FragmentTimetable extends Fragment {
     private ViewPager viewPager;
     private FragmentActivity myContext;
     private boolean parity;
-    Singleton singleton = Singleton.getInstance("0");
+    Singleton singleton = Singleton.getInstance();
 
     public FragmentTimetable() throws InterruptedException, ExecutionException, JSONException {
     }

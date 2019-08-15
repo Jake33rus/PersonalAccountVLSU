@@ -31,4 +31,6 @@
     <string name="lec_schedule">Расписание преподавателей</string>
     <string name="ranked_title">Рейтинги</string>
     <string name="documents">Документооборот</string>
+    <string name="login_logscreen">Логин</string>
+    <string name="password">Пароль</string>
 </resources>

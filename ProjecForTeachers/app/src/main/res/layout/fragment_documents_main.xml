@@ -6,33 +6,6 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/tvNumb"
-        android:layout_width="201dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearchName" />
-
-    <EditText
-        android:id="@+id/tvSearchName"
-        android:layout_width="201dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
         android:id="@+id/tvSearchDateTo"
         android:layout_width="110dp"
         android:layout_height="60dp"
@@ -41,7 +14,7 @@
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumb" />
+        app:layout_constraintTop_toBottomOf="@+id/codeTV" />
 
     <EditText
         android:id="@+id/tvSearchDateFrom"
@@ -52,96 +25,133 @@
         android:ems="10"
         android:inputType="date"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumb" />
+        app:layout_constraintTop_toBottomOf="@+id/codeTV" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/butSearch"
-        android:layout_width="245dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:text="Искать"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSearchDateTo" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/but1"
-        android:layout_width="243dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:text="Приказы"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/butSearch"
+        app:layout_constraintStart_toStartOf="@+id/butSearch"
         app:layout_constraintTop_toBottomOf="@+id/butSearch" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/but2"
-        android:layout_width="247dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="Распоряжения"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/but1"
+        app:layout_constraintStart_toStartOf="@+id/but1"
         app:layout_constraintTop_toBottomOf="@+id/but1" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/but3"
-        android:layout_width="247dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="Документы СМК"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/but1"
+        app:layout_constraintStart_toStartOf="@+id/but1"
         app:layout_constraintTop_toBottomOf="@+id/but2" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/but4"
-        android:layout_width="244dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="Бланки документов"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/but1"
+        app:layout_constraintStart_toStartOf="@+id/but1"
         app:layout_constraintTop_toBottomOf="@+id/but3" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="126dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="16dp"
-        android:gravity="end"
-        android:text="Название"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSearchName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSearchName" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/serchTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:hint="Название"
+        android:textColorHint="@color/colorPrimary"
+        app:boxBackgroundColor="@color/blue100"
+        app:hintTextColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvSearchDateTo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="126dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="16dp"
-        android:gravity="end"
-        android:text="Код"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNumb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvNumb" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHighlight="@color/blueA100"
+            android:textColorHint="@color/blue500" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/codeTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:layout_marginTop="8dp"
+        android:hint="Код"
+        android:textColorHint="@color/colorPrimary"
+        app:boxBackgroundColor="@color/blue100"
+        app:hintTextColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/serchTV"
+        app:layout_constraintStart_toStartOf="@+id/serchTV"
+        app:layout_constraintTop_toBottomOf="@+id/serchTV">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/code_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHighlight="@color/blueA100"
+            android:textColorHint="@color/blue500" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:fontFamily="@font/roboto"
         android:text="Искать с"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/tvSearchDateFrom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvSearchDateFrom" />
@@ -151,11 +161,22 @@
         android:layout_width="33dp"
         android:layout_height="18dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto"
         android:text="По"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/tvSearchDateTo"
         app:layout_constraintEnd_toStartOf="@+id/tvSearchDateTo"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvSearchDateFrom"
         app:layout_constraintTop_toTopOf="@+id/tvSearchDateTo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="4dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

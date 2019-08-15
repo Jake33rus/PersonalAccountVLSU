@@ -47,7 +47,7 @@ public class AlarmReceiver extends BroadcastReceiver
 
 
         try {
-            for(Lesson l: Singleton.getInstance("0").getTodayPairs())
+            for(Lesson l: Singleton.getInstance().getTodayPairs())
             {
                 String buf[] = l.getTime().split(":");
                 if(buf[0].equals(hour))

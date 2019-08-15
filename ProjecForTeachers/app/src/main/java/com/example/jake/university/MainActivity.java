@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headView = navigationView.getHeaderView(0);
         TextView tvHeaderName = (TextView) headView.findViewById(R.id.tvHeaderName);
         try {
-            tvHeaderName.setText(Singleton.getInstance("").getProfileInfo().getFio());
+            tvHeaderName.setText(Singleton.getInstance().getProfileInfo().getFio());
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

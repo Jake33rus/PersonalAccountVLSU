@@ -3,6 +3,12 @@ package com.example.jake.university.profile;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.NonNull;
+
+import com.example.jake.university.API.Retrofit.IRetroF;
+import com.example.jake.university.API.Retrofit.RetroFController;
+import com.example.jake.university.API.Retrofit.pojoes.Request;
+import com.example.jake.university.API.Retrofit.pojoes.profileInfo;
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.Docs.DocWorker;
 import com.example.jake.university.Docs.Document;
@@ -21,6 +27,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import static com.example.jake.university.API.Login.APP_PREFERENCES;
 
 public class Singleton {
@@ -33,6 +43,7 @@ public class Singleton {
     postReq comand;
     ProfileInfo profileInfo;
     WeekSchedule schedule;
+    profileInfo profInf;
     HashSet<String> lecturersList;
 
     public void setLogin(String login) {
@@ -61,25 +72,44 @@ public class Singleton {
 //TODO: проверить вторую хранимку
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
 
-        JSONObject obj = new JSONObject();
-        postReq comand = new postReq("getData");
-        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
-                "podrId:empty,TabNum:empty,uslId:empty,kateg:empty").get();
-        JSONArray arr = comand.getjARRAY();
-        obj = arr.getJSONObject(0);
-        profileInfo = new ProfileInfo(obj.getString("FIO"), obj.getString("UCHST"),
-                obj.getString("UCHZV"),
-                obj.getString("DOLJ_FULL"), obj.getString("PODR"),
-                obj.getString("PODPODR"), obj.getString("PED_STAG"),
-                obj.getString("STRAH_STAG"), "email", "tel_num");
-        postReq comand1 = new postReq("getData");
+        RetroFController rfc = RetroFController.getInstance("http://hqvla2222w02/api/api/");
+        IRetroF api = rfc.getJSONApi();
+        Request req = new Request("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
+               "podrId:empty,TabNum:empty,uslId:empty,kateg:empty");
+        api.profInfo(req).enqueue(new Callback <com.example.jake.university.API.Retrofit.pojoes.profileInfo>() {
+            @Override
+            public void onResponse(@NonNull Call<profileInfo> call, @NonNull Response<profileInfo> response)
+            {
+                profileInfo pi = response.body();
+                profInf = pi;
+            }
 
+            @Override
+            public void onFailure(@NonNull Call<profileInfo> call, @NonNull Throwable t)
+            {
 
-        comand1.execute("20","AuthData_GetData","0,0,'"+login+"','','','',0,'','',0").get();
-        JSONArray arr1 = comand1.getjARRAY();
-        JSONObject object = arr1.getJSONObject(0);
-        profileInfo.setEmail(object.getString("Email"));
-        profileInfo.setTel_numb(object.getString("PhoneNumb"));
+            }
+        });
+
+//        JSONObject obj = new JSONObject();
+//        postReq comand = new postReq("getData");
+//        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
+//                "podrId:empty,TabNum:empty,uslId:empty,kateg:empty").get();
+//        JSONArray arr = comand.getjARRAY();
+//        obj = arr.getJSONObject(0);
+//        profileInfo = new ProfileInfo(obj.getString("FIO"), obj.getString("UCHST"),
+//                obj.getString("UCHZV"),
+//                obj.getString("DOLJ_FULL"), obj.getString("PODR"),
+//                obj.getString("PODPODR"), obj.getString("PED_STAG"),
+//                obj.getString("STRAH_STAG"), "email", "tel_num");
+//        postReq comand1 = new postReq("getData");
+//
+//
+//        comand1.execute("20","AuthData_GetData","0,0,'"+login+"','','','',0,'','',0").get();
+//        JSONArray arr1 = comand1.getjARRAY();
+//        JSONObject object = arr1.getJSONObject(0);
+//        profileInfo.setEmail(object.getString("Email"));
+//        profileInfo.setTel_numb(object.getString("PhoneNumb"));
     }
 
 

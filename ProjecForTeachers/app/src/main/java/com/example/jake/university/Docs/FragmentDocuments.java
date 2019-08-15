@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONObject;
 
@@ -40,8 +41,8 @@ public class FragmentDocuments extends Fragment {
         button2 = (Button) view.findViewById(R.id.but2); //Распоряжения
         button3 = (Button) view.findViewById(R.id.but3); //Документы СМК
         button4 = (Button) view.findViewById(R.id.but4); //Бланки
-        tvName = (TextView) view.findViewById(R.id.tvSearchName);
-        tvNumb = (EditText) view.findViewById(R.id.tvNumb);
+        tvName = (TextInputEditText) view.findViewById(R.id.name_edit_text);
+        tvNumb = (TextInputEditText) view.findViewById(R.id.code_edit_text);
         tvDataFrom = (EditText) view.findViewById(R.id.tvSearchDateFrom);
         tvDataTo = (EditText) view.findViewById(R.id.tvSearchDateTo);
 

@@ -22,7 +22,7 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
     Singleton singleton;
     ProfileInfo info;
     public FragmentProfile() throws InterruptedException, ExecutionException, JSONException {
-        singleton = Singleton.getInstance("");
+        singleton = Singleton.getInstance();
         info = singleton.getProfileInfo();
     }
 

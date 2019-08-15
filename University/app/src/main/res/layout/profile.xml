@@ -16,7 +16,7 @@
             android:layout_height="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:srcCompat="@color/blue100" />
+            app:srcCompat="@color/colorPrimaryDark" />
 
         <ImageView
             android:id="@+id/imageViewPhoto"
@@ -35,7 +35,7 @@
             android:layout_marginTop="108dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@color/blue100" />
+            app:srcCompat="@color/colorPrimaryDark" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -44,7 +44,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_finansValue"
-            app:srcCompat="@color/blue100" />
+            app:srcCompat="@color/colorPrimaryDark" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -138,7 +138,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto_light"
             android:text="Учебная информация"
+            android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -153,7 +155,6 @@
             android:text="Иванов Иван Иванович"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
-            android:textStyle="italic"
             app:layout_constraintStart_toEndOf="@+id/imageViewPhoto"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -167,7 +168,6 @@
             android:text="Студент ИТу-117"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
-            android:textStyle="italic"
             app:layout_constraintStart_toEndOf="@+id/imageViewPhoto"
             app:layout_constraintTop_toBottomOf="@+id/text_view_fio" />
 
@@ -178,7 +178,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Институт прикладной математики, физики и  информатики"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -194,7 +194,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Фундаментальная информатика и информационные технологии"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -210,7 +210,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Начало обучения:"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -226,7 +226,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Форма обучения:"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -240,7 +240,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Очная"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -255,7 +255,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="01.09.2017"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -271,7 +271,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Источник финансирования:"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -286,7 +286,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Бюджет"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -302,14 +302,14 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto_light"
             android:text="Телефон:"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/colorPrimary" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <TextView
             android:id="@+id/text_view_mobile2"
@@ -319,6 +319,7 @@
             android:layout_marginEnd="16dp"
             android:autoLink="phone"
             android:autoText="false"
+            android:fontFamily="@font/roboto_slab"
             android:text="+7(800)555-35-35"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -333,7 +334,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_light"
             android:text="Email:"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -348,6 +349,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:autoLink="email"
+            android:fontFamily="@font/roboto_slab"
             android:text="mymail@mymail.ru"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -359,7 +361,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto_light"
             android:text="Контактная информация"
+            android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintStart_toStartOf="@+id/imageView3"
             app:layout_constraintTop_toTopOf="@+id/imageView3" />

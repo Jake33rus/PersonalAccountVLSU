@@ -15,9 +15,9 @@ public class DocWorker
     public ArrayList<Document> getDocList(JSONArray ja)
     {
         ArrayList<Document> docs = new ArrayList<>();
+
         Document buf;
-        for (int i = 0; i < ja.length(); i++)
-        {
+        for (int i = 0; i < ja.length(); i++) {
             try {
                 JSONObject jo = ja.getJSONObject(i);
                 buf = new Document(jo.getString("DocDate"), jo.getString("DocNumb"), jo.getString("DocTitle"),

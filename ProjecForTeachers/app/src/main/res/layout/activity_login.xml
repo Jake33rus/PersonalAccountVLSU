@@ -22,15 +22,16 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/logButton"
         android:layout_width="0dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:theme="@style/FormButton"
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
+        android:onClick="onButtonClick"
         android:text="Войти"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:theme="@style/FormButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passField" />

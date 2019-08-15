@@ -20,6 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class FragmentDocuments extends Fragment {
     Button butSearch, button1, button2, button3, button4, button5;
@@ -56,21 +57,55 @@ public class FragmentDocuments extends Fragment {
                 DocWorker dw = new DocWorker();
                 JSONObject obj = new JSONObject();
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+ORDERS+", 0, 281474976904130, 0, 0, 12729, 1," +
-                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
-                docs = dw.getDocList(comand.getjARRAY());
+                        "0,0,0,0,'"+tvName.getText().toString()+"','"+tvNumb.getText().toString()+"',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'"+tvDataFrom.getText().toString()+"','"+tvDataTo.getText().toString()+"',0");
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (!comand.getjARRAY().isNull(0))
+                {
+                    docs.addAll(dw.getDocList(comand.getjARRAY()));
+                }
+
+                comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+DISPOSALS+", 0, 281474976904130, 0, 0, 12729, 1," +
-                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
-                docs.addAll(dw.getDocList(comand.getjARRAY()));
+                        "0,0,0,0,'','',False,"+DISPOSALS+",0,281474976904130,0,0,11549,1,'','',0");
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (!comand.getjARRAY().isNull(0))
+                {
+                    docs.addAll(dw.getDocList(comand.getjARRAY()));
+                }
+
+                comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+SMK_DOCS+", 0, 281474976904130, 0, 0, 12729, 1," +
-                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
-                docs.addAll(dw.getDocList(comand.getjARRAY()));
+                        "0,0,0,0,'','',False,"+SMK_DOCS+",0,281474976904130,0,0,11549,1,'','',0");
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (!comand.getjARRAY().isNull(0))
+                {
+                    docs.addAll(dw.getDocList(comand.getjARRAY()));
+                }
+
+                comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, "+tvName.getText()+", "+tvNumb.getText()+", False, "+BLANKS+", 0, 281474976904130, 0, 0, 12729, 1," +
-                                " "+tvDataFrom.getText()+", "+tvDataTo.getText()+", 0");
-                docs.addAll(dw.getDocList(comand.getjARRAY()));
+                        "0,0,0,0,'','',False,"+BLANKS+",0,281474976904130,0,0,11549,1,'','',0");
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (!comand.getjARRAY().isNull(0))
+                {
+                    docs.addAll(dw.getDocList(comand.getjARRAY()));
+                }
 
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();

@@ -73,8 +73,7 @@ public class Singleton {
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
-        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
-                "podrId:empty,TabNum:empty,uslId:empty,kateg:empty").get();
+        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty,podrId:empty,TabNum:empty,uslId:empty,kateg:empty").get();
         JSONArray arr = comand.getjARRAY();
         obj = arr.getJSONObject(0);
         profileInfo = new ProfileInfo(obj.getString("FIO"), obj.getString("UCHST"),
@@ -84,25 +83,13 @@ public class Singleton {
                 obj.getString("STRAH_STAG"), "email", "tel_num");
         postReq comand1 = new postReq("getData");
 
-//        JSONObject obj = new JSONObject();
-//        postReq comand = new postReq("getData");
-//        comand.execute("15","vlsu_lk_SotrList","Id:"+parusID+",fio:empty,kafId:empty," +
-//                "podrId:empty,TabNum:empty,uslId:empty,kateg:empty").get();
-//        JSONArray arr = comand.getjARRAY();
-//        obj = arr.getJSONObject(0);
-//        profileInfo = new ProfileInfo(obj.getString("FIO"), obj.getString("UCHST"),
-//                obj.getString("UCHZV"),
-//                obj.getString("DOLJ_FULL"), obj.getString("PODR"),
-//                obj.getString("PODPODR"), obj.getString("PED_STAG"),
-//                obj.getString("STRAH_STAG"), "email", "tel_num");
-//        postReq comand1 = new postReq("getData");
-//
-//
-//        comand1.execute("20","AuthData_GetData","0,0,'"+login+"','','','',0,'','',0").get();
-//        JSONArray arr1 = comand1.getjARRAY();
-//        JSONObject object = arr1.getJSONObject(0);
-//        profileInfo.setEmail(object.getString("Email"));
-//        profileInfo.setTel_numb(object.getString("PhoneNumb"));
+
+        comand1.execute("20","AuthData_GetData","0,0,'"+login+"','','','',0,'','',0").get();
+        JSONArray arr1 = comand1.getjARRAY();
+        JSONObject object = arr1.getJSONObject(0);
+        profileInfo.setEmail(object.getString("Email"));
+        profileInfo.setTel_numb(object.getString("PhoneNumb"));
+
     }
 
 

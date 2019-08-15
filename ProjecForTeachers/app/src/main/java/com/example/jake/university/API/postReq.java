@@ -90,9 +90,9 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             Map<String,String> info = new LinkedHashMap<>();
 
-    info.put(firstArgName, idDb);
-    info.put(secArgName, nameExec);
-    info.put(thirdArgName, paramsList);
+            info.put(firstArgName, idDb);
+            info.put(secArgName, nameExec);
+            info.put(thirdArgName, paramsList);
 
 
 //            "idDb", idDb);
@@ -101,14 +101,14 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             StringBuilder postData = new StringBuilder();
 
-           for (Map.Entry<String,String> inf : info.entrySet()) {
+            for (Map.Entry<String,String> inf : info.entrySet()) {
                 if (postData.length() != 0) postData.append('&');
                 postData.append(URLEncoder.encode(inf.getKey(), "UTF-8"));
                 postData.append('=');
                 postData.append(URLEncoder.encode(String.valueOf(inf.getValue()), "UTF-8"));
             }
 
-             URL url = new URL(myURL);
+            URL url = new URL(myURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
@@ -218,10 +218,10 @@ public class postReq extends AsyncTask<String, Void, Void>
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            String LecID = new String();
+            String PerID = new String();
 
             try {
-                LecID =  obj.getString("LecID");
+                PerID =  obj.getString("PerID");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -229,7 +229,7 @@ public class postReq extends AsyncTask<String, Void, Void>
 
             postReq comand3 = new postReq("getData");
             try {
-                comand3.execute("10","A_LKS_GetLecturesListGal","0,"+LecID+",0,'','','','',0,0").get();
+                comand3.execute("10","A_LKS_GetUserIdsByTabNumb",CPerson).get();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -243,7 +243,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             String parusID = new String();
 
             try {
-                parusID =  obj.getString("nrec_parus");
+                parusID =  obj.getString("ParusID");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -251,8 +251,8 @@ public class postReq extends AsyncTask<String, Void, Void>
             arrg[0] = parusID;
             return arrg;
 
-    }
-    else return arrg;
+        }
+        else return arrg;
     }
 
     public byte[] getBytes()

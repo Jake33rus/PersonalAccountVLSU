@@ -25,7 +25,7 @@ public class DocWorker
                         jo.getString("DocType_S_Name"), jo.getString("DocStatusID"), jo.getString("DocStatus_S_Name"),
                         jo.getString("Descr"), jo.getString("CreatorFIO"), jo.getString("TitleAndNumber"),
                         jo.getString("Templates"), jo.getString("Files"), jo.getString("Authors"),
-                        jo.getString("IsViewed"));
+                        jo.getString("IsViewed"), jo.getString("ID"));
                 docs.add(buf);
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
 
 import java.util.ArrayList;
@@ -39,8 +40,10 @@ public class DocumentsAdapter extends ArrayAdapter<Document> {
         viewHolder.tvAuthors.setText(item.getAuthor());
         viewHolder.download.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v)
+            {
+                String st = postReq.getAttachments(item.getID());
+                int i = 5;
             }
         });
         return convertView;

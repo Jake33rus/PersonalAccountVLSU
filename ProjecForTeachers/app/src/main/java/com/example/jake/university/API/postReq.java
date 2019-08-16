@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -20,6 +21,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -260,6 +262,25 @@ public class postReq extends AsyncTask<String, Void, Void>
 
         }
         else return arrg;
+    }
+
+    public static String getAttachments(String docID)
+    {
+        String filename = "_";
+        postReq comand = new postReq("getData");
+        try {
+            comand.execute("35","[dbo].[WorkDocFiles_GetList]","0,"+docID+",0,0,'',0").get();
+            JSONArray jar = comand.getjARRAY();
+            JSONObject job = jar.getJSONObject(0);
+            filename = job.getString("FileName");
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return filename;
     }
 
     public byte[] getBytes()

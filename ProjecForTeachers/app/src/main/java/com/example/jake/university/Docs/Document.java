@@ -18,11 +18,12 @@ public class Document
     private String fileName;
     private String author;
     private String isViewd;
+    private String ID;
 
     public Document(String docDate, String docNumb, String docTitle, String begDate,
                     String endDate, String typeId, String docTypeName, String docStatusId,
                     String docStatusName, String descr, String creatorFIO, String titleAndNumber, String template,
-                    String fileName, String author, String isViewd)
+                    String fileName, String author, String isViewd, String ID)
     {
         this.docDate = docDate;
         this.docNumb = docNumb;
@@ -40,6 +41,7 @@ public class Document
         this.fileName = fileName;
         this.author = author;
         this.isViewd = isViewd;
+        this.ID = ID;
     }
 
     public String getDocDate() {
@@ -168,5 +170,13 @@ public class Document
 
     public void setIsViewd(String isViewd) {
         this.isViewd = isViewd;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

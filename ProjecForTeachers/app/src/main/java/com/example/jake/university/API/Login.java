@@ -214,8 +214,10 @@ public class Login extends AppCompatActivity {
 
         String[] result = postReq.getLogin(logStr, passStr);
 
+
         if (result[0] != "0")
         {
+            password.setError(null);
             SharedPreferences.Editor editor = checkingLogin.edit();
             editor.putString(APP_SAVED_LOGIN, logStr);
             editor.putString(APP_SAVED_NREC, result[0]);
@@ -227,12 +229,15 @@ public class Login extends AppCompatActivity {
             startActivity(toLock);
             finish();
 
-        } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Неверный логин или пароль!", Toast.LENGTH_SHORT);
-            toast.show();
-            password.setText("");
+        } else if(result[2] == "0")
+        {
+            password.setError("Не получается подклоючиться к серверу");
+        }
 
+        else
+        {
+            password.setError("Неверный логин или пароль!");
+            password.setText("");
         }
     }
 }

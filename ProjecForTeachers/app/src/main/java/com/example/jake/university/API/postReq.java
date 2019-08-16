@@ -29,6 +29,7 @@ public class postReq extends AsyncTask<String, Void, Void>
     private JSONArray jARRAY = null;
     private String type = "";
     private String firstArgName="idDb", secArgName="nameExec", thirdArgName = "paramsList";
+    private int responseCode;
     private byte[] bytes;
     private String string;
     ProgressDialog progressDialog;
@@ -48,6 +49,7 @@ public class postReq extends AsyncTask<String, Void, Void>
         this.firstArgName=firstArgName;
         this.secArgName=secArgName;
         this.thirdArgName=thirdArgName;
+        responseCode = 0;
     }
 
 
@@ -127,7 +129,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             data = null;
 
             conn.connect();
-            int responseCode= conn.getResponseCode();
+            responseCode= conn.getResponseCode();
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             is = conn.getInputStream();
@@ -171,13 +173,16 @@ public class postReq extends AsyncTask<String, Void, Void>
         return jArr;
     }
 
+    public int getResponseCode()
+    {return responseCode;}
+
     static public String[] getLogin(String login, String password)
     {
         TripleDES tde = new TripleDES();
         JSONArray arr;
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");
-        String[] arrg = {"0", login};
+        String[] arrg = {"0", login, Integer.toString(comand.getResponseCode())};
 
         try {
             comand.execute("20","AuthData_GetData",
@@ -187,6 +192,8 @@ public class postReq extends AsyncTask<String, Void, Void>
         }
 
         arr = comand.getjARRAY();
+        int i = comand.getResponseCode();
+        arrg[2]=Integer.toString(i);
         if (arr.length()!=0)
         {
             try {

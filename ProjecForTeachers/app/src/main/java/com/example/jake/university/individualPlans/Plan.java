@@ -11,6 +11,29 @@ public class Plan
     private String confirmDate;
     private String postType;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
+
+    public Plan(String institute, String cafedra, String cafConsDate, String charge, String EKP,
+                String status, String confirmDate, String postType, String name) {
+        this.institute = institute;
+        this.cafedra = cafedra;
+        this.cafConsDate = cafConsDate;
+        this.charge = charge;
+        this.EKP = EKP;
+        this.status = status;
+        this.confirmDate = confirmDate;
+        this.postType = postType;
+        this.name = name;
+    }
+
     public String getInstitute() {
         return institute;
     }

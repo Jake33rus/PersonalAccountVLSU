@@ -13,7 +13,8 @@
         <item name="android:gravity">center</item>
     </style>
     <style name="Text" parent="Widget.MaterialComponents.TextView">
-
+    </style>
+    <style name="UnelevatedButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
     </style>
     <style name="LinkText">
         <item name="android:textColor">@color/colorSecondaryLight</item>

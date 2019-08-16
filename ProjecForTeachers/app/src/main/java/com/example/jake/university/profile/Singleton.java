@@ -2,6 +2,7 @@ package com.example.jake.university.profile;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
@@ -12,6 +13,7 @@ import com.example.jake.university.API.Retrofit.pojoes.profileInfo;
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.Docs.DocWorker;
 import com.example.jake.university.Docs.Document;
+import com.example.jake.university.individualPlans.Plan;
 import com.example.jake.university.timetable.WeekSchedule;
 import com.example.jake.university.timetable.scheduleServClasses.Day;
 import com.example.jake.university.timetable.scheduleServClasses.Lesson;
@@ -137,5 +139,10 @@ public class Singleton {
     public String getParusID()
     {
         return parusID;
+    }
+
+    public ArrayList<Plan> getPlans() {
+        ArrayList<Plan> plans = null;
+        return plans;
     }
 }

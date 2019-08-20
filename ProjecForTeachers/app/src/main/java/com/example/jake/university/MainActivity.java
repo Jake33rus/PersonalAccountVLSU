@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.jake.university.Docs.FragmentDocuments;
+import com.example.jake.university.individualPlans.PersonalPlansFragment;
 import com.example.jake.university.news.FragmentNews;
 import com.example.jake.university.notifications.ScheduleAlarms;
 
@@ -144,6 +145,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_documents:
                 ftrans.replace(R.id.fragment_container, new FragmentDocuments()).addToBackStack(null).commit();
                 break;
+            case R.id.nav_plans:
+                ftrans.replace(R.id.fragment_container, new PersonalPlansFragment()).addToBackStack(null).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

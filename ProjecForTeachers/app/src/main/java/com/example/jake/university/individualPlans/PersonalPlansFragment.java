@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,7 @@ import java.util.concurrent.ExecutionException;
 public class PersonalPlansFragment extends Fragment {
 
     ListView list;
+    Button createPlan;
     ArrayList<Plan> plans = null;
     public PersonalPlansFragment() {
         // Required empty public constructor
@@ -32,6 +34,13 @@ public class PersonalPlansFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_personal_plans, container, false);
         list = (ListView) view.findViewById(R.id.plansLV);
+        createPlan = (Button) view.findViewById(R.id.addPlans);
+        createPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         try {
             plans = Singleton.getInstance().getPlans();
         } catch (ExecutionException e) {

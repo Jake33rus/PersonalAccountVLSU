@@ -24,5 +24,9 @@
            android:id="@+id/nav_plans"
            android:title="@string/individual_plans"
            android:icon="@drawable/baseline_speaker_notes_24"/>
+       <item
+           android:id="@+id/nav_condition"
+           android:title="@string/condition"
+           android:icon="@drawable/baseline_notification_important_24"/>
    </group>
 </menu>

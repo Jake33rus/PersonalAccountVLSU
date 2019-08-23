@@ -26,7 +26,8 @@
            android:icon="@drawable/baseline_speaker_notes_24"/>
        <item
            android:id="@+id/nav_condition"
-           android:title="@string/condition"
-           android:icon="@drawable/baseline_notification_important_24"/>
+           android:singleLine="false"
+           android:icon="@drawable/baseline_notification_important_24"
+           android:title="@string/condition" />
    </group>
 </menu>

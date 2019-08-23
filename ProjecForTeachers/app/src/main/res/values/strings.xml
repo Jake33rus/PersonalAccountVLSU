@@ -35,4 +35,14 @@
     <string name="password">Пароль</string>
     <string name="individual_plans">Индивидуальные планы</string>
     <string name="condition">Положение об эффективном контракте в ВлГУ</string>
+    <string-array name="rang_types">
+        <item>Основная</item>
+        <item>Внутреннее совмещение</item>
+        <item>Внешнее совмещение</item>
+    </string-array>
+    <string-array name="ekps">
+        <item>ЭКП-1</item>
+        <item>ЭКП-2</item>
+        <item>-</item>
+    </string-array>
 </resources>

@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_plans:
                 ftrans.replace(R.id.fragment_container, new PersonalPlansFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.nav_condition:
+                //TODO добавить скачивание положения
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

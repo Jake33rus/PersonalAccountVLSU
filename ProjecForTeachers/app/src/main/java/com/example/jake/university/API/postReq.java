@@ -283,6 +283,56 @@ public class postReq extends AsyncTask<String, Void, Void>
         return filename;
     }
 
+    public static String[] getAllInsts()
+    {
+        postReq comand = new postReq("getData");
+        String[] institutes = new String[1];
+        try {
+            comand.execute("10", "A_AllList", "1,0").get();
+            JSONArray jar = comand.getjARRAY();
+            institutes = new String[jar.length()];
+            for(int i =0;i<jar.length();i++)
+            {
+                JSONObject job = jar.getJSONObject(i);
+                institutes[i] = job.getString("Namelg");
+
+            }
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return institutes;
+    }
+
+    public static String[] getAllFaks()
+    {
+        postReq comand = new postReq("getData");
+        String[] faks = new String[1];
+        try {
+            comand.execute("10", "A_AllList", "3,0").get();
+            JSONArray jar = comand.getjARRAY();
+            faks = new String[jar.length()];
+            for(int i =0;i<jar.length();i++)
+            {
+                JSONObject job = jar.getJSONObject(i);
+                faks[i] = job.getString("name_fak_full");
+
+            }
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return faks;
+    }
+
     public byte[] getBytes()
     {return bytes;}
     public String getString()

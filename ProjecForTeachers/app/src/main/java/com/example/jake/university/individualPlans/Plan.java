@@ -1,5 +1,15 @@
 package com.example.jake.university.individualPlans;
 
+import com.example.jake.university.API.postReq;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 public class Plan
 {
     private String institute;
@@ -106,5 +116,30 @@ public class Plan
 
     public void setPostType(String postType) {
         this.postType = postType;
+    }
+
+    public static ArrayList<Plan> planParser (String lecID)
+    {
+        JSONObject obj = new JSONObject();
+        postReq comand = new postReq("getData");
+        ArrayList<Plan> plans = new ArrayList();
+        try {
+            comand.execute("20","[dbo].[PPS_PlanTitle_GetDataGal]","0,'', 0, '', 0, 0, 0, '', '',0,281474976716985").get();
+            JSONArray arr = comand.getjARRAY();
+            for(int i = 0; i< arr.length();i++)
+            {
+                obj = arr.getJSONObject(i);
+                plans.add(new Plan(obj.getString("Inst_L_Name"),obj.getString("Kaf_L_Name"),obj.getString("ZasKafDate"),
+                        obj.getString("Bet"),obj.getString("EkpName"),obj.getString("StatusName"),"-",
+                        obj.getString("RangType"),"Индивидуальный план на "+obj.getString("StudyYears")+", кафедра "+obj.getString("KafName")));
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return plans;
     }
 }

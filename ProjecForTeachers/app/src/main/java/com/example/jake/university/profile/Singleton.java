@@ -142,7 +142,7 @@ public class Singleton {
     }
 
     public ArrayList<Plan> getPlans() {
-        ArrayList<Plan> plans = null;
+        ArrayList<Plan> plans = Plan.planParser("000");
         return plans;
     }
 }

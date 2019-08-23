@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jake.university.R;
@@ -38,7 +39,9 @@ public class PersonalPlansFragment extends Fragment {
         createPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentAddNewPlan fragmentAddNewPlan = new FragmentAddNewPlan();
+                FragmentTransaction ftrans = getFragmentManager().beginTransaction();
+                ftrans.replace(R.id.fragment_container, fragmentAddNewPlan).addToBackStack(null).commit();
             }
         });
         try {

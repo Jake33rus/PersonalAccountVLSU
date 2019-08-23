@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 
 import com.example.jake.university.R;
 
@@ -48,31 +49,38 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
         viewHolder.download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO Добавить скачать план
             }
         });
         viewHolder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!item.isVisibleFlag()){
+                    viewHolder.moreInfoCV.setVisibility(View.VISIBLE);
+                    item.setVisibleFlag(true);
+                }
+                else {
+                    viewHolder.moreInfoCV.setVisibility(View.GONE);
+                    item.setVisibleFlag(false);
+                }
             }
         });
         viewHolder.del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO Добавить удаление плана
             }
         });
         viewHolder.viewBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO Добавить просмотр плана
             }
         });
         viewHolder.assig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO Добавить подписание плана
             }
         });
         return convertView;
@@ -80,8 +88,10 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
     private class ViewHolder {
         final TextView institute, cafedra, dateCafCoop, stavka, akp, status, dateAssig, typeDol, name;
         final Button download, moreInfo, del, assig, viewBut;
+        final CardView moreInfoCV;
         ViewHolder(View view){
             institute = (TextView) view.findViewById(R.id.planInstitute);
+            moreInfoCV = (CardView) view.findViewById(R.id.innerCV);
             name = (TextView) view.findViewById(R.id.planName);
             dateCafCoop = (TextView) view.findViewById(R.id.planDateKafCoop);
             stavka = (TextView) view.findViewById(R.id.planStavka);

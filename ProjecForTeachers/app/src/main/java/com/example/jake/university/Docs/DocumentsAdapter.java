@@ -42,6 +42,7 @@ public class DocumentsAdapter extends ArrayAdapter<Document> {
             @Override
             public void onClick(View v)
             {
+                //TODO Добавить скачивание документа
                 String st = postReq.getAttachments(item.getID());
                 int i = 5;
             }

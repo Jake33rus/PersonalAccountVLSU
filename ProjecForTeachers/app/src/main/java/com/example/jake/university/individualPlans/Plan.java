@@ -10,6 +10,15 @@ public class Plan
     private String status;
     private String confirmDate;
     private String postType;
+    private boolean visibleFlag;
+
+    public boolean isVisibleFlag() {
+        return visibleFlag;
+    }
+
+    public void setVisibleFlag(boolean visibleFlag) {
+        this.visibleFlag = visibleFlag;
+    }
 
     public String getName() {
         return name;
@@ -32,6 +41,7 @@ public class Plan
         this.confirmDate = confirmDate;
         this.postType = postType;
         this.name = name;
+        this.visibleFlag = false;
     }
 
     public String getInstitute() {

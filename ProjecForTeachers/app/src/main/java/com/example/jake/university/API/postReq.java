@@ -221,7 +221,7 @@ public class postReq extends AsyncTask<String, Void, Void>
             }
 
             arr = comand2.getjARRAY();
-
+//lecID v command2
             try {
                 obj = arr.getJSONObject(0);
             } catch (Exception e) {

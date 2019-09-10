@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -21,6 +22,7 @@ public class Plan
     private String confirmDate;
     private String postType;
     private boolean visibleFlag;
+    private HashMap<String,Character> symbToNumb;
 
     public boolean isVisibleFlag() {
         return visibleFlag;
@@ -52,7 +54,28 @@ public class Plan
         this.postType = postType;
         this.name = name;
         this.visibleFlag = false;
+
+        symbToNumb = new HashMap<String, Character>();
+
+        char c = 'A';
+        for (int i=0;i<25;i++)
+        {
+            symbToNumb.put(Integer.toString(i),c);
+            c++;
+        }
     }
+
+    //TODO Доделать скачивание плана
+//    static public String decodeId(String ID)
+//    {
+//       char[] buf = ID.toCharArray();
+//       String result = new String();
+//
+//       for(int i = 0;i<buf.length;i++)
+//       {
+//           buf[i]=symb
+//       }
+//    }
 
     public String getInstitute() {
         return institute;
@@ -142,4 +165,6 @@ public class Plan
         }
         return plans;
     }
+
+
 }

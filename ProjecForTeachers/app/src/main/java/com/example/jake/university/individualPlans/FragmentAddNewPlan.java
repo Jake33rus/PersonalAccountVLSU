@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
@@ -21,15 +23,19 @@ public class FragmentAddNewPlan extends Fragment {
     Button addPlan, close;
     EditText dateAssigment, dateConsideration, studyYear, rate;
     Spinner institute, kafedra, ekp, typePost;
+    FragmentTransaction ftrans;
 
-    public FragmentAddNewPlan() {
-
-        //TODO добавить формирование списков для спинера
+    public FragmentAddNewPlan()
+    {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        String[] ekps = {"ЭКП-1", "ЭКП-2", "-"};
+        String[] rang_types = {"Основная", "Внутреннеее совмещение", "Внешнее совмещение"};
         View view = inflater.inflate(R.layout.fragment_add_plan, container, false);
+        FragmentManager fm;
+
         addPlan =(Button) view.findViewById(R.id.buttonAdd);
         close = (Button) view.findViewById(R.id.buttonClose);
         addPlan.setOnClickListener(new View.OnClickListener() {
@@ -40,8 +46,14 @@ public class FragmentAddNewPlan extends Fragment {
         });
         close.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //TODO добавить возвращение назад
+            public void onClick(View v)
+            {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container, new PersonalPlansFragment());
+                transaction.addToBackStack(null);
+
+                transaction.commit();
             }
         });
         institute = (Spinner) view.findViewById(R.id.spinnerInstitute);
@@ -51,10 +63,10 @@ public class FragmentAddNewPlan extends Fragment {
         ArrayAdapter<String> adapterKafedra = new ArrayAdapter<String>(this.getActivity(), R.layout.support_simple_spinner_dropdown_item, postReq.getAllFaks());
         kafedra.setAdapter(adapterKafedra);
         ekp = (Spinner) view.findViewById(R.id.spinnerEKP);
-        @SuppressLint("ResourceType") ArrayAdapter<String> adapterEKP = new ArrayAdapter<String>(this.getActivity(), R.layout.support_simple_spinner_dropdown_item, R.array.ekps);
+        ArrayAdapter<String> adapterEKP = new ArrayAdapter<String>(this.getActivity(), R.layout.support_simple_spinner_dropdown_item, ekps);
         ekp.setAdapter(adapterEKP);
         typePost = (Spinner) view.findViewById(R.id.spinnerType);
-        @SuppressLint("ResourceType") ArrayAdapter<String> adapterRang = new ArrayAdapter<String>(this.getActivity(), R.layout.support_simple_spinner_dropdown_item, R.array.rang_types);
+        ArrayAdapter<String> adapterRang = new ArrayAdapter<String>(this.getActivity(), R.layout.support_simple_spinner_dropdown_item, rang_types);
         typePost.setAdapter(adapterRang);
         return view;
     }

@@ -1,6 +1,8 @@
 package com.example.jake.university;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -149,7 +151,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ftrans.replace(R.id.fragment_container, new PersonalPlansFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_condition:
-                //TODO добавить скачивание положения
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownLoadEKFile"));
+                startActivity(browserIntent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         drawer.closeDrawer(GravityCompat.START);

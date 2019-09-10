@@ -11,7 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 
+import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +51,9 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
         viewHolder.cafedra.setText(item.getCafedra());
         viewHolder.download.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //TODO Добавить скачать план
+            public void onClick(View v)
+            {
+                //TODO Скачать план
             }
         });
         viewHolder.moreInfo.setOnClickListener(new View.OnClickListener() {

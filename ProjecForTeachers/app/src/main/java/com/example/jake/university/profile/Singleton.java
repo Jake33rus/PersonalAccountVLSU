@@ -71,7 +71,6 @@ public class Singleton {
         setTimetable();
     }
 
-//TODO: проверить вторую хранимку
     private void setProfileInfo() throws JSONException, ExecutionException, InterruptedException {
         JSONObject obj = new JSONObject();
         postReq comand = new postReq("getData");

@@ -94,16 +94,16 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
         final Button download, moreInfo, del, assig, viewBut;
         final CardView moreInfoCV;
         ViewHolder(View view){
-            institute = (TextView) view.findViewById(R.id.planInstitute);
+            institute = (TextView) view.findViewById(R.id.planInstitute2);
             moreInfoCV = (CardView) view.findViewById(R.id.innerCV);
             name = (TextView) view.findViewById(R.id.planName);
-            dateCafCoop = (TextView) view.findViewById(R.id.planDateKafCoop);
-            stavka = (TextView) view.findViewById(R.id.planStavka);
-            akp = (TextView) view.findViewById(R.id.planAKP);
-            status = (TextView) view.findViewById(R.id.planStatus);
-            dateAssig = (TextView) view.findViewById(R.id.platDateAssigned);
-            typeDol = (TextView) view.findViewById(R.id.planType);
-            cafedra = (TextView) view.findViewById(R.id.planKafedra);
+            dateCafCoop = (TextView) view.findViewById(R.id.planDateKafCoop2);
+            stavka = (TextView) view.findViewById(R.id.planStavka3);
+            akp = (TextView) view.findViewById(R.id.planAKP2);
+            status = (TextView) view.findViewById(R.id.planStatus2);
+            dateAssig = (TextView) view.findViewById(R.id.platDateAssigned2);
+            typeDol = (TextView) view.findViewById(R.id.planType3);
+            cafedra = (TextView) view.findViewById(R.id.planKafedra2);
             download = (Button) view.findViewById(R.id.buttonDownloadPlan);
             moreInfo = (Button) view.findViewById(R.id.buttonMoreInfo);
             del = (Button) view.findViewById(R.id.buttonDelPlan);

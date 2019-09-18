@@ -105,222 +105,237 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/innerCV"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonDelPlan">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:weightSum="4"
+                    tools:visibility="visible">
 
-                    <TextView
-                        android:id="@+id/textView23"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Тип\nдолжности:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/planType"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/planStavka"
-                        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/planType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView23" />
+                        <TextView
+                            android:id="@+id/textView32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto"
+                            android:text="Институт:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="@+id/textView12"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView21"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Дата\nутверждения:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintEnd_toStartOf="@+id/planAKP"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/planDateKafCoop"
-                        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                        <TextView
+                            android:id="@+id/planInstitute2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView"
+                            app:layout_constraintEnd_toStartOf="@+id/textView17"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/planKafedra"
+                            app:layout_constraintTop_toTopOf="@+id/textView" />
 
-                    <TextView
-                        android:id="@+id/platDateAssigned"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView21"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView21" />
+                        <TextView
+                            android:id="@+id/textView33"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto"
+                            android:text="ЭКП:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toStartOf="@+id/planAKP"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Статус:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintEnd_toStartOf="@+id/planStatus"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/planKafedra"
-                        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                        <TextView
+                            android:id="@+id/planAKP2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView17"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView17" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/planStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView19"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView19" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Ставка/доля\nставки:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/textView13"
-                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                        <TextView
+                            android:id="@+id/textView43"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Кафедра:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-                    <TextView
-                        android:id="@+id/planStavka"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView16"
-                        app:layout_constraintStart_toStartOf="@+id/planDateKafCoop"
-                        app:layout_constraintTop_toTopOf="@+id/textView16" />
+                        <TextView
+                            android:id="@+id/planKafedra2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintHorizontal_bias="0.0" />
 
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Дата заседания\nкафедры:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                        <TextView
+                            android:id="@+id/textView34"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Статус:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toStartOf="@+id/planStatus"
+                            app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
-                    <TextView
-                        android:id="@+id/planDateKafCoop"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-                        app:layout_constraintStart_toEndOf="@+id/textView13"
-                        app:layout_constraintTop_toTopOf="@+id/textView13" />
+                        <TextView
+                            android:id="@+id/planStatus2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView19" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Кафедра:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintEnd_toEndOf="@+id/textView13"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0dp">
 
-                    <TextView
-                        android:id="@+id/planInstitute"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView"
-                        app:layout_constraintStart_toStartOf="@+id/planKafedra"
-                        app:layout_constraintTop_toTopOf="@+id/textView" />
+                        <TextView
+                            android:id="@+id/textView35"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Дата заседания\nкафедры:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Институт:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintEnd_toEndOf="@+id/textView12"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/planDateKafCoop2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                            app:layout_constraintEnd_toStartOf="@+id/textView21"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/textView13"
+                            app:layout_constraintTop_toTopOf="@+id/textView13" />
 
-                    <TextView
-                        android:id="@+id/planKafedra"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView12"
-                        app:layout_constraintStart_toStartOf="@+id/planDateKafCoop"
-                        app:layout_constraintTop_toTopOf="@+id/textView12" />
+                        <TextView
+                            android:id="@+id/textView36"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Дата\nутверждения:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toStartOf="@+id/planAKP"
+                            app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="ЭКП:"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintEnd_toStartOf="@+id/planAKP"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/planInstitute"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/platDateAssigned2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView21" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/planAKP"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/roboto_light"
-                        android:text="TextView"
-                        android:textColor="@color/colorPrimary"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView17"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView17" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView41"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Ставка/доля\nставки:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/textView13"
+                            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                        <TextView
+                            android:id="@+id/planStavka3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+                            app:layout_constraintEnd_toStartOf="@+id/textView23"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/planDateKafCoop"
+                            app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+                        <TextView
+                            android:id="@+id/textView42"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Тип\nдолжности:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/planType"
+                            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                        <TextView
+                            android:id="@+id/planType3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView23"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView23" />
+                    </TableRow>
+                </TableLayout>
+
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

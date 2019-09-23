@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,33 +150,6 @@
                             app:layout_constraintTop_toTopOf="@+id/textView" />
 
                         <TextView
-                            android:id="@+id/textView33"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="0dp"
-                            android:layout_marginEnd="0dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/roboto"
-                            android:text="ЭКП:"
-                            android:textColor="@color/colorPrimary"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/planAKP2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/roboto_light"
-                            android:singleLine="false"
-                            android:textColor="@color/colorPrimary"
-                            app:layout_constraintEnd_toEndOf="parent" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
                             android:id="@+id/textView43"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -198,6 +171,33 @@
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintHorizontal_bias="0.0" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView33"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="0dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto"
+                            android:text="ЭКП:"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/planAKP2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto_light"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
                         <TextView
                             android:id="@+id/textView34"
@@ -246,6 +246,7 @@
                             android:layout_marginEnd="8dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
+                            android:gravity="center_vertical"
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintHorizontal_bias="0.0" />
@@ -257,6 +258,7 @@
                             android:layout_margin="0dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto"
+                            android:gravity="center_vertical"
                             android:text="Дата\nутверждения:"
                             android:textColor="@color/colorPrimary" />
 
@@ -267,6 +269,7 @@
                             android:layout_margin="0dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
+                            android:gravity="center_vertical"
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintEnd_toEndOf="parent" />
@@ -295,6 +298,7 @@
                             android:layout_margin="0dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
+                            android:gravity="center_vertical"
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary" />
 
@@ -316,6 +320,7 @@
                             android:layout_margin="0dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
+                            android:gravity="center_vertical"
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary" />
                     </TableRow>

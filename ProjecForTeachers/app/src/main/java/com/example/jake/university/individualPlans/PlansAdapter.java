@@ -55,10 +55,9 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
             @Override
             public void onClick(View v)
             {
-                //TODO NEIN
-                Plan.decodeId(item.getID());
-//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownLoadEKFile"));
-//                startActivity(browserIntent);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownPlan?idPlan="+Plan.decodeId(item.getID())+
+                        "&status="+item.getStatus()+"&mode=0"));
+                getContext().startActivity(browserIntent);
             }
         });
         viewHolder.moreInfo.setOnClickListener(new View.OnClickListener() {

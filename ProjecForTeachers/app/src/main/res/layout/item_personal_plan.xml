@@ -108,7 +108,7 @@
                 android:layout_height="120dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -167,8 +167,7 @@
                             android:fontFamily="@font/roboto_light"
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary"
-                            app:layout_constraintEnd_toEndOf="parent"
-                          />
+                            app:layout_constraintEnd_toEndOf="parent" />
                     </TableRow>
 
                     <TableRow
@@ -180,9 +179,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Кафедра:"
-                            android:layout_weight="1"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -191,8 +190,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
-                            android:fontFamily="@font/roboto_light"
                             android:layout_weight="1"
+                            android:fontFamily="@font/roboto_light"
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintHorizontal_bias="0.0" />
@@ -202,8 +201,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
-                            android:fontFamily="@font/roboto"
                             android:layout_weight="1"
+                            android:fontFamily="@font/roboto"
                             android:text="Статус:"
                             android:textColor="@color/colorPrimary" />
 
@@ -229,9 +228,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Дата заседания\nкафедры:"
-                            android:layout_weight="1"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="parent" />
 
@@ -242,9 +241,9 @@
                             android:layout_margin="0dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
                             android:singleLine="false"
-                            android:layout_weight="1"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintHorizontal_bias="0.0" />
 
@@ -253,20 +252,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Дата\nутверждения:"
-                            android:textColor="@color/colorPrimary"
-                            android:layout_weight="1"/>
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/platDateAssigned2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
                             android:singleLine="false"
                             android:textColor="@color/colorPrimary"
-                            android:layout_weight="1"
                             app:layout_constraintEnd_toEndOf="parent" />
                     </TableRow>
 
@@ -279,40 +278,40 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Ставка/доля\nставки:"
-                            android:textColor="@color/colorPrimary"
-                            android:layout_weight="1"/>
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/planStavka3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
                             android:singleLine="false"
-                            android:textColor="@color/colorPrimary"
-                            android:layout_weight="1"/>
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/textView42"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Тип\nдолжности:"
-                            android:textColor="@color/colorPrimary"
-                            android:layout_weight="1"/>
+                            android:textColor="@color/colorPrimary" />
 
                         <TextView
                             android:id="@+id/planType3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/roboto_light"
                             android:singleLine="false"
-                            android:textColor="@color/colorPrimary"
-                            android:layout_weight="1" />
+                            android:textColor="@color/colorPrimary" />
                     </TableRow>
                 </TableLayout>
             </androidx.cardview.widget.CardView>

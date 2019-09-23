@@ -21,6 +21,7 @@ public class Plan
     private String status;
     private String confirmDate;
     private String postType;
+    private String ID;
     private boolean visibleFlag;
     private HashMap<String,Character> symbToNumb;
 
@@ -43,7 +44,7 @@ public class Plan
     private String name;
 
     public Plan(String institute, String cafedra, String cafConsDate, String charge, String EKP,
-                String status, String confirmDate, String postType, String name) {
+                String status, String confirmDate, String postType, String name, String ID) {
         this.institute = institute;
         this.cafedra = cafedra;
         this.cafConsDate = cafConsDate;
@@ -66,16 +67,17 @@ public class Plan
     }
 
     //TODO Доделать скачивание плана
-//    static public String decodeId(String ID)
-//    {
-//       char[] buf = ID.toCharArray();
-//       String result = new String();
-//
-//       for(int i = 0;i<buf.length;i++)
-//       {
-//           buf[i]=symb
-//       }
-//    }
+    static public String decodeId(String ID)
+    {
+        String result = "";
+       for(int i=0;i<ID.length();i++)
+       {
+           int symBuder = Character.getNumericValue(ID.charAt(i));
+           int numBuder = 'A'+symBuder;
+           result+=(char)numBuder;
+       }
+       return result;
+    }
 
     public String getInstitute() {
         return institute;
@@ -141,6 +143,14 @@ public class Plan
         this.postType = postType;
     }
 
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     public static ArrayList<Plan> planParser (String lecID)
     {
         JSONObject obj = new JSONObject();
@@ -154,7 +164,8 @@ public class Plan
                 obj = arr.getJSONObject(i);
                 plans.add(new Plan(obj.getString("Inst_L_Name"),obj.getString("Kaf_L_Name"),obj.getString("ZasKafDate"),
                         obj.getString("Bet"),obj.getString("EkpName"),obj.getString("StatusName"),"-",
-                        obj.getString("RangType"),"Индивидуальный план на "+obj.getString("StudyYears")+", кафедра "+obj.getString("KafName")));
+                        obj.getString("RangType"),"Индивидуальный план на "+obj.getString("StudyYears")+", кафедра "+obj.getString("KafName"),
+                        obj.getString("ID")));
             }
         } catch (ExecutionException e) {
             e.printStackTrace();

@@ -53,7 +53,8 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
             @Override
             public void onClick(View v)
             {
-                //TODO Скачать план
+                //TODO NEIN
+                Plan.decodeId(item.getID());
             }
         });
         viewHolder.moreInfo.setOnClickListener(new View.OnClickListener() {

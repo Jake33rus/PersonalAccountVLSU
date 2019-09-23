@@ -1,6 +1,8 @@
 package com.example.jake.university.individualPlans;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +57,8 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
             {
                 //TODO NEIN
                 Plan.decodeId(item.getID());
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownLoadEKFile"));
+//                startActivity(browserIntent);
             }
         });
         viewHolder.moreInfo.setOnClickListener(new View.OnClickListener() {

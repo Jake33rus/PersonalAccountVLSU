@@ -138,7 +138,7 @@
                    android:textColor="@color/colorPrimaryDark" />
 
                <com.google.android.material.button.MaterialButton
-                   android:id="@+id/button"
+                   android:id="@+id/butDownload"
                    android:layout_width="0dp"
                    android:layout_height="match_parent"
                    android:layout_marginEnd="24dp"

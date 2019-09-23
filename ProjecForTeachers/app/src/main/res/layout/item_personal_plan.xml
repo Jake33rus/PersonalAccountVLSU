@@ -19,7 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/planName"
@@ -105,7 +105,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/innerCV"
                 android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="visible"
@@ -116,7 +116,8 @@
 
                 <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
                     android:weightSum="4"
                     tools:visibility="visible">
 
@@ -126,8 +127,9 @@
 
                         <TextView
                             android:id="@+id/textView32"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
                             android:layout_marginTop="0dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto"
@@ -149,7 +151,7 @@
 
                         <TextView
                             android:id="@+id/textView33"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
                             android:layout_marginEnd="0dp"
@@ -176,9 +178,10 @@
 
                         <TextView
                             android:id="@+id/textView43"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_marginStart="8dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Кафедра:"
@@ -198,7 +201,7 @@
 
                         <TextView
                             android:id="@+id/textView34"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
                             android:layout_weight="1"
@@ -225,7 +228,7 @@
 
                         <TextView
                             android:id="@+id/textView35"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
                             android:layout_weight="1"
@@ -249,7 +252,7 @@
 
                         <TextView
                             android:id="@+id/textView36"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
                             android:layout_weight="1"
@@ -275,9 +278,11 @@
 
                         <TextView
                             android:id="@+id/textView41"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Ставка/доля\nставки:"
@@ -295,9 +300,10 @@
 
                         <TextView
                             android:id="@+id/textView42"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/roboto"
                             android:text="Тип\nдолжности:"

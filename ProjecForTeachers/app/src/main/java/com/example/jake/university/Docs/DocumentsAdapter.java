@@ -51,12 +51,12 @@ public class DocumentsAdapter extends ArrayAdapter<Document> {
     }
     private class ViewHolder {
         final TextView tvName, tvNumb, tvAuthors;
-        final ImageButton download;
+        final Button download;
         ViewHolder(View view){
             tvName = (TextView) view.findViewById(R.id.docName);
             tvNumb = (TextView) view.findViewById(R.id.docNumber);
             tvAuthors = (TextView) view.findViewById(R.id.docsAuthors);
-            download = (ImageButton) view.findViewById(R.id.butDownload);
+            download = (Button) view.findViewById(R.id.butDownload);
         }
     }
 }

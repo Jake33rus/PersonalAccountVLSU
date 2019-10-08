@@ -55,6 +55,7 @@ public class Plan
         this.postType = postType;
         this.name = name;
         this.visibleFlag = false;
+        this.ID=ID;
 
         symbToNumb = new HashMap<String, Character>();
 

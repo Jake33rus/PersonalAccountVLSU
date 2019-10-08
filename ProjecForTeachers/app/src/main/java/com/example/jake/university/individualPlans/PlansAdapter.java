@@ -15,11 +15,14 @@ import androidx.cardview.widget.CardView;
 
 import com.example.jake.university.API.postReq;
 import com.example.jake.university.R;
+import com.example.jake.university.profile.Singleton;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class PlansAdapter extends ArrayAdapter<Plan> {
 
@@ -55,8 +58,12 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
             @Override
             public void onClick(View v)
             {
+                String ppp = item.getID();
+                String sss = item.getStatus();
+                int i =5;
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownPlan?idPlan="+Plan.decodeId(item.getID())+
                         "&status="+item.getStatus()+"&mode=0"));
+//                    browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownloadPrepPlan?IdParus=281474976716985&IdPlan="+item.getID()+"&Status="+item.getStatus()));
                 getContext().startActivity(browserIntent);
             }
         });

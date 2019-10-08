@@ -60,10 +60,14 @@ public class FragmentDocuments extends Fragment {
                         "0,0,0,0,'','',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'','',0");
 //                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
 //                        "0,0,0,0,'"+tvName.getText().toString()+"','"+tvNumb.getText().toString()+"',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'"+tvDataFrom.getText().toString()+"','"+tvDataTo.getText().toString()+"',0");
-                try {
-                    TimeUnit.SECONDS.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+
+                while (comand.getProgressIncr()==0)
+                {
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (!comand.getjARRAY().isNull(0))
                 {
@@ -73,10 +77,13 @@ public class FragmentDocuments extends Fragment {
                 comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
                         "0,0,0,0,'','',False,"+DISPOSALS+",0,281474976904130,0,0,11549,1,'','',0");
-                try {
-                    TimeUnit.SECONDS.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (comand.getProgressIncr()==0)
+                {
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (!comand.getjARRAY().isNull(0))
                 {
@@ -86,10 +93,13 @@ public class FragmentDocuments extends Fragment {
                 comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
                         "0,0,0,0,'','',False,"+SMK_DOCS+",0,281474976904130,0,0,11549,1,'','',0");
-                try {
-                    TimeUnit.SECONDS.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (comand.getProgressIncr()==0)
+                {
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (!comand.getjARRAY().isNull(0))
                 {
@@ -99,10 +109,13 @@ public class FragmentDocuments extends Fragment {
                 comand = new postReq("getData");
                 comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
                         "0,0,0,0,'','',False,"+BLANKS+",0,281474976904130,0,0,11549,1,'','',0");
-                try {
-                    TimeUnit.SECONDS.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (comand.getProgressIncr()==0)
+                {
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (!comand.getjARRAY().isNull(0))
                 {

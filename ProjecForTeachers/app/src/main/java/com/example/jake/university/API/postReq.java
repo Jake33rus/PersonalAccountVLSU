@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 
-public class postReq extends AsyncTask<String, Void, Void>
+public class postReq extends AsyncTask<String, Void, JSONArray>
 {
     private JSONArray jARRAY = null;
     private String type = "";
@@ -35,7 +35,7 @@ public class postReq extends AsyncTask<String, Void, Void>
     private byte[] bytes;
     private String string;
     ProgressDialog progressDialog;
-    int progressIncr = 1;
+    int progressIncr = 0;
     public JSONArray getjARRAY() {
         return jARRAY;
     }
@@ -60,18 +60,18 @@ public class postReq extends AsyncTask<String, Void, Void>
         super.onPreExecute();
     }
 
-    protected Void doInBackground(String... params)
+    protected JSONArray doInBackground(String... params)
     {
         try {
             jARRAY = createReq(params[0], params[1], params[2]);
         } catch ( Exception e){
             e.printStackTrace();
         }
-        return null;
+        return jARRAY;
     }
 
     @Override
-    protected void onPostExecute(Void result)
+    protected void onPostExecute(JSONArray result)
     {
         super.onPostExecute(result);
     }
@@ -152,6 +152,8 @@ public class postReq extends AsyncTask<String, Void, Void>
             string=finalRes;
             //String[] parts = finalRes.split();
             jArr = new JSONArray(finalRes);
+
+            progressIncr = 1;
 
 
         }catch(Exception e)
@@ -337,4 +339,7 @@ public class postReq extends AsyncTask<String, Void, Void>
     {return bytes;}
     public String getString()
     {return string;}
+
+    public int getProgressIncr()
+    {return progressIncr;}
 }

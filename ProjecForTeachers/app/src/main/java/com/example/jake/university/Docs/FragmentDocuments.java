@@ -20,6 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.concurrent.TimeUnit;
 
 public class FragmentDocuments extends Fragment {
@@ -53,74 +54,10 @@ public class FragmentDocuments extends Fragment {
             @Override
             public void onClick(View v) {
 
-                postReq comand = new postReq("getData");
-                DocWorker dw = new DocWorker();
-                JSONObject obj = new JSONObject();
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0,0,0,0,'','',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'','',0");
-//                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-//                        "0,0,0,0,'"+tvName.getText().toString()+"','"+tvNumb.getText().toString()+"',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'"+tvDataFrom.getText().toString()+"','"+tvDataTo.getText().toString()+"',0");
-
-                while (comand.getProgressIncr()==0)
-                {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (!comand.getjARRAY().isNull(0))
-                {
-                    docs.addAll(dw.getDocList(comand.getjARRAY()));
-                }
-
-                comand = new postReq("getData");
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0,0,0,0,'','',False,"+DISPOSALS+",0,281474976904130,0,0,11549,1,'','',0");
-                while (comand.getProgressIncr()==0)
-                {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (!comand.getjARRAY().isNull(0))
-                {
-                    docs.addAll(dw.getDocList(comand.getjARRAY()));
-                }
-
-                comand = new postReq("getData");
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0,0,0,0,'','',False,"+SMK_DOCS+",0,281474976904130,0,0,11549,1,'','',0");
-                while (comand.getProgressIncr()==0)
-                {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (!comand.getjARRAY().isNull(0))
-                {
-                    docs.addAll(dw.getDocList(comand.getjARRAY()));
-                }
-
-                comand = new postReq("getData");
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0,0,0,0,'','',False,"+BLANKS+",0,281474976904130,0,0,11549,1,'','',0");
-                while (comand.getProgressIncr()==0)
-                {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (!comand.getjARRAY().isNull(0))
-                {
-                    docs.addAll(dw.getDocList(comand.getjARRAY()));
-                }
+                docs.addAll(getOrders());
+                docs.addAll(getDisposals());
+                docs.addAll(getSmkdocs());
+                docs.addAll(getBlanks());
 
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
@@ -135,18 +72,7 @@ public class FragmentDocuments extends Fragment {
             @Override
             public void onClick(View v) {
 
-                DocWorker dw = new DocWorker();
-                JSONObject obj = new JSONObject();
-                postReq comand = new postReq("getData");
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0,0,0,0,'','',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'','',0");
-                try {
-                    TimeUnit.SECONDS.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                docs = dw.getDocList(comand.getjARRAY());
-
+                docs = getOrders();
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
                 bundle = new Bundle();
@@ -160,12 +86,7 @@ public class FragmentDocuments extends Fragment {
             @Override
             public void onClick(View v) {
 
-                DocWorker dw = new DocWorker();
-                JSONObject obj = new JSONObject();
-                postReq comand = new postReq("getData");
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, "+DISPOSALS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
-                docs = dw.getDocList(comand.getjARRAY());
+               docs = getDisposals();
 
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
@@ -180,12 +101,7 @@ public class FragmentDocuments extends Fragment {
             @Override
             public void onClick(View v) {
 
-                DocWorker dw = new DocWorker();
-                JSONObject obj = new JSONObject();
-                postReq comand = new postReq("getData");
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, "+SMK_DOCS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
-                docs = dw.getDocList(comand.getjARRAY());
+                docs = getSmkdocs();
 
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
@@ -200,12 +116,8 @@ public class FragmentDocuments extends Fragment {
             @Override
             public void onClick(View v) {
 
-                DocWorker dw = new DocWorker();
-                JSONObject obj = new JSONObject();
-                postReq comand = new postReq("getData");
-                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
-                        "0, 0, 0, 0, '', '', False, "+BLANKS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
-                docs = dw.getDocList(comand.getjARRAY());
+
+                docs = getBlanks();
 
                 FragmentManager fm = getFragmentManager();
                 FragmentDocumentsList fdl = new FragmentDocumentsList();
@@ -218,5 +130,104 @@ public class FragmentDocuments extends Fragment {
         });
 
         return view;
+    }
+
+    public ArrayList<Document> getOrders()
+    {
+        postReq comand = new postReq("getData");
+        DocWorker dw = new DocWorker();
+        JSONObject obj = new JSONObject();
+        comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                "0,0,0,0,'','',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'','',0");
+//                comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+//                        "0,0,0,0,'"+tvName.getText().toString()+"','"+tvNumb.getText().toString()+"',False,"+ORDERS+",0,281474976904130,0,0,11549,1,'"+tvDataFrom.getText().toString()+"','"+tvDataTo.getText().toString()+"',0");
+
+        while (comand.getProgressIncr()==0)
+        {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!comand.getjARRAY().isNull(0))
+        {
+            ArrayList<Document> orders = new ArrayList<Document>();
+            orders.addAll(dw.getDocList(comand.getjARRAY()));
+            return orders;
+        }
+        return null;
+    }
+    public ArrayList<Document> getDisposals()
+    {
+        postReq comand = new postReq("getData");
+        DocWorker dw = new DocWorker();
+        JSONObject obj = new JSONObject();
+
+        comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                "0,0,0,0,'','',False,"+DISPOSALS+",0,281474976904130,0,0,11549,1,'','',0");
+        while (comand.getProgressIncr()==0)
+        {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!comand.getjARRAY().isNull(0))
+        {
+            ArrayList<Document> disposals = new ArrayList<Document>();
+            disposals.addAll(dw.getDocList(comand.getjARRAY()));
+            return disposals;
+        }
+        return null;
+    }
+    public ArrayList<Document> getSmkdocs()
+    {
+        postReq comand = new postReq("getData");
+        DocWorker dw = new DocWorker();
+        JSONObject obj = new JSONObject();
+
+        comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                "0, 0, 0, 0, '', '', False, "+SMK_DOCS+", 0, 281474976904130, 0, 0, 12729, 1, '', '', 0");
+        while (comand.getProgressIncr()==0)
+        {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!comand.getjARRAY().isNull(0))
+        {
+            ArrayList<Document> smkDocs = new ArrayList<Document>();
+            smkDocs.addAll(dw.getDocList(comand.getjARRAY()));
+            return smkDocs;
+        }
+        return null;
+    }
+    public ArrayList<Document> getBlanks()
+    {
+        postReq comand = new postReq("getData");
+        DocWorker dw = new DocWorker();
+        JSONObject obj = new JSONObject();
+
+        comand.execute("35","[dbo].[WorkDocument_Fast_GetList]",
+                "0,0,0,0,'','',False,"+BLANKS+",0,281474976904130,0,0,11549,1,'','',0");
+        while (comand.getProgressIncr()==0)
+        {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if (!comand.getjARRAY().isNull(0))
+        {
+            ArrayList<Document> blanks = new ArrayList<Document>();
+            blanks.addAll(dw.getDocList(comand.getjARRAY()));
+            return blanks;
+        }
+        return null;
     }
 }

@@ -61,8 +61,8 @@ public class PlansAdapter extends ArrayAdapter<Plan> {
                 String ppp = item.getID();
                 String sss = item.getStatus();
                 int i =5;
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownPlan?idPlan="+Plan.decodeId(item.getID())+
-                        "&status="+item.getStatus()+"&mode=0"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://hqvla2222w02/api/api/DownloadPrepPlan?IdParus=281474976716985&IdPlan="
+                        +item.getID()+"&Status="+item.getStatus()+"/DownloadPrepPlan.pdf"));
 //                    browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lk.www1.vlsu.ru/Home/DownloadPrepPlan?IdParus=281474976716985&IdPlan="+item.getID()+"&Status="+item.getStatus()));
                 getContext().startActivity(browserIntent);
             }
